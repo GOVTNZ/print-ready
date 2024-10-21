@@ -1,0 +1,121 @@
+# PrintReady - Print Stylesheet Toolkit for NZ Government Agencies
+
+## Project Overview
+PrintReady is an optional open source toolkit that simplifies the implementation of print-friendly web pages for New Zealand government agencies. It provides developers with ready-to-use CSS and JavaScript files that create professional, accessible printed documents while maintaining compliance with NZ Government Web Standards.
+
+## Key Purpose
+- Enable compliance with NZ Government Web Usability Standard 3.3 (Printable web pages)
+- Reduce development effort for print stylesheet implementation
+- Ensure consistency across government agency websites when printed
+- Support the all-of-government (AoG) community through collaborative development
+
+## Critical Constraints & Requirements
+
+### NZ Government Web Standards Compliance
+PrintReady must ensure compliance with these specific requirements:
+- Main content must be printable on A4 paper
+- Printed pages must include agency name or logo
+- Must exclude: primary/secondary navigation, search forms, decorative elements
+- Text should print as black on white background by default
+
+### File Architecture Rules
+- **Base files** (printready-base.css, printready-base.js): NEVER modify these core files
+- **Site files** (printready-site.css, printready-site.js): ALWAYS customize these for your website
+- CSS files must use media="print" attribute
+- Screen stylesheets must use media="screen" attribute
+- JavaScript files must use type="module"
+
+## Development Philosophy
+
+### Enhance, Don't Replace
+PrintReady leverages browser default print stylesheets and enhances them only where necessary. We work with browser capabilities rather than against them.
+
+### Separation of Concerns
+Strict separation between print and screen styles using CSS media queries:
+- Print styles only affect printed output
+- Screen styles only affect on-screen display
+- No interference between rendering contexts
+
+### Modular Design
+- Core functionality in base files enables consistent updates
+- Site-specific customization in separate files preserves local modifications
+- Print-only components use .print-only class (hidden on screen, visible in print)
+
+## Implementation Patterns
+
+### Essential Customizations Required
+1. Replace BREADCRUMBS selector with your site's breadcrumb CSS selector
+2. Replace IMAGES_TO_SHOW with selectors for images that should print
+3. Replace INSERT_ELEMENTS_TO_HIDE with selectors for elements to hide when printing
+4. Replace AGENCY_NAME with your organization's name
+5. Set YOUR_RENDER_TARGET for where page links should appear
+
+### Print Content Strategy
+Follow this principle: "Only print elements that are essential for understanding the page's content or context"
+
+Typically hide:
+- Site navigation (primary and secondary)
+- Headers and footers
+- Interactive elements (buttons, form controls, accordion toggles)
+- Decorative elements
+- Search functionality
+
+Typically show:
+- Main content
+- Agency name/logo
+- Page title, date, and URL (via JavaScript functions)
+- Essential images (explicitly selected)
+- External link URLs as footnotes
+
+### JavaScript Functions Available
+- showAgency(agencyName): Displays agency name in print view
+- showPageInformation(): Shows page title, print date, and URL
+- initializePrintButton(selector): Makes print button functional
+- generateListOfPageLinks(): Creates footnoted list of external links
+
+## File Structure
+```
+src/
+├── printready-base.css     # Core print styles (DO NOT MODIFY)
+├── printready-base.js      # Core JavaScript functions (DO NOT MODIFY)
+├── printready-site.css     # Site-specific styles (CUSTOMIZE THIS)
+└── printready-site.js      # Site-specific implementation (CUSTOMIZE THIS)
+
+example/
+├── with-printready.html    # Demo showing PrintReady implementation
+└── without-printready.html # Demo showing default browser printing
+
+docs/
+├── css-website-integration.md
+├── js-website-integration.md
+└── meeting-the-nz-govt-web-standards.md
+```
+
+## Live Demos
+View live examples to see the difference PrintReady makes:
+- With PrintReady: https://govtnz.github.io/print-ready/with-printready.html
+- Without PrintReady: https://govtnz.github.io/print-ready/without-printready.html
+
+Use browser print preview (Ctrl+P / Cmd+P) or DevTools print media emulation to compare the print formatting between the two examples.
+
+## Common Integration Scenarios
+- Government CMS platforms requiring print compliance
+- Multi-agency websites needing consistent print formatting
+- Public-facing government services requiring accessible printed output
+- Content-heavy government sites with complex navigation structures
+
+## Testing Approach
+- Browser print preview (Ctrl+P / Cmd+P)
+- Browser DevTools print media emulation
+- Playwright tests for JavaScript functionality (included in repo)
+- Cross-browser compatibility testing for print rendering
+
+## Community & Support
+- All communication through GitHub repository channels only
+- Issues for bugs and concrete feature requests
+- Discussions for implementation questions and community sharing
+- Pull requests welcome from AoG community and broader open source community
+- No email support provided
+
+## Version Strategy
+Project follows semantic versioning with clear changelog documentation for government users who need stable, predictable updates.
