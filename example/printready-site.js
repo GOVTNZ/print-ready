@@ -1,17 +1,17 @@
 // Importing functions from the 'printready-base' file
-import { initializePrintButton, generatePrintablePageInformation, generatePrintableLinkList, openDetailsElementsForPrinting } from '../thirdparty/printready/src/printready-base.js' // Note: update this path as required. 
+import { initializePrintButton, generatePrintablePageInformation, generatePrintableLinkList, openDetailsElementsForPrinting } from '../src/printready-base.js' // TODO: update path to NPM packages fodler if not using NPM to install. 
 
-// Initialize the DOMContentLoaded event listener to ensure the script runs after the page is fully loaded
+// Initialize the DOMContentLoaded event listener to ensure the script runs after the page is fully loaded (optional)
 document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize print button if it exists on the page. This is fro progressive enhancement and assumes the button is rendered with the 'hidden' html attribute.  
-    const printButtonSelector = "#print-page-button"; // Selector for print button - update as needed
+    const printButtonSelector = "#print-page-button"; // Selector for print button - update if your print button has a different HTML ID or class. 
     if (document.querySelector(printButtonSelector)) {
         initializePrintButton(printButtonSelector);
     }
 
     // Insert printable page information at the top of the document
-    const siteName = "Your site name"; // Replace with the name of your site when printing.
+    const siteName = "Print ready site"; // Replace with the name of your site when printing.
     document.body.insertAdjacentHTML(
         'afterbegin', 
         `<div class="printed-page-details js-print-only">
