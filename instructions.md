@@ -1,7 +1,7 @@
 TODO - ADD implimentaiton instructions the base.css file (must be type print)
   
 
-# PrintReady Module Integration Guide
+# PrintReady Integration Guide
 
 This guide details the use of each **PrintReady** module function to enhance print formatting on government agency webpages.
 
@@ -11,7 +11,7 @@ This guide details the use of each **PrintReady** module function to enhance pri
 1. Add the following \<link> tag in the \<head> of your HTML file to apply print-specific styles when printing the page:
 
 ```html
-<link rel="stylesheet" href="/src/printready-base.css" media="print">
+<link rel="stylesheet" href="/path/to/printready-base.css" media="print">
 ```
 
 2. **Explanation:** The `media="print"` attribute ensures this stylesheet is only applied when the page is printed.
@@ -21,18 +21,20 @@ This guide details the use of each **PrintReady** module function to enhance pri
 1. To load the PrintReady base JavaScript file, add this \<script> tag to the \<head> or before the closing \</body> tag:
 
     ```html
-    <script src="/src/printready-base.js" type="module" async></script>
+    <script src="/path/to/printready-base.js" type="module" async></script>
     ```
 
 2. **Explanation:** The `type="module"` attribute  preventing it from blocking the page rendering process while being fetched and executed. allows you to import the PrintReady ES6 modules. 
 The `async` attribute ensures the script is loaded asynchronously, preventing it from blocking the page rendering process, because it is not needed unless the page is printed. 
 
-## Setting Up a Print Button
+## JS Module Integration Guide
+
+### Setting Up a Print Button
 
 This is optional. The `initializePrintButton` function enables a print button on the page, making it visible and functional to trigger the print dialog.
 
 
-### Usage
+#### Usage
 
 1. Place a hidden print button in your HTML or reference an existing one in the next step. Ensure a exisiting button has the `hidden` attribute:
 
@@ -55,11 +57,11 @@ This is optional. The `initializePrintButton` function enables a print button on
 
 
 
-## Displaying Page Information for Printing
+### Displaying Page Information for Printing
 
 The `generatePrintablePageInformation` function generates page information, such as the site name, title, print date, and URL, for the print view.
 
-### Usage
+#### Usage
 
 1. Add a container in your HTML or inject it via JavaScript:
 
@@ -90,9 +92,9 @@ The `generatePrintablePageInformation` function generates page information, such
    </div>
    ```
 
-## Generating a Printable Link List
+### Generating a Printable Link List
 
-### Usage
+#### Usage
 
 1. Add the following code to generate and insert the list of links:
 
@@ -101,9 +103,9 @@ The `generatePrintablePageInformation` function generates page information, such
 
    document.addEventListener('DOMContentLoaded', () => {
        const linkList = generatePrintableLinkList(
-           '.page-content a',   // Selector for links to include
-           '.sidenav a',         // Selector for links to exclude
-           true                  // Set to 'true' to include only external links
+           '.page-content a',   // Example selector for links to include
+           '.sidenav a',         // Example selector for links to exclude
+           true                  // Set to 'true' to only include external links
        );
 
        document.body.insertAdjacentHTML(
@@ -132,29 +134,29 @@ The `generatePrintablePageInformation` function generates page information, such
    ```
 
 
-## Automatically Opening \<details> Elements for Printing
+### Automatically Opening \<details> Elements for Printing
 
 The `openDetailsElementsForPrinting` function opens all \<details> elements within the specified selector when printing and closes them afterward.
 
-### Usage
+#### Usage
 
-1. Use the following code to implement the function:
+1. Use the following code to implement the function with the \<detail> accordion's selector:
 
    ```javascript
    import { openDetailsElementsForPrinting } from 'path/to/printready-base.js';
 
    document.addEventListener('DOMContentLoaded', () => {
-       const detailsSelector = '.main-content details.inline-accordion';
+       const detailsSelector = 'details.example-selector';
        openDetailsElementsForPrinting(detailsSelector);
    });
    ```
 
 2. **Explanation:** This function filters links based on provided selectors and outputs them in a format suitable for printing. It includes email, phone, and external links by default.
 
-#### Example output
+#### Example HTML
 
 ```html
-   <details class="inline-accordion">
+   <details class="example-selector">
        <summary>Click to view more</summary>
        <p>Details content here will be visible in print.</p>
    </details>
