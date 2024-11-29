@@ -7,7 +7,27 @@ This guide details the use of each **PrintReady** module function to enhance pri
 
 ---
 
-## 1. Setting Up a Print Button
+## Include printready-base.css as a Print Stylesheet
+1. Add the following \<link> tag in the \<head> of your HTML file to apply print-specific styles when printing the page:
+
+```html
+<link rel="stylesheet" href="/src/printready-base.css" media="print">
+```
+
+2. **Explanation:** The `media="print"` attribute ensures this stylesheet is only applied when the page is printed.
+
+
+## Include printready-base.js as a JavaScript Module
+1. To load the PrintReady base JavaScript file, add this \<script> tag to the \<head> or before the closing \</body> tag:
+
+    ```html
+    <script src="/src/printready-base.js" type="module" async></script>
+    ```
+
+2. **Explanation:** The `type="module"` attribute  preventing it from blocking the page rendering process while being fetched and executed. allows you to import the PrintReady ES6 modules. 
+The `async` attribute ensures the script is loaded asynchronously, preventing it from blocking the page rendering process, because it is not needed unless the page is printed. 
+
+## Setting Up a Print Button
 
 This is optional. The `initializePrintButton` function enables a print button on the page, making it visible and functional to trigger the print dialog.
 
@@ -35,7 +55,7 @@ This is optional. The `initializePrintButton` function enables a print button on
 
 
 
-## 2. Displaying Page Information for Printing
+## Displaying Page Information for Printing
 
 The `generatePrintablePageInformation` function generates page information, such as the site name, title, print date, and URL, for the print view.
 
@@ -70,7 +90,7 @@ The `generatePrintablePageInformation` function generates page information, such
    </div>
    ```
 
-## 3. Generating a Printable Link List
+## Generating a Printable Link List
 
 ### Usage
 
@@ -112,7 +132,7 @@ The `generatePrintablePageInformation` function generates page information, such
    ```
 
 
-## 4. Automatically Opening \<details> Elements for Printing
+## Automatically Opening \<details> Elements for Printing
 
 The `openDetailsElementsForPrinting` function opens all \<details> elements within the specified selector when printing and closes them afterward.
 
