@@ -7,7 +7,7 @@
 */
 
 /* Hide elements not needed in print (such as headers, footers, and navigation) 
-    Replace '.elements-to-hide' with the CSS selectors of the elements to hide when printing on youe site
+    Replace '.elements-to-hide' with the CSS selectors of the elements to hide when printing on youe site (e.g header, footer ect) 
 */
 .elements-to-hide {
   display: none;
