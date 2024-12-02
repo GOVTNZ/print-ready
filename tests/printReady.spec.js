@@ -8,6 +8,15 @@ test('has title', async ({ page }) => {
   await expect(page).toHaveTitle(/PrintReady/);
 });
 
+test('Empty link is ignored', async ({ page }) => {
+  await page.goto('/'); 
+  
+  // Locate the element by its ID
+  const oldSchoolAnchor = page.locator('#OldSchoolAnchor');
+
+  await expect(oldSchoolAnchor).toHaveText('Empty link');
+});
+
 // test('get started link', async ({ page }) => {
 //   await page.goto('https://playwright.dev/');
 
