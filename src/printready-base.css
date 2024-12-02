@@ -125,3 +125,11 @@ body {
     padding-right: 1rem;
     margin-bottom: 1.25rem;
   }
+
+.printed-page-details{ 
+  
+}
+
+  .js-print-only {
+    display: initial;
+  }

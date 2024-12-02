@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PrintReady</title>
+    <link rel="stylesheet" href="/example/screen.css" media="screen">
     <link rel="stylesheet" href="/src/printready-base.css" media="print">
+    <link rel="stylesheet" href="/example/printready-site.css" media="print">
     <script src="/src/printready-base.js" type="module"></script>
+    <script src="/example/printready-site.js" type="module"></script>
     <script src="/"></script> <!-- IMPLIMENT EXAMPLE JS -->
 </head>
 <body>
@@ -15,15 +18,18 @@
     <!-- TODO: add example breadcrumbs -->
     <!-- TODO: add definition list -->
     <!-- TODO: add no rpint and print only examples  -->
+    <div class="main-content">
 
+        <h1>Print ready test page</h1>
+        
+        <p><a id="OldSchoolAnchor">Empty link</a></p>
+        <p><a href="/fake-internal-link">Internal link</a></p>
+        <p><a href="http://www.google.com">External link</a></p>
+        <p><a href="tel:+4733378901">Tel link</a></p>
+        <p><a href="mailto:a@b.com?subject=email%20subject">Mailto link</a></p>
 
-    <h1>Print ready test page</h1>
-    
-    <p><a id="OldSchoolAnchor"></a>Empty link</p>
-    <p><a href="/fake-internal-link">Internal link</a></p>
-    <p><a href="http://www.google.com">External link</a></p>
-    <p><a href="tel:+4733378901">Tel link</a></p>
-    <p><a href="mailto:a@b.com?subject=email%20subject">Mailto link</a></p>
+    </div>
+
     
     <!-- TODO: Add <details> with different heading levels -->
     <!-- TODO: Add example footer -->

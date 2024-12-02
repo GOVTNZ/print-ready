@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let listOfLinks = null;
 
     // Determine which links to include/exclude based on page type or specific needs
-    // A switch statement is used here to allow for different links to be selected for different types of pages. 
+    // A switch statement is used here to allow for different links to be selected for different types of pages.
+    // TODO call out this is an example you can use if needed 
     switch (true) {
         // Case for a specific page type (e.g., homepage)
         case document.body.classList.contains('pagetype-home'):
@@ -57,19 +58,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Define the target element to insert the printed links section before.
     // You can change this to suit your site. 
-    // A switch statement is used here to allow for different render targets for different types of pages.  
-    let renderTarget = null;
+    // A switch statement is used here to allow for different render targets for different types of pages.
+     
+    let renderTarget = 'YOUR_RENDER_TARGET'; // Set this to your render target (e.g. renderTarget = '.footer')  
+
     switch (true) {
-        case document.querySelector('.footer') !== null:
-            renderTarget = document.querySelector('.footer');
+        // Check for an element on the page that matches the renderTarget selector
+        case document.querySelector(renderTarget) !== null:
+            renderTarget = document.querySelector(renderTarget);
             break;
         default:
+            renderTarget = null
             console.warn('No render target defined for the printed links section.');
             break;
     }
 
-    // Insert the printed links section if a render target is found
-    if (renderTarget) {
+    // Insert the printed links section if a render target is found before ('beforebegin') or after ('afterend')' the render target.
+    if (renderTarget !== null) {
         renderTarget.insertAdjacentHTML('beforebegin', printedLinksSection);
     }
 });

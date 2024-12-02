@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize print button if it exists on the page. This is fro progressive enhancement and assumes the button is rendered with the 'hidden' html attribute.  
     const printButtonSelector = "#print-page-button"; // Selector for print button - update if your print button has a different HTML ID or class. 
+    
     if (document.querySelector(printButtonSelector)) {
         initializePrintButton(printButtonSelector);
     }
@@ -41,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Default case for other page types
         default:
             listOfLinks = generatePrintableLinkList(
-                '.page-content a', // Links to include
+                '.main-content a', // Links to include
                 '.sidenav a', // Links to exclude
                 true // Only include external links, setting to 'false' will also include internal links. Mailto and Tel links are always included, anchor links are always excluded  
             );
@@ -58,18 +59,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Define the target element to insert the printed links section before.
     // You can change this to suit your site. 
     // A switch statement is used here to allow for different render targets for different types of pages.  
-    let renderTarget = null;
+    let renderTarget = '.main-content';
+   
     switch (true) {
-        case document.querySelector('.footer') !== null:
-            renderTarget = document.querySelector('.footer');
+        // Check for an element on the page that matches the renderTarget selector
+        case document.querySelector(renderTarget) !== null:
+            renderTarget = document.querySelector(renderTarget);
             break;
         default:
+            renderTarget = null
             console.warn('No render target defined for the printed links section.');
             break;
     }
 
-    // Insert the printed links section if a render target is found
-    if (renderTarget) {
-        renderTarget.insertAdjacentHTML('beforebegin', printedLinksSection);
+    // Insert the printed links section if a render target is found before ('beforebegin') or after ('afterend')' the render target.
+    if (renderTarget !== null) {
+        renderTarget.insertAdjacentHTML('afterend', printedLinksSection);
     }
 });
