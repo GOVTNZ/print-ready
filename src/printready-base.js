@@ -43,10 +43,10 @@ export function generatePrintablePageInformation(name, pageTitleElement = 'h1') 
   const options = { day: 'numeric', month: 'long', year: 'numeric' };
   const currentDate = new Date().toLocaleDateString('en-GB', options);
 
-  return `<p><b>${name}</b></p>
-          <p><b>Page title:</b> ${pageTitle}</p>
-          <p><b>Printed:</b> ${currentDate}</p>
-          <p><b>Printed from:</b> ${webpageUrl}</p>`;
+  return `<p class="print-info-name"><b>${name}</b></p>
+          <p class="print-info-title"><b>Page title:</b> ${pageTitle}</p>
+          <p class="print-info-date"><b>Printed:</b> ${currentDate}</p>
+          <p class="print-info-url"><b>Printed from:</b> ${webpageUrl}</p>`;
 }
 
 export function generatePrintableLinkList(linksSelector = null, excludeLinksSelector = null, externalOnly = false) {

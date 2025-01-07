@@ -1,6 +1,10 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 
+test.beforeEach(async ({ page }) => {
+  await page.emulateMedia({ media: 'print' });
+});
+
 test('has title', async ({ page }) => {
   await page.goto('/'); 
 
@@ -21,20 +25,47 @@ test('Check External link is listed', async ({ page }) => {
   await page.goto('/'); 
 
   const link = page.getByRole('link', { name: 'External link' });
-  await expect(link).toHaveClass(/js-hasPrintLinkRef/); // TODO make exact match not regex. 
+  await expect(link).toHaveClass('js-hasPrintLinkRef');
   
-  await expect(page.locator('.js-printready-links-list')).toContainText('http://www.google.com/') ;
+  await expect(page.locator('.js-printready-links-list')).toContainText('http://www.google.com/');
 
-  // TODO check this was an adjacent <sup>?
-  // await expect(page.getByRole('link', { name: 'External link' })); 
-
+  // Check there was an adjacent <sup>
+  await expect(link.locator('xpath=following-sibling::sup')).toHaveText('[Link: 1]');
 });
-// test('get started link', async ({ page }) => {
-//   await page.goto('https://playwright.dev/');
 
-//   // Click the get started link.
-//   await page.getByRole('link', { name: 'Get started' }).click();
+test('Check Tel link is listed', async ({ page }) => {
+  await page.goto('/');
 
-//   // Expects page to have a heading with the name of Installation.
-//   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
-// });
+  const link = page.getByRole('link', { name: 'Tel link' });
+  await expect(link).toHaveClass('js-hasPrintLinkRef'); // Exact match
+
+  await expect(page.locator('.js-printready-links-list')).toContainText('Phone number: +4733378901');
+
+  // Check this was an adjacent <sup>
+  // await expect(link.locator('xpath=following-sibling::sup')).toHaveText('[Link: 2]');
+});
+
+test('Check Mailto link is listed', async ({ page }) => {
+  await page.goto('/');
+
+  const link = page.getByRole('link', { name: 'Mailto link' });
+  await expect(link).toHaveClass('js-hasPrintLinkRef'); // Exact match
+
+  await expect(page.locator('.js-printready-links-list')).toContainText('Email: a@b.com - Subject: email subject');
+
+  // Check there was an adjacent <sup>
+  // await expect(link.locator('xpath=following-sibling::sup')).toHaveText('[Link: 3]');
+});
+
+test('Check printed page details', async ({ page }) => {
+  await page.goto('/');
+
+  const printedPageDetails = page.locator('.printed-page-details');
+
+  await expect(printedPageDetails.locator('p.print-info-title')).toHaveText('Page title: Print ready test page');
+  
+  const options = { day: 'numeric', month: 'long', year: 'numeric' };
+  const currentDate = new Date().toLocaleDateString('en-GB', options);
+  await expect(printedPageDetails.locator('p.print-info-date')).toHaveText(`Printed: ${currentDate}`);
+  await expect(printedPageDetails.locator('p.print-info-url')).toHaveText(/Printed from: (http:\/\/localhost:3000\/|http:\/\/printready\.test\/)/); 
+});
