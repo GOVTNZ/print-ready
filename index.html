@@ -13,25 +13,53 @@
 </head>
 <body>
 
-    <!-- TODO: add example header -->
-    <!-- TODO: add h2 and p -->
-    <!-- TODO: add example breadcrumbs -->
-    <!-- TODO: add definition list -->
-    <!-- TODO: add no rpint and print only examples  -->
+    <header>
+        <pre>Example header section</pre>
+    </header>
+    
+    <nav aria-label="breadcrumb">
+        <ol>
+            <li><a href="#">Home</a></li>
+            <li aria-current="page">Print ready test page</li>
+        </ol>
+    </nav>
+    
     <div class="main-content">
-
         <h1>Print ready test page</h1>
         
+        <h2>Test Links</h2>
         <p><a id="OldSchoolAnchor">Empty link</a></p>
         <p><a href="/fake-internal-link">Internal link</a></p>
         <p><a href="http://www.google.com">External link</a></p>
         <p><a href="tel:+4733378901">Tel link</a></p>
         <p><a href="mailto:a@b.com?subject=email%20subject">Mailto link</a></p>
 
+        <h2>Example Subheading</h2>
+        <p>This is an example paragraph under the subheading.</p>
+    
+        <dl>
+            <dt>Term 1</dt>
+            <dd>Definition for term 1</dd>
+            <dt>Term 2</dt>
+            <dd>Definition for term 2</dd>
+        </dl>
+    
+        <p class="no-print">This content will not be printed.</p>
+
+        <p class="print-only">This content will only be printed.</p>
+
+        <details>
+            <summary>Details Heading Level 1</summary>
+            <h2>Subheading Level 2</h2>
+            <p>Content under details with subheading level 2.</p>
+            <h3>Subheading Level 3</h3>
+            <p>Content under details with subheading level 3.</p>
+        </details>
+
     </div>
 
-    
-    <!-- TODO: Add <details> with different heading levels -->
-    <!-- TODO: Add example footer -->
+    <footer>
+        <pre>Example footer section</pre>
+    </footer>
 </body>
 </html>
