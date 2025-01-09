@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     // Automatically open <details> elements in the print view
-    const detailsSelector = '.main-content details.inline-accordion'; // Selector for accordions; update if different
+    const detailsSelector = 'details.inline-accordion'; // Selector for accordions; update if different
     openDetailsElementsForPrinting(detailsSelector);
     
     // Initialize a variable for the list of links
