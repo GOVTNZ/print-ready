@@ -38,23 +38,17 @@ test('Check Tel link is listed', async ({ page }) => {
 
   const link = page.getByRole('link', { name: 'Tel link' });
   await expect(link).toHaveClass('js-hasPrintLinkRef'); // Exact match
-
   await expect(page.locator('.js-printready-links-list')).toContainText('Phone number: +4733378901');
 
   // Check this was an adjacent <sup>
-  // await expect(link.locator('xpath=following-sibling::sup')).toHaveText('[Link: 2]');
+  await expect(link.locator('xpath=following-sibling::sup')).toHaveText('[Link: 2]');
 });
 
 test('Check Mailto link is listed', async ({ page }) => {
   await page.goto('/');
-
   const link = page.getByRole('link', { name: 'Mailto link' });
   await expect(link).toHaveClass('js-hasPrintLinkRef'); // Exact match
-
   await expect(page.locator('.js-printready-links-list')).toContainText('Email: a@b.com - Subject: email subject');
-
-  // Check there was an adjacent <sup>
-  // await expect(link.locator('xpath=following-sibling::sup')).toHaveText('[Link: 3]');
 });
 
 test('Check printed page details', async ({ page }) => {
@@ -67,5 +61,6 @@ test('Check printed page details', async ({ page }) => {
   const options = { day: 'numeric', month: 'long', year: 'numeric' };
   const currentDate = new Date().toLocaleDateString('en-GB', options);
   await expect(printedPageDetails.locator('p.print-info-date')).toHaveText(`Printed: ${currentDate}`);
-  await expect(printedPageDetails.locator('p.print-info-url')).toHaveText(/Printed from: (http:\/\/localhost:3000\/|http:\/\/printready\.test\/)/); 
+  // Note: 127.0.0.1:8080 is the default URL for Live Server, adjust this is if using a different URL/port to view the page.
+  await expect(printedPageDetails.locator('p.print-info-url')).toHaveText(/Printed from: (http:\/\/127.0.0.1:8080\/|http:\/\/printready\.test\/)/); 
 });

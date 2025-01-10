@@ -6,12 +6,15 @@
   "directories": {
     "example": "example"
   },
-  "scripts": {},
+  "scripts": {
+    "start": "live-server"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.49.0",
-    "@types/node": "^22.9.4"
+    "@types/node": "^22.9.4",
+    "live-server": "^1.2.2"
   }
 }
