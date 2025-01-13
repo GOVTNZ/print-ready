@@ -25,7 +25,7 @@ This guide details the use of each **PrintReady** module function to enhance pri
     ```
 
 2. **Explanation:** The `type="module"` attribute  preventing it from blocking the page rendering process while being fetched and executed. allows you to import the PrintReady ES6 modules. 
-The `async` attribute ensures the script is loaded asynchronously, preventing it from blocking the page rendering process, because it is not needed unless the page is printed. 
+The `async` attribute ensures the script is loaded asynchronously, preventing it from blocking the page rendering process, because it is not needed unless the page is printed after it's loaded. 
 
 ## JS Module Integration Guide
 
@@ -79,7 +79,11 @@ The `generatePrintablePageInformation` function generates page information, such
    });
    ```   
    
-2. **Explanation:** The `generatePrintablePageInformation` function takes a site name and optionally a page title selector (`'h1'` by default), creating an HTML snippet with the page information.
+2. **Explanation:** The `generatePrintablePageInformation` function creates an HTML snippet with the site name and page title. By default, it uses the `'h1'` element for the title. If the title is in a different element, you can provide a custom selector as the second optional argument.
+
+    ```javascript
+    generatePrintablePageInformation(siteName, 'custom-selector')
+    ``` 
 
 #### Example Output
 
