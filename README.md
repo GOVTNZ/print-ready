@@ -1,139 +1,178 @@
-# print-ready
-Print ready is a lightweight toolkit providing base styling and JavaScript functionality for printed webpages. 
+TODO - ADD implimentaiton instructions the base.css file (must be type print)
+  
+
+# PrintReady Integration Guide
+
+This guide details the use of each **PrintReady** module function to enhance print formatting on government agency webpages.
 
 ---
 
-# Documentation for Importing and Using `print-ready`
+## Include printready-base.css as a Print Stylesheet
+1. Add the following \<link> tag in the \<head> of your HTML file to apply print-specific styles when printing the page:
 
-`print-ready.js` provides functionality to initialize a print button, generate printable page information, and create a list of links to include in a printed version of the page. Below is the detailed guide on how to import and use these modules in your project.
-
----
-
-## 1. Importing the Modules
-
-To use the `print-ready.js` in your project, import the necessary functions into your JavaScript file:
-
-```javascript
-import { initializePrintButton, generatePrintablePageInformation, generatePrintableLinkList } from './print-ready.js';
+```html
+<link rel="stylesheet" href="/path/to/printready-base.css" media="print">
 ```
 
-### Available Functions:
+2. **Explanation:** The `media="print"` attribute ensures this stylesheet is only applied when the page is printed.
 
-- **`initializePrintButton(buttonSelector)`**
-- **`generatePrintablePageInformation(name, pageTitleElement)`**
-- **`generatePrintableLinkList(linksSelector, excludeLinksSelector)`**
 
----
+## Include printready-base.js as a JavaScript Module
+1. To load the PrintReady base JavaScript file, add this \<script> tag to the \<head> or before the closing \</body> tag:
 
-## 2. Usage of the Functions
+    ```html
+    <script src="/path/to/printready-base.js" type="module" async></script>
+    ```
 
-### 2.1. Initialize Print Button
+2. **Explanation:** The `type="module"` attribute  preventing it from blocking the page rendering process while being fetched and executed. allows you to import the PrintReady ES6 modules. 
+The `async` attribute ensures the script is loaded asynchronously, preventing it from blocking the page rendering process, because it is not needed unless the page is printed after it's loaded. 
 
-This function attaches a print functionality to a button. When the button is clicked, the page will be printed.
+## [TODO: add istructions for the -site files]
 
-#### Parameters:
 
-- `buttonSelector`: The CSS selector of the button element that will trigger the print action.
+## JS Module Integration Guide
 
-#### Example:
+### Setting Up a Print Button
+
+This is optional. The `initializePrintButton` function enables a print button on the page, making it visible and functional to trigger the print dialog.
+
+
+#### Usage
+
+1. Place a hidden print button in your HTML or reference an existing one in the next step. 
+
+   ```html
+   <button id="print-page-button" hidden>Print Page</button>
+   ```
+
+2. Call `initializePrintButton` with the button's CSS selector:
+
+   ```javascript
+   import { initializePrintButton } from 'path/to/printready-base.js';
+
+   document.addEventListener('DOMContentLoaded', () => {
+       const printButtonSelector = "#print-page-button";
+       initializePrintButton(printButtonSelector);
+   });
+   ```   
+   
+3. **Explanation:** The function checks if the button exists, adds a `click` event to trigger printing, and makes it visible.
+
+4. **Implementation Tips:** If using an existing button ensure it has the `hidden` attribute and update the `printButtonSelector` to target it. 
+
+
+### Displaying Page Information for Printing
+
+The `generatePrintablePageInformation` function generates page information, such as the site name, title, print date, and URL, for the print view.
+
+#### Usage
+
+1. Add a container in your HTML or inject it via JavaScript:
+
+   ```javascript
+   import { generatePrintablePageInformation } from 'path/to/printready-base.js';
+
+   document.addEventListener('DOMContentLoaded', () => {
+       const siteName = "Your Site Name"; // Replace with your site’s name
+       document.body.insertAdjacentHTML(
+           'afterbegin',
+           `<div class="printed-page-details js-print-only">
+               ${generatePrintablePageInformation(siteName)}
+           </div>`
+       );
+   });
+   ```   
+   
+2. **Explanation:** The `generatePrintablePageInformation` function creates an HTML snippet with the site name and page title.
+
+3. **Implementation Tips:** 
+- The generated HTML strings for page information and links are highly customizable—feel free to modify them to fit your needs or apply additional styles using the `js-print-only` class for print-specific styling. 
+- By default the `'h1'` element for the page title but you can provide a custom selector as the second optional argument.
+
+    ```javascript
+    generatePrintablePageInformation(siteName, 'custom-selector')
+    ``` 
+
+
+#### Example Output
+
+   ```html
+   <div class="printed-page-details js-print-only">
+       <p><b>Your Site Name</b></p>
+       <p><b>Page title:</b> Example Title</p>
+       <p><b>Printed:</b> 11 November 2024</p>
+       <p><b>Printed from:</b> https://example.com/page</p>
+   </div>
+   ```
+
+### Generating a Printable Link List
+
+#### Usage
+
+1. Add the following code to generate and insert the list of links:
 
 ```javascript
-initializePrintButton('#print-page-button');
-```
+import { generatePrintableLinkList } from 'path/to/printready-base.js';
 
-This will initialize the button with the ID `print-page-button` and bind a print event to it.
-
----
-
-### 2.2. Generate Printable Page Information
-
-This function generates a string of HTML that contains details about the page, such as the page title, the current URL, and the date when the page is printed.
-
-#### Parameters:
-
-- `name`: A string representing the name or title (e.g., the website or organization name) to display.
-- `pageTitleElement`: (Optional) A CSS selector for the element containing the page title. Defaults to `h1`.
-
-#### Returns:
-
-A string of formatted HTML containing the page's information.
-
-#### Example:
-
-```javascript
-const pageInfo = generatePrintablePageInformation('Digital.govt.nz', 'h1');
-document.body.insertAdjacentHTML('afterbegin', `<div class="printed-page-details js-print-only">${pageInfo}</div>`);
-```
-
-This will insert the page information at the beginning of the document body.
-
----
-
-### 2.3. Generate Printable Link List
-
-This function creates a list of links that can be printed, based on specified selectors. You can choose which links to include and which to exclude.
-
-#### Parameters:
-
-- `linksSelector`: A CSS selector for the links you want to include in the printed list.
-- `excludeLinksSelector`: (Optional) A CSS selector for the links you want to exclude from the printed list.
-
-#### Returns:
-
-A string of HTML containing the list of links, formatted as an ordered list (`<ol>`).
-
-#### Example:
-
-```javascript
-const linkList = generatePrintableLinkList('#sitewidebanner a, .page-content a', '.exclude-links-class');
-const printedLinksSection = `<div id="js-page-link-footnotes" class="js-print-only"><h2>Links</h2><ol class="js-footnoted-urls">${linkList}</ol></div>`;
-document.querySelector('.footer').insertAdjacentHTML('beforebegin', printedLinksSection);
-```
-
-This will generate a list of all links within the `#sitewidebanner` and `.page-content`, excluding those matching the `.exclude-links-class`, and insert them into the DOM just before the footer.
-
----
-
-## 3. Putting It All Together
-
-Here’s a basic example of how to use all the functions in a document:
-
-```javascript
-import { initializePrintButton, generatePrintablePageInformation, generatePrintableLinkList } from './print-ready.js';
-
-document.addEventListener('DOMContentLoaded', function () {
-
-    // Initialize the print button
-    initializePrintButton('#print-page-button');
-
-    // Insert the page information into the document
-    document.body.insertAdjacentHTML('afterbegin', `<div class="printed-page-details js-print-only">${generatePrintablePageInformation("Digital.govt.nz")}</div>`);
-
-    // Determine which links to include in the printed version
-    let listOfLinks = generatePrintableLinkList(
-        '#sitewidebanner a, .page-content a', // Links to include
-        '.exclude-links-class' // Links to exclude
+document.addEventListener('DOMContentLoaded', () => {
+    const linkList = generatePrintableLinkList(
+        '.page-content a',   // Example selector for links to include
+        '.sidenav a',         // Example selector for links to exclude
+        true                  // Set to 'true' to only include external links
     );
 
-    // Insert the list of links into the document
-    const printedLinksSection = `<div id="js-page-link-footnotes" class="js-print-only"><h2>Links</h2><ol class="js-footnoted-urls">${listOfLinks}</ol></div>`;
-    document.querySelector('.footer').insertAdjacentHTML('beforebegin', printedLinksSection);
+    document.body.insertAdjacentHTML(
+        'beforeend',
+        `<div id="js-printready-link-urls" class="js-print-only">
+            <h2>Index of Page Links</h2>
+            <ol class="js-printready-links-list">${linkList}</ol>
+        </div>`
+    );
 });
 ```
 
----
+2. **Explanation:** This function filters links based on provided selectors and outputs them in a format suitable for printing. It includes email, phone, and external links by default. 
 
-## 4. Notes for Developers
+3. **Implementation Tips:** 
+- Make sure the selectors match your DOM structure, and provide a valid exclude selector to prevent unwanted links from being printed.
+- Adjust the include/exclude selectors as needed to account for different page types. For instance, the homepage may have a different structure compared to standard pages. Consider using, for example, a `switch` statement to handle these variations.
 
-- Ensure that the button specified in `initializePrintButton` exists in the DOM with the correct selector, or the print functionality will not work.
-- The `pageTitleElement` is configurable in `generatePrintablePageInformation`. The default is an `h1` tag, but you can specify any other tag or class for the page title.
-- When using `generatePrintableLinkList`, make sure the selectors match your DOM structure, and provide a valid exclude selector to prevent unwanted links from being printed.
-  
----
+#### Example Output
 
-## 5. Customization Options
+   ```html
+   <div id="js-printready-link-urls" class="js-print-only">
+       <h2>Index of Page Links</h2>
+       <ol class="js-printready-links-list">
+           <li>https://external-link.com</li>
+           <li>Email: contact@example.com</li>
+           <li>Phone number: +123456789</li>
+       </ol>
+   </div>
+   ```
 
-- You can configure the `linksSelector` and `excludeLinksSelector` in `generatePrintableLinkList` to match your page’s DOM structure. You might want to adjust these based on the specific page type.
-- The generated HTML strings for page information and links are highly customizable—feel free to modify them to fit your needs or apply additional styles using the `js-print-only` class for print-specific styling.
 
----
+### Automatically Opening \<details> Elements for Printing
+
+The `openDetailsElementsForPrinting` function opens all \<details> elements within the specified selector when printing and closes them afterward.
+
+#### Usage
+
+1. Use the following code to implement the function with the \<detail> accordion's selector:
+
+   ```javascript
+   import { openDetailsElementsForPrinting } from 'path/to/printready-base.js';
+
+   document.addEventListener('DOMContentLoaded', () => {
+       const detailsSelector = 'details.example-selector';
+       openDetailsElementsForPrinting(detailsSelector);
+   });
+   ```
+
+#### Example HTML
+
+```html
+   <details class="example-selector">
+       <summary>Click to view more</summary>
+       <p>Details content here will be visible in print.</p>
+   </details>
+```
