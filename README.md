@@ -1,27 +1,20 @@
 TODO - ADD implimentaiton instructions the base.css file (must be type print)
   
 
-# PrintReady Integration Guide
+# PrintReady 
 
-This guide details the use of each **PrintReady** module function to enhance print formatting on government agency webpages.
+## Summary/background?
+**[TODO]** on government agency webpages.
+
+
+## Integration Guide
+
+This section details how to integrate **PrintReady** into your website to optimize page layouts and styling for print output.
 
 ---
 
-## Live server
-The repository includes Live Server for quick testing and viewing changes.
-To use it, run the following command in your project directory:
-
-```bash
-npm run start
-```
-
-
-## Playwright
-Playwright tests are included for further development and preventing regressions in the print-ready JavaScript functionality. Playwright is optional and does not need to be installed locally but you can use it to test the [TODO index.html in example?] 
-
-
 ## PrintReady -base files
-The base files serve as the foundation for creating print-ready pages. The `printready-base.css` file includes well-commented styles designed to ensure reliable printing while following best practices. The `printready-base.js` file provides modular functions that can be imported and used to generate print-specific content for your web pages.
+The 'base' files serve as the foundation for creating print-ready pages. The `printready-base.css` file includes well-commented styles designed to ensure reliable printing while following best practices. The `printready-base.js` file provides modular functions that can be imported and used to generate print-specific content for your web pages.
 
 
 ### Include printready-base.css as a Print Stylesheet
@@ -42,20 +35,23 @@ The base files serve as the foundation for creating print-ready pages. The `prin
 
 2. **Explanation:** The `type="module"` attribute allows you to export the PrintReady ES6 modules without blocking the page rendering process while they are being fetched and executed.
 
-## PrintReady -site files
+## PrintReady site files
+The PrintReady 'site' files provide implementations of the base functionality that you can tailor to your website. These include a print-specific stylesheet  (`printready-site.css`) and a JavaScript file (`printready-site.js`) to import  and implement the 'base' PrintReady functions.
 
-### Include printready-site.js as a JavaScript Module
-Use `printready-site.js` to implement the JavaScript modules from `printready-base.js`. The `type="module"` attribute allows you to export the PrintReady ES6 modules without blocking the page rendering process while they are being fetched and executed. TODO: fix this HTML block rendering. 
-    
+### Include printready-site.css as a Print Stylesheet
+1. The `printready-site.css` file contains styles for components created by the JavaScript functionality and common site elements, such as breadcrumbs. Adjust the selectors in this stylesheet to align with your website's markup.
+
     ```html
-    <script src="/path/to/printready-base.js" type="module"></script>
+     <link rel="stylesheet" href="/path/to/printready-site.css" media="print">
     ```
 
 
-
-## Include printready-site.css as a Print Stylesheet
-
-
+### Include printready-site.js as a JavaScript Module
+1. Use `printready-site.js` to implement the JavaScript modules from `printready-base.js`. The `type="module"` attribute allows you to export the PrintReady ES6 modules without blocking the page rendering process while they are being fetched and executed. TODO: fix this HTML block rendering. 
+    
+    ```html
+    <script src="/path/to/printready-site.js" type="module"></script>
+    ```
 ## JS Module Integration Guide
 
 ### Setting Up a Print Button
@@ -202,3 +198,17 @@ The `openDetailsElementsForPrinting` function opens all \<details> elements with
        <p>Details content here will be visible in print.</p>
    </details>
 ```
+
+## Development Dependencies
+Packages that enhance the development experience but aren't required to impliment the main functionality.
+
+### Live server
+The repository includes Live Server for quick testing and viewing changes. It is not required to use PrintReady on your site. To use it, run the following command in your project directory:
+
+```bash
+npm run start
+```
+
+
+### Playwright
+Playwright tests are included for further development and preventing regressions in the print-ready JavaScript functionality. It is not required to use PrintReady on your site.  
