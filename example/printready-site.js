@@ -4,7 +4,7 @@ import { initializePrintButton, generatePrintablePageInformation, generatePrinta
 // Initialize the DOMContentLoaded event listener to ensure the script runs after the page is fully loaded (optional)
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Initialize print button if it exists on the page. This is fro progressive enhancement and assumes the button is rendered with the 'hidden' html attribute.  
+    // Initialize print button if it exists on the page. This is for progressive enhancement and assumes the button is rendered with the 'hidden' html attribute.  
     const printButtonSelector = "#print-page-button"; // Selector for print button - update if your print button has a different HTML ID or class. 
     
     if (document.querySelector(printButtonSelector)) {

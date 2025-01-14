@@ -7,7 +7,24 @@ This guide details the use of each **PrintReady** module function to enhance pri
 
 ---
 
-## Include printready-base.css as a Print Stylesheet
+## Live server
+The repository includes Live Server for quick testing and viewing changes.
+To use it, run the following command in your project directory:
+
+```bash
+npm run start
+```
+
+
+## Playwright
+Playwright tests are included for further development and preventing regressions in the print-ready JavaScript functionality. Playwright is optional and does not need to be installed locally but you can use it to test the [TODO index.html in example?] 
+
+
+## PrintReady -base files
+The base files serve as the foundation for creating print-ready pages. The `printready-base.css` file includes well-commented styles designed to ensure reliable printing while following best practices. The `printready-base.js` file provides modular functions that can be imported and used to generate print-specific content for your web pages.
+
+
+### Include printready-base.css as a Print Stylesheet
 1. Add the following \<link> tag in the \<head> of your HTML file to apply print-specific styles when printing the page:
 
 ```html
@@ -16,18 +33,27 @@ This guide details the use of each **PrintReady** module function to enhance pri
 
 2. **Explanation:** The `media="print"` attribute ensures this stylesheet is only applied when the page is printed.
 
-
-## Include printready-base.js as a JavaScript Module
+### Include printready-base.js as a JavaScript Module
 1. To load the PrintReady base JavaScript file, add this \<script> tag to the \<head> or before the closing \</body> tag:
 
     ```html
-    <script src="/path/to/printready-base.js" type="module" async></script>
+    <script src="/path/to/printready-base.js" type="module"></script>
     ```
 
-2. **Explanation:** The `type="module"` attribute  preventing it from blocking the page rendering process while being fetched and executed. allows you to import the PrintReady ES6 modules. 
-The `async` attribute ensures the script is loaded asynchronously, preventing it from blocking the page rendering process, because it is not needed unless the page is printed after it's loaded. 
+2. **Explanation:** The `type="module"` attribute allows you to export the PrintReady ES6 modules without blocking the page rendering process while they are being fetched and executed.
 
-## [TODO: add istructions for the -site files]
+## PrintReady -site files
+
+### Include printready-site.js as a JavaScript Module
+Use `printready-site.js` to implement the JavaScript modules from `printready-base.js`. The `type="module"` attribute allows you to export the PrintReady ES6 modules without blocking the page rendering process while they are being fetched and executed. TODO: fix this HTML block rendering. 
+    
+    ```html
+    <script src="/path/to/printready-base.js" type="module"></script>
+    ```
+
+
+
+## Include printready-site.css as a Print Stylesheet
 
 
 ## JS Module Integration Guide
