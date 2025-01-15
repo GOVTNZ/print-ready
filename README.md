@@ -59,7 +59,7 @@ The PrintReady 'site' files provide implementations of the base functionality th
 
 
 ### Include printready-site.js as a JavaScript Module
-1. Use `printready-site.js` to implement the JavaScript modules from `printready-base.js`. The `type="module"` attribute allows you to export the PrintReady ES6 modules without blocking the page rendering process while they are being fetched and executed. TODO: fix this HTML block rendering. 
+1. Use `printready-site.js` to implement the JavaScript modules from `printready-base.js`. The `type="module"` attribute allows you to export the PrintReady ES6 modules without blocking the page rendering process while they are being fetched and executed.
     
     ```html
     <script src="/path/to/printready-site.js" type="module"></script>
@@ -121,7 +121,7 @@ The `generatePrintablePageInformation` function generates page information, such
 
 3. **Implementation Tips:** 
 - The generated HTML strings for page information and links are highly customizable—feel free to modify them to fit your needs or apply additional styles using the `js-print-only` class for print-specific styling. 
-- By default the `'h1'` element for the page title but you can provide a custom selector as the second optional argument.
+- By default the `'h1'` elements content is used for the page title but you can provide a custom selector as the second optional argument to override this.
 
     ```javascript
     generatePrintablePageInformation(siteName, 'custom-selector')
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 3. **Implementation Tips:** 
 - Make sure the selectors match your DOM structure, and provide a valid exclude selector to prevent unwanted links from being printed.
-- Adjust the include/exclude selectors as needed to account for different page types. For instance, the homepage may have a different structure compared to standard pages. Consider using, for example, a `switch` statement to handle these variations.
+- Adjust the include/exclude selectors as needed to account for different page types. For instance, the homepage may have a different structure compared to standard pages. See the implimentation of `generatePrintableLinkList` in `printready-site.example.js`  which uses a `switch` statement to handle these variations.
 
 #### Example Output
 

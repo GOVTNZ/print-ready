@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
             listOfLinks = generatePrintableLinkList(
                 '.homepage-content a', // Selector for links to include
                 null,                // No exclusion selector
-                true                 // Only include external links
+                false                 // Only include external links
             );
             break;
 
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
             listOfLinks = generatePrintableLinkList(
                 '.main-content a', // Links to include
                 '.sidenav a', // Links to exclude
-                true // Only include external links, setting to 'false' will also include internal links. Mailto and Tel links are always included, anchor links are always excluded  
+                false // Only include external links, setting to 'false' will also include internal links. Mailto and Tel links are always included, anchor links are always excluded  
             );
             break;
     }

@@ -27,8 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let listOfLinks = null;
 
     // Determine which links to include/exclude based on page type or specific needs
-    // A switch statement is used here to allow for different links to be selected for different types of pages.
-    // TODO call out this is an example you can use if needed 
+    // A switch statement can be used here to allow for different links to be selected for different types of pages.
     switch (true) {
         // Case for a specific page type (e.g., homepage)
         case document.body.classList.contains('pagetype-home'):

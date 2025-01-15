@@ -85,11 +85,8 @@ function outputPrintedLinks(linksToPrint) {
 function addReferenceToLink(linkElement, refNum) {
   linkElement.classList.add('js-hasPrintLinkRef');
   linkElement.insertAdjacentHTML('afterend', ` <sup class="js-print-only js-printready-link-reference">[Link: ${refNum}]</sup>`);
-
-  // TODO: add ability to change where reference is appended? e.g when the link text is in a decendent of the actual link?  
 }
 
-// TODO: do we need to pass baseurl if we can access the window object from here? 
 function handleLink(linkElement, externalOnly) {
   const href = linkElement.href; 
   const baseUrl = window.location.origin;
@@ -106,7 +103,7 @@ function handleLink(linkElement, externalOnly) {
   if (externalOnly && !isExternalOrSpecialLink) return null;
 
   const handlers = {
-    'http': handleExternalLink,
+    'http': handleExternalLink, // this also covers 'https'
     '/': handleInternalLink,
     'tel:': handleTelLink,
     'mailto:': handleMailtoLink
