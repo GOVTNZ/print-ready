@@ -66,7 +66,8 @@ export function generatePrintableLinkList(linksSelector = null, excludeLinksSele
   let referenceNumber = 1;
 
   selectedLinks.forEach((linkElement) => {
-    const formattedLink = handleLink(linkElement, baseUrl, externalOnly);
+    
+    const formattedLink = handleLink(linkElement, externalOnly);
     if (formattedLink) {
       addReferenceToLink(linkElement, referenceNumber);
       linksToPrint.push(formattedLink);
@@ -89,14 +90,13 @@ function addReferenceToLink(linkElement, refNum) {
 }
 
 // TODO: do we need to pass baseurl if we can access the window object from here? 
-function handleLink(linkElement, baseUrl, externalOnly) {
-  const href = linkElement.href; // TODO: trim()? can we have href=" http.. "?
+function handleLink(linkElement, externalOnly) {
+  const href = linkElement.href; 
+  const baseUrl = window.location.origin;
 
   if (!href || href.startsWith("#")) return null;
 
   let isExternalOrSpecialLink = null;
-  
-  // debugger;
 
   // Check link is not internal
   if ( !href.startsWith(baseUrl) ) { 
@@ -126,6 +126,7 @@ function handleExternalLink(href) {
 }
 
 function handleInternalLink(href) {
+  console.log('in handleInternalLink')
   return null; // Modify if internal links need handling later
 }
 
