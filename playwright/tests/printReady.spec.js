@@ -1,53 +1,43 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
+const config = require('../playwright.config');
 
 test.beforeEach(async ({ page }) => {
   await page.emulateMedia({ media: 'print' });
+  await page.goto(config.use.baseURL);
 });
 
 test('has title', async ({ page }) => {
-  await page.goto('/'); 
-
-  // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle(/PrintReady/);
 });
 
 test('Empty link is ignored', async ({ page }) => {
-  await page.goto('/'); 
-  
-  // Locate the element by its ID
   const oldSchoolAnchor = page.locator('#OldSchoolAnchor');
-
   await expect(oldSchoolAnchor).toHaveText('Empty link');
 });
 
-test('Check External link is listed', async ({ page }) => {
-  await page.goto('/'); 
-
-  const link = page.getByRole('link', { name: 'External link' });
+test('Check External \'http\' link is listed', async ({ page }) => {
+  const link = page.getByRole('link', { name: 'Http External link' });
   await expect(link).toHaveClass('js-hasPrintLinkRef');
-  
   await expect(page.locator('.js-printready-links-list')).toContainText('http://www.google.com/');
-
-  // Check there was an adjacent <sup>
-  await expect(link.locator('xpath=following-sibling::sup')).toHaveText('[Link: 1]');
+  await expect(link.locator('xpath=following-sibling::sup')).toHaveText('[Link: 1]'); // Check there was an adjacent <sup>
 });
 
+test('Check External \'https\' link is listed', async ({ page }) => {
+  const link = page.getByRole('link', { name: 'Https External link' });
+  await expect(link).toHaveClass('js-hasPrintLinkRef');
+  await expect(page.locator('.js-printready-links-list')).toContainText('https://jobs.govt.nz/');
+ });
+
 test('Check Tel link is listed', async ({ page }) => {
-  await page.goto('/');
-
   const link = page.getByRole('link', { name: 'Tel link' });
-  await expect(link).toHaveClass('js-hasPrintLinkRef'); // Exact match
+  await expect(link).toHaveClass('js-hasPrintLinkRef');
   await expect(page.locator('.js-printready-links-list')).toContainText('Phone number: +4733378901');
-
-  // Check this was an adjacent <sup>
-  await expect(link.locator('xpath=following-sibling::sup')).toHaveText('[Link: 2]');
 });
 
 test('Check Mailto link is listed', async ({ page }) => {
-  await page.goto('/');
   const link = page.getByRole('link', { name: 'Mailto link' });
-  await expect(link).toHaveClass('js-hasPrintLinkRef'); // Exact match
+  await expect(link).toHaveClass('js-hasPrintLinkRef');
   await expect(page.locator('.js-printready-links-list')).toContainText('Email: a@b.com - Subject: email subject');
 });
 
@@ -61,6 +51,12 @@ test('Check printed page details', async ({ page }) => {
   const options = { day: 'numeric', month: 'long', year: 'numeric' };
   const currentDate = new Date().toLocaleDateString('en-GB', options);
   await expect(printedPageDetails.locator('p.print-info-date')).toHaveText(`Printed: ${currentDate}`);
-  // Note: 127.0.0.1:8080 is the default URL for Live Server, adjust this is if using a different URL/port to view the page.
-  await expect(printedPageDetails.locator('p.print-info-url')).toHaveText(/Printed from: (http:\/\/127.0.0.1:8080\/|http:\/\/printready\.test\/)/); 
+  await expect(printedPageDetails.locator('p.print-info-url')).toHaveText(`Printed from: ${config.use.baseURL}`); // use 'baseurl' value set in playwright.config.js
 });
+
+ // Note: This test will fail if the generatePrintableLinkList externalOnly argument is set to true.
+ test('Check Internal link is listed', async ({ page }) => {
+  const link = page.getByRole('link', { name: 'Internal link' });
+  await expect(link).toHaveClass('js-hasPrintLinkRef');
+  await expect(page.locator('.js-printready-links-list')).toContainText('/fake-internal-link');
+ });
