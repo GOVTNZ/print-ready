@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const siteName = "Print ready site"; // Replace with the name of your site when printing.
     document.body.insertAdjacentHTML(
         'afterbegin', 
-        `<div class="printed-page-details js-print-only">
+        `<div class="printready-page-info js-print-only"> 
             ${generatePrintablePageInformation(siteName)}
         </div>`
     );

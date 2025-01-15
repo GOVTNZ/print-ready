@@ -15,17 +15,17 @@ footer {
 }
 
 /* Layout and appearance of the "site details" section printed with generatePrintablePageInformation() */
-.printed-page-details { /* TODO rename (and make id) prefix w/ #printready...)   */
+.printready-page-info {
   display: block;
   padding-bottom: 1.25rem;
   padding-right: 1.25rem;
   margin-bottom: 1.25rem;
   border-bottom: 1px solid black;
 }
-.printed-page-details p {
+.printready-page-info p {
   margin: 0.5em 0;
 }
-.printed-page-details p:last-child {
+.printready-page-info p:last-child {
   margin-bottom: 0; /* Remove bottom margin from the last paragraph */  
 }
 

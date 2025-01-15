@@ -110,7 +110,7 @@ The `generatePrintablePageInformation` function generates page information, such
        const siteName = "Your Site Name"; // Replace with your site’s name
        document.body.insertAdjacentHTML(
            'afterbegin',
-           `<div class="printed-page-details js-print-only">
+           `<div class="printready-page-info js-print-only"> 
                ${generatePrintablePageInformation(siteName)}
            </div>`
        );
@@ -131,7 +131,7 @@ The `generatePrintablePageInformation` function generates page information, such
 #### Example Output
 
    ```html
-   <div class="printed-page-details js-print-only">
+   <div class="printready-page-info js-print-only"> 
        <p><b>Your Site Name</b></p>
        <p><b>Page title:</b> Example Title</p>
        <p><b>Printed:</b> 11 November 2024</p>
@@ -223,4 +223,4 @@ npm run start
 
 
 ### Playwright
-Playwright tests are included for further development and preventing regressions in the print-ready JavaScript functionality. It is not required to use PrintReady on your site.  
+Playwright tests are included for further development and preventing regressions in the print-ready JavaScript functionality. It is not required to use PrintReady on your site.
