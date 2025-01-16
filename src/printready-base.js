@@ -140,7 +140,6 @@ function handleLink(linkElement, externalOnly) {
 
   const handlers = {
     'http': handleExternalLink, // this also covers 'https'
-    '/': handleInternalLink,
     'tel:': handleTelLink,
     'mailto:': handleMailtoLink
   };
@@ -161,16 +160,6 @@ function handleLink(linkElement, externalOnly) {
  */
 function handleExternalLink(href) {
   return href;
-}
-
-/**
- * Handles internal links and returns null.
- * @param {string} href - The URL of the internal link.
- * @returns {null} - Always returns null.
- */
-function handleInternalLink(href) {
-  console.log('in handleInternalLink')
-  return null;
 }
 
 /**
