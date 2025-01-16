@@ -233,7 +233,7 @@ The repository includes Live Server for quick testing and viewing changes. It is
 ```bash
 npm run start
 ```
-
+Then in the browser navigate to the `example` folder. 
 
 ### Playwright
 Playwright tests are included for further development and preventing regressions in the print-ready JavaScript functionality. It is not required to use PrintReady on your site.
