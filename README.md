@@ -2,28 +2,39 @@
 
 ## Introduction
 
-PrintReady is a tool that helps government agencies implement consistent, accessible print formatting for their websites. By using PrintReady, agencies can ensure their printed web content meets the relevant NZ Government Web Standards while also providing a consistent experience across government websites.
+PrintReady is optional not manadated. Is a meant to help government agencies implement consistent, accessible print formatting for their websites. By using PrintReady, agencies can ensure their printed web content meets the relevant NZ Government Web Standards while also providing a consistent experience across government websites.
 
 The PrintReady toolkit simplifies the implementation of print stylesheets that follow good practices. It provides developers with the necessary files and guidance to create print-friendly pages that align with government standards and deliver an accessible experience for all users.
 
 This guide provides step-by-step instructions for implementing PrintReady in your website. The tool is open source and welcomes contributions from the All-of-Government (AoG) community via GitHub.
 
-## Approach 
-PrintReady's print stylesheet approach focuses on leveraging the browsers default stylesheet, ehancing only when needed.   
+## Approach  
+PrintReady's print stylesheet approach focuses on leveraging the browser's default stylesheet, which is already effective for printed content, enhancing it only when necessary.  
 
-It preserves important context by displaying URLs and full titles when printed, while managing page layouts to prevent awkward breaks and maintain professional formatting. 
+It preserves important context by displaying URLs and full titles when printed, while managing page layouts to prevent awkward breaks and maintain professional formatting.  
 
-The implementation is designed to be flexible, separating core styles from site-specific needs and allowing easy customization across different website structures.
+This implementation embraces the principle of separation of concerns by applying the print stylesheets exclusively for printing and the screen stylesheet/s only for screen rendering.
+
+It is designed to be flexible, separating core styles from site-specific needs and allowing easy customization across different website structures.
 
 ## General Guidelines
+- Seperate print and screen styles, don't override screen styles with print styles.  
 - Print it in black and white
 - Only print what is critical to understanding the content or context of the page. 
 - Do not print images unless they are critical to understanding the page content. 
 
 ## Integration Guide
-This section details how to integrate **PrintReady** into your website to optimize page layouts and styling for print output.
+This section explains how to integrate PrintReady into your website to optimize page layouts and styling specifically for print output.
 
 ---
+
+## Seperate screen and print styles
+Make sure all CSS files intended for on-screen display are served with the `media="screen"` attribute.
+
+```html
+<link rel="stylesheet" href="screen-styles.css" media="screen">
+``` 
+
 
 ## PrintReady -base files
 The 'base' files in the `/src` folder serve as the foundation for creating print-ready pages. The `printready-base.css` file includes well-commented styles designed to ensure reliable printing while following best practices. The `printready-base.js` file provides modular functions that can be imported and used to generate print-specific content for your web pages.
@@ -34,7 +45,7 @@ The 'base' files in the `/src` folder serve as the foundation for creating print
 
 ```html
 <link rel="stylesheet" href="/path/to/printready-base.css" media="print">
-```
+``` 
 
 2. **Explanation:** The `media="print"` attribute ensures this stylesheet is only applied when the page is printed.
 
