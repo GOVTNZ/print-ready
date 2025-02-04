@@ -1,6 +1,6 @@
 {
   "name": "print-ready",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.1",
   "description": "Print ready is a lightweight toolkit providing base styling and JavaScript functionality for printed webpages.",
   "main": "index.js",
   "directories": {
