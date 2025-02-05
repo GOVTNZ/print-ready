@@ -120,8 +120,14 @@ body {
   details[open] summary {
     margin-bottom: 0.5rem;
   }
-  details[open] .accordion-content { /* TODO: see of we can make this generic using adjacent sibling selector e.g. something like: details[open] > * or move back to site */
+
+  details > summary + * { /* Styles disclosure content */  
     padding-left: 1rem;
     padding-right: 1rem;
     margin-bottom: 1.25rem;
   }
+
+
+.js-print-only {
+  display: initial;
+}
