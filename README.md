@@ -17,14 +17,18 @@ This implementation embraces the principle of separation of concerns by applying
 
 It is designed to be flexible, separating core styles from site-specific needs and allowing easy customization across different website structures.
 
-## General Guidelines
+### General Guidelines
 - Seperate print and screen styles, don't override screen styles with print styles.  
 - Print it in black and white
 - Only print what is critical to understanding the content or context of the page. 
 - Do not print images unless they are critical to understanding the page content. 
 
 ## Integration Guide
-This section explains how to integrate PrintReady into your website to optimize page layouts and styling specifically for print output.
+This repository is intended to be **downloaded or cloned** from GitHub, with the files0 described below then **copied and pasted** into your web project. The instructions below assume this method of integration.
+
+Alternatively, you could install the package via NPM and import the JavaScript functions in a build step (e.g. using a compiler like  Webpack).
+
+This section explains how to integrate PrintReady into your website to optimize page layouts and styling specifically for print output. 
 
 ---
 
