@@ -23,6 +23,15 @@ It is designed to be flexible, separating core styles from site-specific needs a
 - Only print what is critical to understanding the content or context of the page. 
 - Do not print images unless they are critical to understanding the page content. 
 
+## Quick Start Summary
+1. Clone the repo using Git or download it as a ZIP file.
+2. Copy the JavaScript (.js) and CSS (.css) files from the `/src` folder into your website's directory.
+3. Include the Files in Your Webpages;
+    * Link CSS files only with `media="print"` to ensure styles apply only when printing
+    * Link JavaScript files with `type="module"` to enable ES6 module functionality
+6. Edit printready-site.example.css and printready-site.example.js to match your website's structure
+(remove the .example extension after modifying the files).
+
 ## Integration Guide
 This repository is intended to be **downloaded or cloned** from GitHub, with the files0 described below then **copied and pasted** into your web project. The instructions below assume this method of integration.
 
