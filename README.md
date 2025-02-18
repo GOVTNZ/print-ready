@@ -1,5 +1,7 @@
 # PrintReady
 
+## Status :  **Currently in Alpha. Use at your own risk.**
+
 ## Introduction
 
 PrintReady is optional not manadated. Is a meant to help government agencies implement consistent, accessible print formatting for their websites. By using PrintReady, agencies can ensure their printed web content meets the relevant NZ Government Web Standards while also providing a consistent experience across government websites.
@@ -237,40 +239,11 @@ document.addEventListener('DOMContentLoaded', () => {
    </div>
    ```
 
-
-### Automatically Opening \<details> Elements for Printing
-
-The `openDetailsElementsForPrinting` function opens all \<details> elements within the specified selector when printing and closes them afterward.
-
-#### Usage
-
-1. Use the following code to implement the function with the \<detail> accordion's selector:
-
-   ```javascript
-   import { openDetailsElementsForPrinting } from 'path/to/printready-base.js';
-
-   document.addEventListener('DOMContentLoaded', () => {
-       const detailsSelector = 'details.example-selector';
-       openDetailsElementsForPrinting(detailsSelector);
-   });
-   ```
-
-#### Example HTML
-
-```html
-   <details class="example-selector">
-       <summary>Click to view more</summary>
-       <p>Details content here will be visible in print.</p>
-   </details>
-```
-
 ## Development Dependencies
 Packages that enhance the development experience but aren't required to impliment the main functionality.
 
 ### Live server
 The repository includes Live Server for quick testing and viewing changes. It is not required to use PrintReady on your site. To use it, run the following command in your project directory:
-
-
 
 ```bash
 npm run start

@@ -1,31 +1,4 @@
 /**
- * Opens all <details> elements matching the selector before printing and closes them after printing.
- * @param {string} detailsSelector - The CSS selector for the <details> elements to be opened/closed.
- */
-export function openDetailsElementsForPrinting(detailsSelector) {
-
-  let closedDetailsElements;
-
-  window.addEventListener('beforeprint', () => {
-    closedDetailsElements = document.querySelectorAll(`${detailsSelector}:not([open])`);
-  
-    if (closedDetailsElements.length !== 0) {
-      closedDetailsElements.forEach(detailsElement => {
-        detailsElement.setAttribute('open', '');
-      });
-    }
-  });
-  
-  window.addEventListener('afterprint', () => {
-    if (closedDetailsElements) {
-      closedDetailsElements.forEach(detailsElement => {
-        detailsElement.removeAttribute('open');
-      });
-    }
-  });
-}
-  
-/**
  * Initializes a print button that triggers the print dialog when clicked.
  * @param {string} buttonSelector - The CSS selector for the print button.
  */
