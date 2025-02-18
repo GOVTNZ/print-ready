@@ -24,13 +24,38 @@ It is designed to be flexible, separating core styles from site-specific needs a
 - Do not print images unless they are critical to understanding the page content. 
 
 ## Quick Start Summary
+
+### Download the repository
 1. Clone the repo using Git or download it as a ZIP file.
 2. Copy the JavaScript (.js) and CSS (.css) files from the `/src` folder into your website's directory.
-3. Include the Files in Your Webpages;
-    * Link CSS files only with `media="print"` to ensure styles apply only when printing
-    * Link JavaScript files with `type="module"` to enable ES6 module functionality
-6. Edit printready-site.example.css and printready-site.example.js to match your website's structure
-(remove the .example extension after modifying the files).
+
+### Install dependencies and examine the example folder  
+
+1. Run the following command in the terminal:
+
+```bash
+npm 
+install
+```
+2. Then to open the repository folder in a browser using `live server` run 
+```bash
+npm run start 
+```
+3. Once the browser window opens, navigate to the `example` folder
+
+### Examine the printed page  
+
+1. Toggle Between Print and Screen Views, either by opening a print dialog ( by pressing `Ctrl + P` or `Command + P` on macOS) or by using your browsers Developer Tools and toggling between Print and Screen rendering.
+2. Note the section at the top of the page and the 'Index of page links' section at the bottom of the example page are dynamically injected using JavaScript.
+
+
+### Include the source files in Your Webpages
+
+1. Include the Files in the `src` folder in your Webpages;
+    * Link CSS files only with `media="print"` to ensure styles apply only when printing. You can combine the print files in a build step 
+    * Link JavaScript files with `type="module"` to enable ES6 module functionality. Keep the javascript files seperate.
+2. Edit `printready-site.example.css` and `printready-site.example.js` to match your website's structure
+(then remove the .example part fo the filename after intergrating the files into your site structure).
 
 ## Integration Guide
 This repository is intended to be **downloaded or cloned** from GitHub, with the files0 described below then **copied and pasted** into your web project. The instructions below assume this method of integration.
@@ -242,6 +267,8 @@ Packages that enhance the development experience but aren't required to implimen
 
 ### Live server
 The repository includes Live Server for quick testing and viewing changes. It is not required to use PrintReady on your site. To use it, run the following command in your project directory:
+
+
 
 ```bash
 npm run start
