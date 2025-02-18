@@ -26,66 +26,68 @@ It is designed to be flexible, separating core styles from site-specific needs a
 ## Quick Start Summary
 
 ### Download the repository
-1. Clone the repo using Git or download it as a ZIP file.
-2. Copy the JavaScript (.js) and CSS (.css) files from the `/src` folder into your website's directory.
+You can just download it as a ZIP file or Clone the repository using Git
 
-### Install dependencies and examine the example folder  
+### Install Dependencies and Examine the Example Folder  
 
-1. Run the following command in the terminal:
+1. Open the Print ready folder and run the following command in the terminal:
 
 ```bash
-npm 
-install
+npm install
 ```
-2. Then to open the repository folder in a browser using `live server` run 
+
+2. To open the repository folder in a browser using `live server`, run:
 ```bash
-npm run start 
+npm run start
 ```
-3. Once the browser window opens, navigate to the `example` folder
 
-### Examine the printed page  
+3. Once the browser window opens, navigate to the `example` folder.
 
-1. Toggle Between Print and Screen Views, either by opening a print dialog ( by pressing `Ctrl + P` or `Command + P` on macOS) or by using your browsers Developer Tools and toggling between Print and Screen rendering.
-2. Note the section at the top of the page and the 'Index of page links' section at the bottom of the example page are dynamically injected using JavaScript.
+### Examine the Printed Page  
 
+Toggle between Print and Screen Views either by opening the print dialog (press `Ctrl + P` or `Command + P` on macOS) or by using your browser's Developer Tools and toggling between Print and Screen rendering.
 
-### Include the source files in Your Webpages
+Note that the section at the top of the page and the 'Index of page links' section at the bottom of the example page are dynamically injected using JavaScript.
 
-1. Include the Files in the `src` folder in your Webpages;
-    * Link CSS files only with `media="print"` to ensure styles apply only when printing. You can combine the print files in a build step 
-    * Link JavaScript files with `type="module"` to enable ES6 module functionality. Keep the javascript files seperate.
-2. Edit `printready-site.example.css` and `printready-site.example.js` to match your website's structure
-(then remove the .example part fo the filename after intergrating the files into your site structure).
+### Include the Source Files in Your Webpages  
+
+1. Include the files in the `src` folder in your webpages:
+    * Link CSS files only with `media="print"` to ensure styles apply only when printing. You can combine the print files in a build step.
+    * Link JavaScript files with `type="module"` to enable ES6 module functionality. Keep the JavaScript files separate.
+2. Edit `printready-site.example.css` and `printready-site.example.js` to match your website's structure. 
+   * Then, remove the `.example` part of the filename after integrating the files into your site structure.
 
 ## Integration Guide
-This repository is intended to be **downloaded or cloned** from GitHub, with the files0 described below then **copied and pasted** into your web project. The instructions below assume this method of integration.
-
-Alternatively, you could install the package via NPM and import the JavaScript functions in a build step (e.g. using a compiler like  Webpack).
+This repository is intended to be **downloaded or cloned** from GitHub, with the files described below then **copied and pasted** into your web project. The instructions below assume this method of integration.
 
 This section explains how to integrate PrintReady into your website to optimize page layouts and styling specifically for print output. 
+
+In the `src` folder are `base` and `site` versions or the CSS and JS files. The `base` files should not be changed. PArts of the `site` files should be changed to intergrate into your site structure.
 
 ---
 
 ## Seperate screen and print styles
-Make sure all CSS files intended for on-screen display are served with the `media="screen"` attribute.
+Make sure on your webpages all CSS files intended for on-screen display are served with the `media="screen"` attribute.
 
 ```html
 <link rel="stylesheet" href="screen-styles.css" media="screen">
 ``` 
-
 
 ## PrintReady -base files
 The 'base' files in the `/src` folder serve as the foundation for creating print-ready pages. The `printready-base.css` file includes well-commented styles designed to ensure reliable printing while following best practices. The `printready-base.js` file provides modular functions that can be imported and used to generate print-specific content for your web pages.
 
 
 ### Include printready-base.css as a Print Stylesheet
+1. Copy the print-ready base files from the `src` folder into your websites file structure.  
 1. Add the following \<link> tag in the \<head> of your HTML file to apply print-specific styles when printing the page:
 
 ```html
 <link rel="stylesheet" href="/path/to/printready-base.css" media="print">
 ``` 
+**Explanation:** The `media="print"` attribute ensures this stylesheet is only applied when the page is printed.
 
-2. **Explanation:** The `media="print"` attribute ensures this stylesheet is only applied when the page is printed.
+**note:** you can combine the `base` and `site` CSS files together into one file as part of a build step for example. 
+
 
 ### Include printready-base.js as a JavaScript Module
 1. To load the PrintReady base JavaScript file, add this \<script> tag to the \<head> or before the closing \</body> tag:
@@ -94,7 +96,7 @@ The 'base' files in the `/src` folder serve as the foundation for creating print
     <script src="/path/to/printready-base.js" type="module"></script>
     ```
 
-2. **Explanation:** The `type="module"` attribute allows you to export the PrintReady ES6 modules without blocking the page rendering process while they are being fetched and executed.
+**Explanation:** The `type="module"` attribute allows you to export the PrintReady ES6 modules without blocking the page rendering process while they are being fetched and executed.
 
 ## PrintReady site files
 The PrintReady 'site' files include a print-specific stylesheet and a JavaScript file. Use the JavaScript file to implement the 'base' PrintReady functions. Use the CSS file to help style printed content including that generated by the Javascript functions.         
