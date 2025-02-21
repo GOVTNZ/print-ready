@@ -123,9 +123,11 @@ Include the example CSS and JavaScript files (`printready-site.example.css` and 
 ## CSS Integration Guide
 The CSS rules include explanatory comments and most rules do not need modification. However, you will need to:
 
-1. Specify which elements should be hidden when printing. This requires replacing `INSERT_ELEMENTS_TO_HIDE` in the `site` CSS file with the appropriate CSS selectors. 
+1. Replace `BREADCRUMBS` with your site's CSS selector for breadcrumbs. 
 
 2. Optionally customize which images appear in print view. By default, all images are hidden from printed pages, but you can override this behavior by specifying which images should be displayed by replacing `IMAGES_TO_SHOW` in the site CSS file with appropriate CSS selectors.
+
+3. Specify which elements should be hidden when printing. This requires replacing `INSERT_ELEMENTS_TO_HIDE` in the `site` CSS file with the appropriate CSS selectors.
 
 ### To determine what to hide:
 
