@@ -1,5 +1,5 @@
 // Importing functions from the 'printready-base' file
-import { initializePrintButton, generatePrintablePageInformation, generatePrintableLinkList, openDetailsElementsForPrinting } from '../src/printready-base.js' // TODO: update path to NPM packages fodler if not using NPM to install. 
+import { initializePrintButton, generatePrintablePageInformation, generatePrintableLinkList } from '../src/printready-base.js' // TODO: update path to NPM packages fodler if not using NPM to install. 
 
 // Initialize the DOMContentLoaded event listener to ensure the script runs after the page is fully loaded (optional)
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,11 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ${generatePrintablePageInformation(siteName)}
         </div>`
     );
-
-    // Automatically open <details> elements in the print view
-    const detailsSelector = 'details.inline-accordion'; // Selector for accordions; update if different
-    openDetailsElementsForPrinting(detailsSelector);
-    
+  
     // Initialize a variable for the list of links
     let listOfLinks = null;
 
