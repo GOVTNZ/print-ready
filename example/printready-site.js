@@ -1,5 +1,5 @@
 // Importing functions from the 'printready-base' file
-import { initializePrintButton, generatePrintablePageInformation, generatePrintableLinkList } from '../src/printready-base.js' // TODO: update path to NPM packages fodler if not using NPM to install. 
+import { initializePrintButton, generatePrintablePageInformation, generatePrintableLinkList } from '../src/printready-base.js' 
 
 // Initialize the DOMContentLoaded event listener to ensure the script runs after the page is fully loaded (optional)
 document.addEventListener('DOMContentLoaded', () => {
