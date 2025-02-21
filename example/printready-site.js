@@ -45,31 +45,34 @@ document.addEventListener('DOMContentLoaded', () => {
             break;
     }
 
-    // Define the printed links section which lists the URLs of the selected links
-    // Change this HTML structure if necessery.   
-    const printedLinksSection = `<div id="js-printready-link-urls" class="js-print-only">
-                                    <h2>Index of page links</h2>
-                                    <ol class="js-printready-links-list">${listOfLinks}</ol>
-                                 </div>`;
+    if (listOfLinks !== "") {
+        // Define the printed links section which lists the URLs of the selected links
+        // Change this HTML structure if necessery.   
+        const printedLinksSection = `<div id="js-printready-link-urls" class="js-print-only">
+                                        <h2>Index of page links</h2>
+                                        <ol class="js-printready-links-list">${listOfLinks}</ol>
+                                    </div>`;
 
-    // Define the target element to insert the printed links section before.
-    // You can change this to suit your site. 
-    // A switch statement is used here to allow for different render targets for different types of pages.  
-    let renderTarget = '.main-content';
-   
-    switch (true) {
-        // Check for an element on the page that matches the renderTarget selector
-        case document.querySelector(renderTarget) !== null:
-            renderTarget = document.querySelector(renderTarget);
-            break;
-        default:
-            renderTarget = null
-            console.warn('No render target defined for the printed links section.');
-            break;
-    }
+        // Define the target element to insert the printed links section before.
+        // You can change this to suit your site. 
+        // A switch statement is used here to allow for different render targets for different types of pages.  
+        let renderTarget = '.main-content';
+    
+        switch (true) {
+            // Check for an element on the page that matches the renderTarget selector
+            case document.querySelector(renderTarget) !== null:
+                renderTarget = document.querySelector(renderTarget);
+                break;
+            default:
+                renderTarget = null
+                console.warn('No render target defined for the printed links section.');
+                break;
+        }
 
-    // Insert the printed links section if a render target is found before ('beforebegin') or after ('afterend')' the render target.
-    if (renderTarget !== null) {
-        renderTarget.insertAdjacentHTML('afterend', printedLinksSection);
+        // Insert the printed links section if a render target is found before ('beforebegin') or after ('afterend')' the render target.
+        if (renderTarget !== null) {
+            renderTarget.insertAdjacentHTML('afterend', printedLinksSection);
+        }
+
     }
 });

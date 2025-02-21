@@ -58,6 +58,10 @@ export function generatePrintableLinkList(linksSelector = null, excludeLinksSele
   const linksToPrint = [];
   let referenceNumber = 1;
 
+  if (!selectedLinks.length) {
+    return "";
+  }
+
   selectedLinks.forEach((linkElement) => {
     
     const formattedLink = handleLink(linkElement, externalOnly);
