@@ -14,19 +14,50 @@ footer {
   display: none;
 }
 
-/* Layout and appearance of the "site details" section printed with generatePrintablePageInformation() */
-.printready-page-info {
+/* Optional: 
+   Specify any images you want to show in print. 
+   Replace '.images-to-show' with your site's CSS selector.
+*/
+/* .images-to-show {
+    display: block;
+}
+*/
+
+/* Optional:
+  Depending on your content policy for abbreviations. See readme
+  Shows the full title next to abbreviations in print */
+/* abbr[title]:after {
+    content: " (" attr(title) ")"; 
+  } */
+
+/* Layout and appearance of the "Agency" section printed with showAgency() */
+.printready-agency {
+  font-size: 1.25rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  padding-right: 1.25rem;
+  border-bottom: 1px solid black;
   display: block;
+}
+.printready-agency p {
+  margin: 0;
+}
+
+/* Layout and appearance of the "site details" section printed with showPageInformation() */
+.printready-page-info {
   padding-bottom: 1.25rem;
   padding-right: 1.25rem;
-  margin-bottom: 1.25rem;
-  border-bottom: 1px solid black;
+  margin-top: 1.25rem;
+  border-top: 1px solid black;
+  display: block;
 }
+
 .printready-page-info p {
   margin: 0.5em 0;
 }
+
 .printready-page-info p:last-child {
-  margin-bottom: 0; /* Remove bottom margin from the last paragraph */  
+  margin-bottom: 0; /* Remove bottom margin from the last paragraph */
 }
 
 /* Style for details elements opened by openDetailsElementsForPrinting() */
@@ -113,15 +144,6 @@ ol.js-printready-links-list li {
   font-size: 0.8rem;
   padding-left: 0.05cm;
 }
-
-/* Optional: 
-   Specify any images you want to show in print. 
-   Replace '.images-to-show' with your site's CSS selector.
-*/
-/* .images-to-show {
-    display: block;
-}
-*/
 
 /* Definition list styles */
 dl dt {

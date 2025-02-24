@@ -13,11 +13,6 @@ INSERT_ELEMENTS_TO_HIDE {
   display: none;
 }
 
-/* By default hide all images in print */
-img {
-  display: none; 
-}
-
 /* Optional: 
    Specify any images you explictly want to show in print.
    These should only be images that are essential to understanding the content. 
@@ -36,12 +31,26 @@ img {
   } */
 
 
+/* Layout and appearance of the "Agency" section printed with showAgency() */
+.printready-agency {
+  font-size: 1.25rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  padding-right: 1.25rem;
+  border-bottom: 1px solid black;
+  display: block;
+}
+.printready-agency p {
+  margin: 0;
+}
+
 /* Layout and appearance of the "site details" section printed with showPageInformation() */
 .printready-page-info {
   padding-bottom: 1.25rem;
   padding-right: 1.25rem;
-  margin-bottom: 1.25rem;
-  border-bottom: 1px solid black;
+  margin-top: 1.25rem;
+  border-top: 1px solid black;
+  display: block;
 }
 
 .printready-page-info p {
@@ -49,23 +58,7 @@ img {
 }
 
 .printready-page-info p:last-child {
-  margin-bottom: 0;
-  /* Remove bottom margin from the last paragraph */
-}
-
-
-/* TODO bottom section  */
-.printready-page-info {
-  padding-bottom: 1.25rem;
-  padding-right: 1.25rem;
-  margin-bottom: 1.25rem;
-  border-bottom: 1px solid black;
-}
-.printready-page-info p {
-  margin: 0.5em 0;
-}
-.printready-page-info p:last-child {
-  margin-bottom: 0; /* Remove bottom margin from the last paragraph */  
+  margin-bottom: 0; /* Remove bottom margin from the last paragraph */
 }
 
 /* Ensure padding in open details elements */

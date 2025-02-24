@@ -48,7 +48,13 @@ body {
     widows: 3; /* Minimum number of lines at the top of a page */
   }
   
-  /* Set max width to prevent images from extending beyond page boundaries */
+  
+  /* By default hide all images in print */
+  img {
+    display: none; 
+  }
+  
+  /* Set max width to prevent any images set to display in the 'site' css file from extending beyond page boundaries */
   img {
     max-width: 100% !important;
   }
