@@ -28,7 +28,33 @@ img {
 }
 */
 
-/* Layout and appearance of the "site details" section printed with generatePrintablePageInformation() */
+/* Optional:
+  Depending on your content policy for abbreviations. See readme
+  Shows the full title next to abbreviations in print */
+/* abbr[title]:after {
+    content: " (" attr(title) ")"; 
+  } */
+
+
+/* Layout and appearance of the "site details" section printed with showPageInformation() */
+.printready-page-info {
+  padding-bottom: 1.25rem;
+  padding-right: 1.25rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid black;
+}
+
+.printready-page-info p {
+  margin: 0.5em 0;
+}
+
+.printready-page-info p:last-child {
+  margin-bottom: 0;
+  /* Remove bottom margin from the last paragraph */
+}
+
+
+/* TODO bottom section  */
 .printready-page-info {
   padding-bottom: 1.25rem;
   padding-right: 1.25rem;
@@ -127,8 +153,6 @@ ol.js-printready-links-list li {
   padding-left: 0.05cm;
 }
 
-
-
 /* Definition list styles */
 dl dt {
   font-weight: bold;
@@ -140,6 +164,7 @@ dl dt:first-child {
 dl dd {
   margin-left: 0;
 }
+
 
 /* Utility classes to control element visibility in print */
 .no-print {

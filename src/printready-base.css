@@ -72,11 +72,6 @@ body {
     content: ''; /* Remove generated URLs */
   }
   
-  /* Show expanded titles for abbreviations in print */
-  abbr[title]:after {
-    content: " (" attr(title) ")"; /* Shows the full title next to abbreviations */
-  }
-  
   /* Hide content for internal anchors and links that execute JavaScript code rather than navigate to a different URL in print */
   a[href^="#"]:after,
   a[href^="javascript:"]:after {

@@ -1,5 +1,5 @@
 // Importing functions from the 'printready-base' file
-import { initializePrintButton, generatePrintablePageInformation, generatePrintableLinkList } from '../src/printready-base.js' 
+import { showAgency, initializePrintButton, showPageInformation, generatePrintableLinkList } from '../src/printready-base.js' 
 
 // Initialize the DOMContentLoaded event listener to ensure the script runs after the page is fully loaded (optional)
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,12 +12,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Insert printable page information at the top of the document
-    const siteName = "Print ready site"; // Replace with the name of your site when printing.
+    const agencyName = "Print ready site"; // Replace with the name of your site when printing.
     document.body.insertAdjacentHTML(
         'afterbegin', 
-        `<div class="printready-page-info js-print-only"> 
-            ${generatePrintablePageInformation(siteName)}
-        </div>`
+        `${showAgency(agencyName)}`
+    );
+
+    // Insert printable page information at the bottom of the document
+    document.body.insertAdjacentHTML(
+        'beforeend', 
+        `${showPageInformation()}`
     );
   
     // Initialize a variable for the list of links

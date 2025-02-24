@@ -17,23 +17,38 @@ export function initializePrintButton(buttonSelector) {
 }
 
 /**
- * Generates HTML string containing printable page information.
+ * Generates HTML string containing page information.
  * @param {string} name - The name to be displayed in the printable information.
  * @param {string} [pageTitleElement='h1'] - The CSS selector for the page title element.
  * @returns {string} - The HTML string with printable page information.
  */
-export function generatePrintablePageInformation(name, pageTitleElement = 'h1') {
+export function showAgency(agency) {
+  return `<div class="printready-agency js-print-only">
+              <p class="print-info-agency"><b>${agency}</b></p>
+          </div>`
+}
+
+
+/**
+ * Generates HTML string containing page information.
+ * @param {string} name - The name to be displayed in the printable information.
+ * @param {string} [pageTitleElement='h1'] - The CSS selector for the page title element.
+ * @returns {string} - The HTML string with printable page information.
+ */
+export function showPageInformation(name, pageTitleElement = 'h1') {
   const webpageUrl = window.location.href;
   const pageTitle = document.querySelector(pageTitleElement)?.textContent || 'Untitled Page';
 
   const options = { day: 'numeric', month: 'long', year: 'numeric' };
   const currentDate = new Date().toLocaleDateString('en-GB', options);
 
-  return `<p class="print-info-name"><b>${name}</b></p>
+  return `<div class="printready-page-info js-print-only">
           <p class="print-info-title"><b>Page title:</b> ${pageTitle}</p>
           <p class="print-info-date"><b>Printed:</b> ${currentDate}</p>
-          <p class="print-info-url"><b>Printed from:</b> ${webpageUrl}</p>`;
+          <p class="print-info-url"><b>Printed from:</b> ${webpageUrl}</p>
+          `;
 }
+
 
 /**
  * Generates a list of printable links based on the provided selectors.
