@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
         initializePrintButton(printButtonSelector);
     }
 
-    // Insert the agency name at the top of the document
-    const agencyName = "Your site name"; // Replace with the name of your site when printing.
+    // Insert the agency name at the top of the document (optional)
+    const agencyName = "AGENCY_NAME"; // Replace with the name of your agency when printing.
     document.body.insertAdjacentHTML(
         'afterbegin', 
         `${showAgency(agencyName)}`

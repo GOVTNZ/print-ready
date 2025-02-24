@@ -4,7 +4,7 @@
 
 ## Introduction
 
-PrintReady is optional not manadated. Is a meant to help government agencies implement consistent, accessible print formatting for their websites. By using PrintReady, agencies can ensure their printed web content meets the relevant NZ Government Web Standards while also providing a consistent experience across government websites.
+PrintReady is optional not manadated. Is a meant to help government agencies implement consistent, accessible print formatting for their websites. By using PrintReady, agencies can ensure their printed web content meets the relevant NZ Government Web Standards [JASON WHAT SHOULD THIS LINK TO?] while also providing a consistent experience across government websites.
 
 The PrintReady toolkit simplifies the implementation of print stylesheets that follow good practices. It provides developers with the necessary files and guidance to create print-friendly pages that align with government standards and deliver an accessible experience for all users.
 
@@ -19,7 +19,7 @@ This implementation embraces the principle of separation of concerns by applying
 
 It is designed to be flexible, separating core styles from site-specific needs and allowing easy customization across different website structures.
 
-### General Guidelines
+### General Guidelines [JASON WHICH OF THESE ARE STANDARDS?]
 - Seperate print and screen styles, don't override screen styles with print styles.  
 - Print it in black and white
 - Only print what is critical to understanding the content or context of the page. 
@@ -173,44 +173,66 @@ This is optional. The `initializePrintButton` function enables a print button on
 4. **Implementation Tips:** If using an existing button ensure it has the `hidden` attribute and update the `printButtonSelector` to target it. 
 
 
-### Displaying Page Information for Printing
+### Displaying Agency name for Printing
 
-The `generatePrintablePageInformation` function generates page information, such as the site name, title, print date, and URL, for the print view.
+The `showAgency` function generates an HTML snippet with the agency name for the print view. 
 
 #### Usage
 
 1. Add a container in your HTML or inject it via JavaScript:
 
    ```javascript
-   import { generatePrintablePageInformation } from 'path/to/printready-base.js';
+   import { showAgency } from 'path/to/printready-base.js';
 
-   document.addEventListener('DOMContentLoaded', () => {
-       const siteName = "Your Site Name"; // Replace with your site’s name
-       document.body.insertAdjacentHTML(
-           'afterbegin',
-           `<div class="printready-page-info js-print-only"> 
-               ${generatePrintablePageInformation(siteName)}
-           </div>`
-       );
-   });
+    const agencyName = "AGENCY_NAME";
+    document.body.insertAdjacentHTML(
+        'afterbegin', 
+        `${showAgency(agencyName)}`
+    );
    ```   
    
-2. **Explanation:** The `generatePrintablePageInformation` function creates an HTML snippet with the site name and page title.
+2. **Explanation:**: It is a web standards requirement to display either the agency name or logo. If you are diaplaying the logo then this is optional. 
+
+#### Example Output
+
+   ```html
+   <div class="printready-agency js-print-only">
+        <p class="print-info-agency"><b>AGENCY_NAME</b></p>
+    </div>
+   ```
+
+
+### Displaying Page Information for Printing
+
+The `showPageInformation` function generates page information, such as the site name, title, print date, and URL, for the print view.
+
+#### Usage
+
+1. Add a container in your HTML or inject it via JavaScript:
+
+   ```javascript
+   import { showPageInformation } from 'path/to/printready-base.js';
+    
+   document.body.insertAdjacentHTML(
+       'beforeend', 
+       `${showPageInformation()}`
+   );
+   ```   
+   
+   
+2. **Explanation:** The `showPageInformation` function creates an HTML snippet with the page title, todays date and the page URL. The page title and page URL are a web standards requirement.
 
 3. **Implementation Tips:** 
-- The generated HTML strings for page information and links are highly customizable—feel free to modify them to fit your needs or apply additional styles using the `js-print-only` class for print-specific styling. 
 - By default the `'h1'` elements content is used for the page title but you can provide a custom selector as the second optional argument to override this.
 
     ```javascript
-    generatePrintablePageInformation(siteName, 'custom-selector')
+    showPageInformation(siteName, 'custom-selector')
     ``` 
-
 
 #### Example Output
 
    ```html
    <div class="printready-page-info js-print-only"> 
-       <p><b>Your Site Name</b></p>
        <p><b>Page title:</b> Example Title</p>
        <p><b>Printed:</b> 11 November 2024</p>
        <p><b>Printed from:</b> https://example.com/page</p>

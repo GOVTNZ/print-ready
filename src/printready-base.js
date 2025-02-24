@@ -18,8 +18,7 @@ export function initializePrintButton(buttonSelector) {
 
 /**
  * Generates HTML string containing page information.
- * @param {string} name - The name to be displayed in the printable information.
- * @param {string} [pageTitleElement='h1'] - The CSS selector for the page title element.
+ * @param {string} agency - The name to be displayed in the printable information.
  * @returns {string} - The HTML string with printable page information.
  */
 export function showAgency(agency) {
@@ -38,9 +37,12 @@ export function showAgency(agency) {
 export function showPageInformation(name, pageTitleElement = 'h1') {
   const webpageUrl = window.location.href;
   const pageTitle = document.querySelector(pageTitleElement)?.textContent || 'Untitled Page';
-
   const options = { day: 'numeric', month: 'long', year: 'numeric' };
   const currentDate = new Date().toLocaleDateString('en-GB', options);
+
+  if (pageTitle === 'Untitled Page') {
+    console.warn('No page title found');
+  }
 
   return `<div class="printready-page-info js-print-only">
           <p class="print-info-title"><b>Page title:</b> ${pageTitle}</p>
