@@ -142,6 +142,19 @@ Common elements to hide include:
  
 In some cases, you may need to hide entire sections, while in others, you might only need to hide specific interactive elements within a component.
 
+If needed you can also specify HTML elements hide by adding the `print-only` class to them.     
+
+### Using your agencie's logo:
+Web standards mandate the display of either the agency name or logo. If using the logo, place it at the beginning of the `<body>` section. To ensure the logo is visible only in print view and hidden on screen, apply the .print-only class to the logo's `<img>` element. 
+```html
+<img class="print-only" ...>
+```
+Additionally, include the following CSS rule in your **screen** stylesheet: 
+
+```CSS
+.print-only { display: none; }     
+```
+
 ## Javascript Integration Guide
 
 ### Setting Up a Print Button
@@ -191,7 +204,7 @@ The `showAgency` function generates an HTML snippet with the agency name for the
     );
    ```   
    
-2. **Explanation:**: It is a web standards requirement to display either the agency name or logo. If you are diaplaying the logo then this is optional. 
+2. **Explanation:** It is a web standards requirement to display either the agency name or logo. If you are diaplaying the logo then this is optional. 
 
 #### Example Output
 

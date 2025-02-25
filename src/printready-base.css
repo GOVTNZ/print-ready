@@ -127,7 +127,12 @@ body {
     margin-bottom: 1.25rem;
   }
 
+/* Utility classes to control element visibility in print */
+.no-print {
+  display: none !important; /* Hides these elements from printed output */
+}
 
-.js-print-only {
-  display: initial;
+.js-print-only,
+.print-only {
+  display: initial; /* Shows these elements only in printed output */
 }

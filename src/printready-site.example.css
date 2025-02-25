@@ -157,13 +157,3 @@ dl dt:first-child {
 dl dd {
   margin-left: 0;
 }
-
-
-/* Utility classes to control element visibility in print */
-.no-print {
-  display: none !important; /* Hides these elements from printed output */
-}
-
-.print-only {
-  display: initial; /* Shows these elements only in printed output */
-}
