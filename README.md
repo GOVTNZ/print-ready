@@ -19,11 +19,20 @@ This implementation embraces the principle of separation of concerns by applying
 
 It is designed to be flexible, separating core styles from site-specific needs and allowing easy customization across different website structures.
 
-### General Guidelines [JASON WHICH OF THESE ARE STANDARDS?]
-- Seperate print and screen styles, don't override screen styles with print styles.  
-- Print it in black and white
-- Only print what is critical to understanding the content or context of the page. 
-- Do not print images unless they are critical to understanding the page content. 
+### Meeting the NZ Government Web Standards
+Integrating Print Ready into your website should ensure compliance with the following print-specific New Zealand Government Web Standards;
+
+3.3.1 The main content of each web page in its current state must be printable on A4 paper, except for inactive web pages.
+
+3.3.2 Printed web pages must include at least one instance of the Mandated Organisation’s name or logo.
+
+3.3.3 Printed web pages should not include the following web content:
+- primary content navigation
+- secondary content navigation
+- persistent search form
+- decorative elements.
+
+3.3.4 A web page’s text content should be printable by default as black text on a white background.
 
 ## Quick Start Summary
 
