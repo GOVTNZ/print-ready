@@ -4,7 +4,12 @@
 
 ## Introduction
 
-PrintReady is optional not manadated. Is a meant to help government agencies implement consistent, accessible print formatting for their websites. By using PrintReady, agencies can ensure their printed web content meets the relevant NZ Government Web Standards [JASON WHAT SHOULD THIS LINK TO?] while also providing a consistent experience across government websites.
+PrintReady is an optional tool for government agencies, not a mandatory requirement. It helps implement consistent, accessible print formatting for websites. By using PrintReady, agencies can ensure their printed web content provides a consistent experience across government websites while meeting the relevant NZ Government Web Standards;
+
+- Web Usability Standard 1.4, 3.3 Printable web pages section [TODO: LINK THIS]
+- Web Standards effective from March 2025. Printable pages section [TODO: LINK THIS]
+
+
 
 The PrintReady toolkit simplifies the implementation of print stylesheets that follow good practices. It provides developers with the necessary files and guidance to create print-friendly pages that align with government standards and deliver an accessible experience for all users.
 
@@ -39,7 +44,7 @@ Integrating Print Ready into your website should ensure compliance with the foll
 ### Download the repository
 You can just download it as a ZIP file or Clone the repository using Git
 
-### Install Dependencies and Examine the Example Folder  
+### Install Dependencies and view the Example page  
 
 1. Open the Print ready folder and run the following command in the terminal:
 
@@ -54,7 +59,7 @@ npm run start
 
 3. Once the browser window opens, navigate to the `example` folder.
 
-### Examine the Printed Page  
+### View the Printed Page in the browser  
 
 Toggle between Print and Screen Views either by opening the print dialog (press `Ctrl + P` or `Command + P` on macOS) or by using your browser's Developer Tools and toggling between Print and Screen rendering.
 
@@ -315,7 +320,7 @@ The repository includes Live Server for quick testing and viewing changes. It is
 ```bash
 npm run start
 ```
-Then in the browser navigate to the `example` folder. 
+Then in the browser navigate to the `example` folder to view an example page.
 
 ### Playwright
 Playwright tests are included for further development and preventing regressions in the print-ready JavaScript functionality. It is not required to use PrintReady on your site.
