@@ -6,10 +6,8 @@
 
 PrintReady is an optional tool for government agencies, not a mandatory requirement. It helps implement consistent, accessible print formatting for websites. By using PrintReady, agencies can ensure their printed web content provides a consistent experience across government websites while meeting the relevant NZ Government Web Standards;
 
-- Web Usability Standard 1.4, 3.3 Printable web pages section [TODO: LINK THIS]
-- Web Standards effective from March 2025. Printable pages section [TODO: LINK THIS]
-
-
+- [Web Usability Standard 1.4, 3.3 Printable web pages section](https://www.digital.govt.nz/standards-and-guidance/nz-government-web-standards/web-usability-standard-1-4#printable-web-pages)
+- [Web Standards effective from March 2025. Printable pages section](https://www.digital.govt.nz/standards-and-guidance/nz-government-web-standards/new-web-standards-for-march-2025#printable-pages)
 
 The PrintReady toolkit simplifies the implementation of print stylesheets that follow good practices. It provides developers with the necessary files and guidance to create print-friendly pages that align with government standards and deliver an accessible experience for all users.
 
