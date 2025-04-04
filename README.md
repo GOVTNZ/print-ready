@@ -335,4 +335,18 @@ npm run start
 Then in the browser navigate to the `example` folder to view an example page.
 
 ### Playwright
-Playwright tests are included for further development and preventing regressions in the print-ready JavaScript functionality. It is not required to use PrintReady on your site.
+Playwright tests are included for further development and preventing regressions in the print-ready JavaScript functionality. These are **not required** to use PrintReady on your site.
+
+To run the tests (after running `npm install`)
+
+1. Navigate to the Print ready folder and run the following command in the terminal:
+
+```bash
+npx playwright install
+```
+
+2. Then run the following command in the terminal to execute the tests 
+
+```bash
+npx playwright test
+```
