@@ -285,10 +285,10 @@ The `showPageInformation` function generates page information, such as the site 
 1. Add the following code to generate and insert the list of links:
 
 ```javascript
-import { generatePrintableLinkList } from 'path/to/printready-base.js';
+import { generateListOfPageLinks } from 'path/to/printready-base.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const linkList = generatePrintableLinkList(
+    const linkList = generateListOfPageLinks(
         '.page-content a',   // Example selector for links to include
         '.sidenav a',         // Example selector for links to exclude
         true                  // Set to 'true' to only include external links
@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 3. **Implementation Tips:** 
 - Make sure the selectors match your DOM structure, and provide a valid exclude selector to prevent unwanted links from being printed.
-- Adjust the include/exclude selectors as needed to account for different page types. For instance, the homepage may have a different structure compared to standard pages. See the implimentation of `generatePrintableLinkList` in `printready-site.example.js`  which uses a `switch` statement to handle these variations.
+- Adjust the include/exclude selectors as needed to account for different page types. For instance, the homepage may have a different structure compared to standard pages. See the implimentation of `generateListOfPageLinks` in `printready-site.example.js`  which uses a `switch` statement to handle these variations.
 
 #### Example Output
 

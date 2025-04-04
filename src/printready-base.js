@@ -53,13 +53,13 @@ export function showPageInformation(name, pageTitleElement = 'h1') {
 
 
 /**
- * Generates a list of printable links based on the provided selectors.
+ * Generates a list of printable links.
  * @param {string} [linksSelector=null] - The CSS selector for the links to be included.
  * @param {string} [excludeLinksSelector=null] - The CSS selector for the links to be excluded.
- * @param {boolean} [externalOnly=false] - Whether to include only external links.
+ * @param {boolean} [externalOnly=false] - Whether to  only include external links.
  * @returns {string} - The HTML string with the list of printable links.
  */
-export function generatePrintableLinkList(linksSelector = null, excludeLinksSelector = null, externalOnly = false) {
+export function generateListOfPageLinks(linksSelector = null, excludeLinksSelector = null, externalOnly = false) {
   if (!linksSelector) {
     console.warn('No links selector provided');
     return '';

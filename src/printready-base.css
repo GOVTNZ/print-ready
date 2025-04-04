@@ -72,7 +72,7 @@ body {
     word-break: break-all; /* Allows long URLs to break across lines */
   }
   
-  /* Remove URLs for internal links or links marked in the generatePrintableLinkList function */
+    /* Remove URLs for internal links or links marked in the generateListOfPageLinks function */
   a.js-hasPrintLinkRef:after,
   a[href^="/"]:after {
     content: ''; /* Remove generated URLs */

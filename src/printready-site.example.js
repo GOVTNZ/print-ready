@@ -1,5 +1,5 @@
 // Importing functions from the 'printready-base' file
-import { showAgency, initializePrintButton, showPageInformation, generatePrintableLinkList } from '../thirdparty/printready/src/printready-base.js' // Note: update this path as required. 
+import { showAgency, initializePrintButton, showPageInformation, generateListOfPageLinks } from '../thirdparty/printready/src/printready-base.js' // Note: update this path as required. 
 
 // Initialize the DOMContentLoaded event listener to ensure the script runs after the page is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     switch (true) {
         // Case for a specific page type (e.g., homepage)
         case document.body.classList.contains('pagetype-home'):
-            listOfLinks = generatePrintableLinkList(
+            listOfLinks = generateListOfPageLinks(
                 '.homepage-content a', // Selector for links to include
                 null,                // No exclusion selector
                 true                 // Only include external links
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Default case for other page types
         default:
-            listOfLinks = generatePrintableLinkList(
+            listOfLinks = generateListOfPageLinks(
                 '.page-content a', // Links to include
                 '.sidenav a', // Links to exclude
                 true // Only include external links, setting to 'false' will also include internal links. Mailto and Tel links are always included, anchor links are always excluded  
