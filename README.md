@@ -6,9 +6,6 @@
 
 PrintReady is an optional tool for government agencies, not a mandatory requirement. It helps implement consistent, accessible print formatting for websites. By using PrintReady, agencies can ensure their printed web content provides a consistent experience across government websites while meeting the relevant NZ Government Web Standards;
 
-- [Web Usability Standard 1.4, 3.3 Printable web pages section](https://www.digital.govt.nz/standards-and-guidance/nz-government-web-standards/web-usability-standard-1-4#printable-web-pages)
-- [Web Standards effective from March 2025. Printable pages section](https://www.digital.govt.nz/standards-and-guidance/nz-government-web-standards/new-web-standards-for-march-2025#printable-pages)
-
 The PrintReady toolkit simplifies the implementation of print stylesheets that follow good practices. It provides developers with the necessary files and guidance to create print-friendly pages that align with government standards and deliver an accessible experience for all users.
 
 This guide provides step-by-step instructions for implementing PrintReady in your website. The tool is open source and welcomes contributions from the All-of-Government (AoG) community via GitHub.
@@ -25,6 +22,8 @@ It is designed to be flexible, separating core styles from site-specific needs a
 ### Meeting the NZ Government Web Standards
 Integrating Print Ready into your website should ensure compliance with the following print-specific New Zealand Government Web Standards;
 
+From [Web Usability Standard 1.4, 3.3 in the 'Printable web pages' section](https://www.digital.govt.nz/standards-and-guidance/nz-government-web-standards/web-usability-standard-1-4#printable-web-pages)
+
 3.3.1 The main content of each web page in its current state must be printable on A4 paper, except for inactive web pages.
 
 3.3.2 Printed web pages must include at least one instance of the Mandated Organisation’s name or logo.
@@ -37,12 +36,19 @@ Integrating Print Ready into your website should ensure compliance with the foll
 
 3.3.4 A web page’s text content should be printable by default as black text on a white background.
 
+From [Web Standards effective from March 2025 in the 'Printable pages' section](https://www.digital.govt.nz/standards-and-guidance/nz-government-web-standards/new-web-standards-for-march-2025#printable-pages)
+
+- Printed web pages must include at least 1 instance of the mandated organisation’s name or logo
+
+
 ## Quick Start Summary
 
 ### Download the repository
-You can just download it as a ZIP file or Clone the repository using Git
+[todo AI me] You can simply download the [Print ready repository](https://github.com/GOVTNZ/print-ready/) as a ZIP file or Clone it using Git  
+[TODO: add final repo link]
 
-### Install Dependencies and view the Example page  
+
+### Install Dependencies and view the Example webpage  
 
 1. Open the Print ready folder and run the following command in the terminal:
 
@@ -156,7 +162,7 @@ In some cases, you may need to hide entire sections, while in others, you might 
 
 If needed you can also specify HTML elements hide by adding the `print-only` class to them.     
 
-### Using your agencie's logo:
+### Using your organisations's logo
 Web standards mandate the display of either the agency name or logo. If using the logo, place it at the beginning of the `<body>` section. To ensure the logo is visible only in print view and hidden on screen, apply the .print-only class to the logo's `<img>` element. 
 ```html
 <img class="print-only" ...>
@@ -200,7 +206,13 @@ This is optional. The `initializePrintButton` function enables a print button on
 
 ### Displaying Agency name for Printing
 
-The `showAgency` function generates an HTML snippet with the agency name for the print view. 
+The `showAgency` function generates an HTML snippet with the agency name for the print view.
+
+#### Displaying your organisations logo instead
+
+[todo : AI me] You can display a print friendly version of your organisations logo at the top of the page instead of using the `showAgency` function. 
+[See instructions](#using-your-organisations-logo).
+   
 
 #### Usage
 
@@ -227,7 +239,7 @@ The `showAgency` function generates an HTML snippet with the agency name for the
    ```
 
 
-### Displaying Page Information for Printing
+### Displaying Page Information for Printing [STILL NEEDED?]
 
 The `showPageInformation` function generates page information, such as the site name, title, print date, and URL, for the print view.
 
@@ -265,6 +277,8 @@ The `showPageInformation` function generates page information, such as the site 
    ```
 
 ### Generating a Printable Link List
+
+[TODO: Check w/ Jason then AI me] This is not a web standard but it is good practice. It shows relevant information that would not otherwise be visible on the printed page.      
 
 #### Usage
 
