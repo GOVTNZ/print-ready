@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Insert printable page information at the top of the document
+    // You can choose to display a print friendly version of your organisations logo instead.
     const agencyName = "Print ready site"; // Replace with the name of your site when printing.
     document.body.insertAdjacentHTML(
         'afterbegin', 
@@ -19,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     // Insert printable page information at the bottom of the document
+    
     document.body.insertAdjacentHTML(
         'beforeend', 
         `${showPageInformation()}`
