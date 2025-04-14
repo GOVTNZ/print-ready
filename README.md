@@ -6,7 +6,7 @@
 
 PrintReady is an optional tool for government agencies, not a mandatory requirement. It helps implement consistent, accessible print formatting for websites. By using PrintReady, agencies can ensure their printed web content provides a consistent experience across government websites while meeting the relevant NZ Government Web Standards;
 
-The PrintReady toolkit simplifies the implementation of print stylesheets that follow good practices. It provides developers with the necessary files and guidance to create print-friendly pages that align with government standards and deliver an accessible experience for all users.
+The PrintReady toolkit simplifies the implementation of print stylesheets that follow good practices. It provides developers with the necessary files and guidance to create print-friendly pages that align with New Zealand Government Web Standards and deliver an accessible experience for all users.
 
 This guide provides step-by-step instructions for implementing PrintReady in your website. The tool is open source and welcomes contributions from the All-of-Government (AoG) community via GitHub.
 
@@ -15,7 +15,7 @@ PrintReady's print stylesheet approach focuses on leveraging the browser's defau
 
 It preserves important context by displaying URLs and full titles when printed, while managing page layouts to prevent awkward breaks and maintain professional formatting.  
 
-This implementation embraces the principle of separation of concerns by applying the print stylesheets exclusively for printing and the screen stylesheet/s only for screen rendering.
+This implementation embraces the principle of separation of concerns by applying the print stylesheets exclusively for printing and the screen stylesheets only for screen rendering.
 
 It is designed to be flexible, separating core styles from site-specific needs and allowing easy customization across different website structures.
 
@@ -44,8 +44,8 @@ From [Web Standards effective from March 2025 in the 'Printable pages' section](
 ## Quick Start Summary
 
 ### Download the repository
-[todo AI me] You can simply download the [Print ready repository](https://github.com/GOVTNZ/print-ready/) as a ZIP file or Clone it using Git  
-[TODO: add final repo link]
+You can simply download the [Print ready repository](https://github.com/GOVTNZ/print-ready/) as a ZIP file or Clone it using Git  
+
 
 
 ### Install Dependencies and view the Example webpage  
@@ -56,12 +56,11 @@ From [Web Standards effective from March 2025 in the 'Printable pages' section](
 npm install
 ```
 
-2. To open the repository folder in a browser using `live server`, run:
+2. To open the repository folder in a browser (using [Live Server](https://www.npmjs.com/package/live-server)) run:
 ```bash
 npm run start
 ```
-
-3. Once the browser window opens, navigate to the `example` folder.
+Note this opens `index.html` in the `example` folder.
 
 ### View the Printed Page in the browser  
 
@@ -69,20 +68,23 @@ Toggle between Print and Screen Views either by opening the print dialog (press 
 
 Note that the section at the top of the page and the 'Index of page links' section at the bottom of the example page are dynamically injected using JavaScript.
 
-### Include the Source Files in Your Webpages  
 
-1. Include the files in the `src` folder in your webpages:
-    * Link CSS files only with `media="print"` to ensure styles apply only when printing. You can combine the print files in a build step.
-    * Link JavaScript files with `type="module"` to enable ES6 module functionality. Keep the JavaScript files separate.
-2. Edit `printready-site.example.css` and `printready-site.example.js` to match your website's structure. 
-   * Then, remove the `.example` part of the filename after integrating the files into your site structure.
 
 ## Integration Guide
 This repository is intended to be **downloaded or cloned** from GitHub, with the files described below then **copied and pasted** into your web project. The instructions below assume this method of integration.
 
 This section explains how to integrate PrintReady into your website to optimize page layouts and styling specifically for print output. 
 
-In the `src` folder are `base` and `site` versions or the CSS and JS files. The `base` files should not be changed. PArts of the `site` files should be changed to intergrate into your site structure.
+In the `src` folder are `base` and `site` versions or the CSS and JS files. The `base` files **should not** be changed. Parts of the `site` files **should be** changed to intergrate with your site structure.
+
+### Include the Source Files in Your Webpages  
+
+1. To integrate the files from the `src` folder of the PrintReady repository into your webpages:
+    * Link CSS files with the `media="print"` attribute to ensure styles apply only when printing. You can combine the print files in a build step.
+    * Link JavaScript files with `type="module"` to enable ES6 module functionality. Keep the JavaScript files separate.
+2. Edit `printready-site.example.css` and `printready-site.example.js` to match your website's structure. 
+   * Remove the `.example` part of the filename after integrating the files into your site structure.
+
 
 ---
 
@@ -93,24 +95,27 @@ Make sure on your webpages all CSS files intended for on-screen display are serv
 <link rel="stylesheet" href="screen-styles.css" media="screen">
 ``` 
 
-## PrintReady -base files
-The 'base' files in the `/src` folder serve as the foundation for creating print-ready pages. The `printready-base.css` file includes well-commented styles designed to ensure reliable printing while following best practices. The `printready-base.js` file provides modular functions that can be imported and used to generate print-specific content for your web pages.
+## PrintReady '-base' files
+The 'base' files serve as the foundation for creating print-ready pages. The `printready-base.css` file includes well-commented styles designed to ensure reliable printing while following best practices. The `printready-base.js` file provides modular functions that can be imported and used to generate print-specific content for your web pages.
+
+Include the example CSS and JavaScript files (`printready-base.css` and `printready-base.js`) from the `/src` folder into your own project
 
 
 ### Include printready-base.css as a Print Stylesheet
-1. INclude the print-ready base files from the `src` folder into your websites file structure.  
-2. Add the following \<link> tag in the \<head> of your HTML file to apply print-specific styles when printing the page:
+1. Include the print-ready base files from the `src` folder into your websites file structure.  
+2. Add the following \<link> tag in the \<head> of your HTML file:
 
 ```html
 <link rel="stylesheet" href="/path/to/printready-base.css" media="print">
 ``` 
-**Note:** The `media="print"` attribute ensures this stylesheet is only applied when the page is printed.
-
-**Note:** you can combine the `base` and `site` CSS files together into one file, for example as part of a build step. 
+**Note:**  
+- The `media="print"` attribute ensures this stylesheet is only applied when the page is printed.
+- You can combine the `base` and `site` CSS files together into one file, for example as part of a build step. 
 
 
 ### Include printready-base.js as a JavaScript Module
-1. To load the PrintReady base JavaScript file, add this \<script> tag to the \<head> or before the closing \</body> tag:
+1. To load the PrintReady base JavaScript file from the `src` folder into your websites file structure.
+2. Add the following \<script> tag to the \<head> of your HTML file or before the closing \</body> tag:
 
     ```html
     <script src="/path/to/printready-base.js" type="module"></script>
@@ -118,8 +123,8 @@ The 'base' files in the `/src` folder serve as the foundation for creating print
 
 **Note:** The `type="module"` attribute allows you to export the PrintReady ES6 modules without blocking the page rendering process while they are being fetched and executed.
 
-## PrintReady site files
-The PrintReady 'site' files include a print-specific stylesheet and a JavaScript file. Use the JavaScript file to implement the 'base' PrintReady functions. Use the CSS file to help style printed content including that generated by the Javascript functions.         
+## PrintReady '-site' files
+The PrintReady 'site' files let you customize styling and JavaScript functionality to suit your site's structure and requirements. Use the JavaScript file to implement the core PrintReady functions, and the CSS file to style printed content, including elements generated by the JavaScript functions.
 
 Include the example CSS and JavaScript files (`printready-site.example.css` and `printready-site.example.js`) from the `/src` folder into your own project. Then, rename these files by removing the ".example" extension.
 
