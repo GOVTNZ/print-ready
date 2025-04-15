@@ -98,8 +98,19 @@ export function generateListOfPageLinks(linksSelector = null, excludeLinksSelect
  * @returns {string} - The HTML string with the list of printable links.
  */
 function outputPrintedLinks(linksToPrint) {
-  return linksToPrint.map(link => `<li>${link}</li>`).join('');
+  const ol = document.createElement('ol');
+  ol.className = 'js-footnoted-urls';
+
+  linksToPrint.forEach(link => {
+    const li = document.createElement('li');
+    li.textContent = link;
+    ol.appendChild(li);
+  });
+
+  // Return HTML string if required elsewhere, or return DOM node instead:
+  return ol.outerHTML;
 }
+
 
 /**
  * Adds a reference number to the link element for printing.
@@ -108,8 +119,14 @@ function outputPrintedLinks(linksToPrint) {
  */
 function addReferenceToLink(linkElement, refNum) {
   linkElement.classList.add('js-hasPrintLinkRef');
-  linkElement.insertAdjacentHTML('afterend', ` <sup class="js-print-only js-printready-link-reference">[Link: ${refNum}]</sup>`);
+
+  const sup = document.createElement('sup');
+  sup.className = 'js-print-only js-printready-link-reference';
+  sup.textContent = `[Link: ${refNum}]`;
+
+  linkElement.insertAdjacentElement('afterend', sup);
 }
+
 
 /**
  * Handles the link element and returns the formatted link based on its type.
