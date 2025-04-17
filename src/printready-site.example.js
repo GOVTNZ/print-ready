@@ -56,8 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Change this HTML structure if necessery.   
         const printedLinksSection = `<div id="js-printready-link-urls" class="js-print-only">
                                         <h2>Index of page links</h2>
-                                        <ol class="js-printready-links-list">${listOfLinks}</ol>
-                                     </div>`;
+                                        ${listOfLinks}
+                                     </div>`;       
     
         // Define the target element to insert the printed links section before.
         // You can change this to suit your site. 

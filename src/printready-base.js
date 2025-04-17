@@ -99,7 +99,7 @@ export function generateListOfPageLinks(linksSelector = null, excludeLinksSelect
  */
 function outputPrintedLinks(linksToPrint) {
   const ol = document.createElement('ol');
-  ol.className = 'js-footnoted-urls';
+  ol.className = 'js-printready-links-list';
 
   linksToPrint.forEach(link => {
     const li = document.createElement('li');
