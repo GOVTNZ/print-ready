@@ -148,7 +148,7 @@ The CSS rules include explanatory comments and most rules do not need modificati
 
 1. Replace `BREADCRUMBS` with your site's CSS selector for breadcrumbs. 
 
-2. Optionally customize which images appear in print view. By default, all images are hidden from printed pages, but you can override this behavior by specifying which images should be displayed by replacing `IMAGES_TO_SHOW` in the site CSS file with appropriate CSS selectors.
+2. Optionally specify which images appear in print view. By default, all images are hidden from printed pages, but you can override this behavior by specifying which images should be displayed by replacing `IMAGES_TO_SHOW` in the site CSS file with appropriate CSS selectors for your website.
 
 3. Specify which elements should be hidden when printing. This requires replacing `INSERT_ELEMENTS_TO_HIDE` in the `site` CSS file with the appropriate CSS selectors.
 
@@ -161,22 +161,25 @@ Common elements to hide include:
 
 - Site navigation
 - Headers and footers
-- Interactive elements (like toggle buttons)
+- Interactive elements (like toggle buttons on accordions)
  
 In some cases, you may need to hide entire sections, while in others, you might only need to hide specific interactive elements within a component.
 
-If needed you can also specify HTML elements hide by adding the `print-only` class to them.     
+### Implimenting the 'print-only' class
+If needed you can also specify HTML elements that only show in printed output by adding the `print-only` class to them. 
 
-### Using your organisations's logo
-Web standards mandate the display of either the agency name or logo. If using the logo, place it at the beginning of the `<body>` section. To ensure the logo is visible only in print view and hidden on screen, apply the .print-only class to the logo's `<img>` element. 
-```html
-<img class="print-only" ...>
-```
-Additionally, include the following CSS rule in your **screen** stylesheet: 
+You would then need to include the following CSS rule in your **screen** stylesheet: 
 
 ```CSS
 .print-only { display: none; }     
 ```
+
+### Using your organisations's logo
+Web standards mandate the display of either the agency name or logo. If using the logo, place it at the beginning of the `<body>` section. To ensure the logo is visible only in print view and hidden on screen, you could apply the `.print-only` class to the logo's `<img>` element. 
+```html
+<img class="print-only" ...>
+```
+
 
 ## Javascript Integration Guide
 
@@ -199,14 +202,16 @@ This is optional. The `initializePrintButton` function enables a print button on
    import { initializePrintButton } from 'path/to/printready-base.js';
 
    document.addEventListener('DOMContentLoaded', () => {
-       const printButtonSelector = "#print-page-button";
-       initializePrintButton(printButtonSelector);
+        const printButtonSelector = "#print-page-button";
+        if (document.querySelector(printButtonSelector)) {
+            initializePrintButton(printButtonSelector);
+        }
    });
    ```   
    
 3. **Explanation:** The function checks if the button exists, adds a `click` event to trigger printing, and makes it visible.
 
-4. **Implementation Tips:** If using an existing button ensure it has the `hidden` attribute and update the `printButtonSelector` to target it. 
+4. **Implementation Tips:** If using an existing button ensure it has the `hidden` attribute and update the `printButtonSelector` variable to target it.
 
 
 ### Displaying Agency name for Printing
@@ -244,7 +249,7 @@ The `showAgency` function generates an HTML snippet with the agency name for the
    ```
 
 
-### Displaying Page Information for Printing [STILL NEEDED?]
+### Displaying Page Information for Printing [TODO:  STILL NEEDED?]
 
 The `showPageInformation` function generates page information, such as the site name, title, print date, and URL, for the print view.
 
@@ -271,7 +276,7 @@ The `showPageInformation` function generates page information, such as the site 
     showPageInformation(siteName, 'custom-selector')
     ``` 
 
-#### Example Output
+#### Example Output [TODO: update if keeping, splitting into start nd end of page]
 
    ```html
    <div class="printready-page-info js-print-only"> 
@@ -299,19 +304,29 @@ document.addEventListener('DOMContentLoaded', () => {
         true                  // Set to 'true' to only include external links
     );
 
-    document.body.insertAdjacentHTML(
-        'beforeend',
-        `<div id="js-printready-link-urls" class="js-print-only">
-            <h2>Index of Page Links</h2>
-            <ol class="js-printready-links-list">${linkList}</ol>
-        </div>`
-    );
+    // Change this HTML structure if necessery.   
+    const printedLinksSection = `<div id="js-printready-link-urls" class="js-print-only">
+        <h2>Index of page links</h2>
+        ${listOfLinks}
+        </div>`;    
 });
 ```
+2. Set `YOUR_RENDER_TARGET` to the CSS selector where you want the page links to appear on the page.
 
-2. **Explanation:** This function filters links based on provided selectors and outputs them in a format suitable for printing. It includes email, phone, and external links by default. 
+```javascript
+let renderTarget = 'YOUR_RENDER_TARGET'; // Set this to your render target   
+```
+3. The links will be inserted before the render target by default. If you want to insert them after the render target instead, change beforeBegin to afterEnd in your code.
 
-3. **Implementation Tips:** 
+```javascript
+if (renderTarget !== null) {
+    renderTarget.insertAdjacentHTML('beforebegin', printedLinksSection);
+}
+```
+
+4. **Explanation:** This function filters links based on provided selectors and outputs them in a format suitable for printing. It includes email, phone, and external links by default. 
+
+5. **Implementation Tips:** 
 - Make sure the selectors match your DOM structure, and provide a valid exclude selector to prevent unwanted links from being printed.
 - Adjust the include/exclude selectors as needed to account for different page types. For instance, the homepage may have a different structure compared to standard pages. See the implimentation of `generateListOfPageLinks` in `printready-site.example.js`  which uses a `switch` statement to handle these variations.
 
