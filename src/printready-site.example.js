@@ -12,10 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Insert the agency name at the top of the document (optional)
     const agencyName = "AGENCY_NAME"; // Replace with the name of your agency when printing.
-    document.body.insertAdjacentHTML(
-        'afterbegin', 
-        `${showAgency(agencyName)}`
-    );
+    document.body.prepend(showAgency(agencyName));
 
     // Insert printable page information at the bottom of the document
     document.body.insertAdjacentHTML(
@@ -23,8 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
         `${showPageInformation()}`
     );
 
-
-    
     /* Genrate a list of links */
     // Initialize a variable for the list of links
     let listOfLinks = null;

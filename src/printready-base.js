@@ -13,18 +13,29 @@ export function initializePrintButton(buttonSelector) {
     printButton.hidden = false;
   } else {
     console.warn('Print button not found');
-  }
+  }   
 }
 
+
 /**
- * Generates HTML string containing page information.
+ * Creates and returns a DOM element representing agency information for printing.
  * @param {string} agency - The name to be displayed in the printable information.
- * @returns {string} - The HTML string with printable page information.
+ * @returns {HTMLElement} - A DOM element containing the agency information.
  */
 export function showAgency(agency) {
-  return `<div class="printready-agency js-print-only">
-              <p class="print-info-agency"><b>${agency}</b></p>
-          </div>`
+  const container = document.createElement('div');
+  container.className = 'printready-agency js-print-only';
+
+  const paragraph = document.createElement('p');
+  paragraph.className = 'print-info-agency';
+
+  const bold = document.createElement('b');
+  bold.textContent = agency;
+
+  paragraph.appendChild(bold);
+  container.appendChild(paragraph);
+
+  return container;
 }
 
 

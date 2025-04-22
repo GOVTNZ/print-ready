@@ -220,7 +220,7 @@ The `showAgency` function generates an HTML snippet with the agency name for the
 
 #### Displaying your organisations logo instead
 
-[todo : AI me] You can display a print friendly version of your organisations logo at the top of the page instead of using the `showAgency` function. 
+You can display a print friendly version of your organisations logo at the top of the page instead of using the `showAgency` function. 
 [See instructions](#using-your-organisations-logo).
    
 
@@ -231,11 +231,8 @@ The `showAgency` function generates an HTML snippet with the agency name for the
    ```javascript
    import { showAgency } from 'path/to/printready-base.js';
 
-    const agencyName = "AGENCY_NAME";
-    document.body.insertAdjacentHTML(
-        'afterbegin', 
-        `${showAgency(agencyName)}`
-    );
+   const agencyName = "AGENCY_NAME";
+    document.body.prepend(showAgency(agencyName));
    ```   
    
 2. **Explanation:** It is a web standards requirement to display either the agency name or logo. If you are diaplaying the logo then this is optional. 
