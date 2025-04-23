@@ -49,32 +49,41 @@ document.addEventListener('DOMContentLoaded', () => {
     if (listOfLinks !== null) {
         // Define the printed links section which lists the URLs of the selected links
         // Change this HTML structure if necessery.   
-        const printedLinksSection = `<div id="js-printready-link-urls" class="js-print-only">
-                                        <h2>Index of page links</h2>
-                                        ${listOfLinks}
-                                     </div>`;       
+        const printedLinksSection = document.createElement('div');
+        printedLinksSection.id = 'js-printready-link-urls';
+        printedLinksSection.className = 'js-print-only';
+
+        const heading = document.createElement('h2');
+        heading.textContent = 'Index of page links';
+
+        printedLinksSection.appendChild(heading);
+        printedLinksSection.appendChild(listOfLinks);
+       
     
-        // Define the target element to insert the printed links section before.
+        // Define the target element to insert the printed links section after.
         // You can change this to suit your site. 
-        // A switch statement is used here to allow for different render targets for different types of pages.
-         
-        let renderTarget = 'YOUR_RENDER_TARGET'; // Set this to your render target (e.g. renderTarget = '.footer')  
+        let renderTarget = 'YOUR_RENDER_TARGET'; // Set this to your default render target (e.g. renderTarget = '.main-content';)  
     
+        // OPTIONAL - You can use a switch statement to have different render targets for particular pagetypes.  
         switch (true) {
-            // Check for an element on the page that matches the renderTarget selector
+            // Set the render target based on the page type
+            case document.body.classList.contains('pagetype-home'): // example homepage class 
+                renderTarget = 'EXAMPLE_HOMEPAGE_RENDER_TARGET';
+                break;
+            // Fallback case for other page types    
             case document.querySelector(renderTarget) !== null:
                 renderTarget = document.querySelector(renderTarget);
                 break;
             default:
                 renderTarget = null
-                console.warn('No render target defined for the printed links section.');
                 break;
         }
     
-        // Insert the printed links section if a render target is found before ('beforebegin') or after ('afterend')' the render target.
+        // Insert the printed links section after the renderTarget if it exists.
         if (renderTarget !== null) {
-            renderTarget.insertAdjacentHTML('beforebegin', printedLinksSection);
+            renderTarget.parentNode.insertBefore(printedLinksSection, renderTarget.nextSibling);
+        } else {
+            console.warn('No render target found for the printed links section.');
         }
     } 
-
 });

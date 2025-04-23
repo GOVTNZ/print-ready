@@ -41,11 +41,10 @@ export function showAgency(agency) {
 
 /**
  * Generates HTML string containing page information.
- * @param {string} name - The name to be displayed in the printable information.
  * @param {string} [pageTitleElement='h1'] - The CSS selector for the page title element.
  * @returns {string} - The HTML string with printable page information.
  */
-export function showPageInformation(name, pageTitleElement = 'h1') {
+export function showPageInformation(pageTitleElement = 'h1') {
   const webpageUrl = window.location.href;
   const pageTitle = document.querySelector(pageTitleElement)?.textContent || 'Untitled Page';
   const options = { day: 'numeric', month: 'long', year: 'numeric' };
@@ -70,10 +69,14 @@ export function showPageInformation(name, pageTitleElement = 'h1') {
  * @param {boolean} [externalOnly=false] - Whether to  only include external links.
  * @returns {string} - The HTML string with the list of printable links.
  */
-export function generateListOfPageLinks(linksSelector = null, excludeLinksSelector = null, externalOnly = false) {
+export function generateListOfPageLinks(
+  linksSelector = null,
+  excludeLinksSelector = null,
+  externalOnly = false
+) {
   if (!linksSelector) {
     console.warn('No links selector provided');
-    return '';
+    return null;
   }
 
   const baseUrl = window.location.origin + '/';
@@ -83,15 +86,14 @@ export function generateListOfPageLinks(linksSelector = null, excludeLinksSelect
     selectedLinks = Array.from(selectedLinks).filter(link => !link.matches(excludeLinksSelector));
   }
 
+  if (!selectedLinks.length) {
+    return null;
+  }
+
   const linksToPrint = [];
   let referenceNumber = 1;
 
-  if (!selectedLinks.length) {
-    return "";
-  }
-
   selectedLinks.forEach((linkElement) => {
-    
     const formattedLink = handleLink(linkElement, externalOnly);
     if (formattedLink) {
       addReferenceToLink(linkElement, referenceNumber);
@@ -118,9 +120,9 @@ function outputPrintedLinks(linksToPrint) {
     ol.appendChild(li);
   });
 
-  // Return HTML string if required elsewhere, or return DOM node instead:
-  return ol.outerHTML;
+  return ol;
 }
+
 
 
 /**

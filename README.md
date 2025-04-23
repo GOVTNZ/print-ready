@@ -248,7 +248,7 @@ You can display a print friendly version of your organisations logo at the top o
 
 ### Displaying Page Information for Printing [TODO:  STILL NEEDED?]
 
-The `showPageInformation` function generates page information, such as the site name, title, print date, and URL, for the print view.
+The `showPageInformation` function generates the page title, current date, and URL for the print view.
 
 #### Usage
 
@@ -264,7 +264,7 @@ The `showPageInformation` function generates page information, such as the site 
    ```   
    
    
-2. **Explanation:** The `showPageInformation` function creates an HTML snippet with the page title, todays date and the page URL. The page title and page URL are a web standards requirement.
+2. **Explanation:** The `showPageInformation` function creates an HTML snippet with the page title, todays date and the page URL. The page title and page URL are a ?web standards requirement? [is this covered by default print footer].
 
 3. **Implementation Tips:** 
 - By default the `'h1'` elements content is used for the page title but you can provide a custom selector as the second optional argument to override this.
@@ -273,7 +273,7 @@ The `showPageInformation` function generates page information, such as the site 
     showPageInformation(siteName, 'custom-selector')
     ``` 
 
-#### Example Output [TODO: update if keeping, splitting into start nd end of page]
+#### Example Output [TODO: update if keeping, splitting into start and end of page]
 
    ```html
    <div class="printready-page-info js-print-only"> 
@@ -313,13 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
 ```javascript
 let renderTarget = 'YOUR_RENDER_TARGET'; // Set this to your render target   
 ```
-3. The links will be inserted before the render target by default. If you want to insert them after the render target instead, change beforeBegin to afterEnd in your code.
-
-```javascript
-if (renderTarget !== null) {
-    renderTarget.insertAdjacentHTML('beforebegin', printedLinksSection);
-}
-```
+3. The links will be inserted after the render target.
 
 4. **Explanation:** This function filters links based on provided selectors and outputs them in a format suitable for printing. It includes email, phone, and external links by default. 
 
