@@ -11,17 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
         initializePrintButton(printButtonSelector);
     }
 
-    // Insert printable page information at the top of the document
+    // Insert printable page information at the top of the document (optional, can use a logo instead, see README.md for more details)
     // You can choose to display a print friendly version of your organisations logo instead.
     const agencyName = "Print ready site"; // Replace with the name of your site when printing.
     document.body.prepend(showAgency(agencyName));
    
-    // Insert printable page information at the bottom of the document
-    
-    document.body.insertAdjacentHTML(
-        'beforeend', 
-        `${showPageInformation()}`
-    );
+    // Insert printable page information at the bottom of the document (optional, see README.md for more details)
+    document.body.appendChild(showPageInformation());
   
     // Initialize a variable for the list of links
     let listOfLinks = null;

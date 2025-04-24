@@ -10,15 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
         initializePrintButton(printButtonSelector);
     }
 
-    // Insert the agency name at the top of the document (optional)
+    // Insert the agency name at the top of the document (optional, can use a logo instead, see README.md for more details)
     const agencyName = "AGENCY_NAME"; // Replace with the name of your agency when printing.
     document.body.prepend(showAgency(agencyName));
 
-    // Insert printable page information at the bottom of the document
-    document.body.insertAdjacentHTML(
-        'beforeend', 
-        `${showPageInformation()}`
-    );
+    // Insert printable page information at the bottom of the document (optional, see README.md for more details)
+     document.body.appendChild(showPageInformation());
 
     /* Genrate a list of links */
     // Initialize a variable for the list of links

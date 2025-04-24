@@ -40,13 +40,13 @@ export function showAgency(agency) {
 
 
 /**
- * Generates HTML string containing page information.
- * @param {string} [pageTitleElement='h1'] - The CSS selector for the page title element.
- * @returns {string} - The HTML string with printable page information.
+ * Creates and returns a DOM element containing printable page information.
+ * Uses the document's <title> tag for the page title.
+ * @returns {HTMLElement} - A DOM element with page title, current date, and page URL for printing.
  */
-export function showPageInformation(pageTitleElement = 'h1') {
+export function showPageInformation() {
   const webpageUrl = window.location.href;
-  const pageTitle = document.querySelector(pageTitleElement)?.textContent || 'Untitled Page';
+  const pageTitle = document.title || 'Untitled Page';
   const options = { day: 'numeric', month: 'long', year: 'numeric' };
   const currentDate = new Date().toLocaleDateString('en-GB', options);
 
@@ -54,11 +54,26 @@ export function showPageInformation(pageTitleElement = 'h1') {
     console.warn('No page title found');
   }
 
-  return `<div class="printready-page-info js-print-only">
-          <p class="print-info-title"><b>Page title:</b> ${pageTitle}</p>
-          <p class="print-info-date"><b>Printed:</b> ${currentDate}</p>
-          <p class="print-info-url"><b>Printed from:</b> ${webpageUrl}</p>
-          `;
+  const container = document.createElement('div');
+  container.className = 'printready-page-info js-print-only';
+
+  const titlePara = document.createElement('p');
+  titlePara.className = 'print-info-title';
+  titlePara.innerHTML = `<b>Page title:</b> ${pageTitle}`;
+
+  const datePara = document.createElement('p');
+  datePara.className = 'print-info-date';
+  datePara.innerHTML = `<b>Printed:</b> ${currentDate}`;
+
+  const urlPara = document.createElement('p');
+  urlPara.className = 'print-info-url';
+  urlPara.innerHTML = `<b>Printed from:</b> ${webpageUrl}`;
+
+  container.appendChild(titlePara);
+  container.appendChild(datePara);
+  container.appendChild(urlPara);
+
+  return container;
 }
 
 
