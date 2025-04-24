@@ -284,8 +284,9 @@ The `showPageInformation` function generates the page title, current date, and U
    ```
 
 ### Generating a Printable Link List
+This is not a web standard but it is good practice.  The URLs of links to external websites are included as footnotes in a special "Links" section at the end of the printed page. This is primarily to provide context and help readers know which website a link goes to, since hyperlinks do not work in print. They are not printed immediately following the link text to avoid reducing readability.
 
-[TODO: Check w/ Jason then AI me] This is not a web standard but it is good practice. It shows relevant information that would not otherwise be visible on the printed page.      
+By default the URLs of links to other pages on the same site are not included because the context for those links is that same website. Not printing URLS of links to the same site also reduces the number of URLs printed. Internal link can be included by setting the third argument `externalOnly` in `generateListOfPageLinks` to `false`.      
 
 #### Usage
 
@@ -299,13 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
         '.page-content a',   // Example selector for links to include
         '.sidenav a',         // Example selector for links to exclude
         true                  // Set to 'true' to only include external links
-    );
-
-    // Change this HTML structure if necessery.   
-    const printedLinksSection = `<div id="js-printready-link-urls" class="js-print-only">
-        <h2>Index of page links</h2>
-        ${listOfLinks}
-        </div>`;    
+    );  
 });
 ```
 2. Set `YOUR_RENDER_TARGET` to the CSS selector where you want the page links to appear on the page.
