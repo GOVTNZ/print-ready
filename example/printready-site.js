@@ -62,23 +62,15 @@ document.addEventListener('DOMContentLoaded', () => {
         let renderTarget = '.main-content';
         
         // OPTIONAL - You can use a switch statement to have different render targets for particular pagetypes.  
-        switch (true) {
-            // Set the render target based on the page type
-            case document.body.classList.contains('pagetype-home'):
-                renderTarget = '.homepage-content';
-                break;
-            // Fallback case for other page types    
-            case document.querySelector(renderTarget) !== null:
-                renderTarget = document.querySelector(renderTarget);
-                break;
-            default:
-                renderTarget = null
-                break;
-        }
+        // EXAMPLE: Set the render target based on the page type
+        // if (document.body.classList.contains('pagetype-home')) {
+        //     renderTarget = '.homepage-content';
+        // }
 
         // Insert the printed links section after the renderTarget if it exists.
         if (renderTarget !== null) {
-            renderTarget.parentNode.insertBefore(printedLinksSection, renderTarget.nextSibling);
+            const renderTargetNode = document.querySelector(renderTarget);
+            renderTargetNode.parentNode.insertBefore(printedLinksSection, renderTargetNode.nextSibling);
         } else {
             console.warn('No render target found for the printed links section.');
         }

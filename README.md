@@ -319,7 +319,7 @@ let renderTarget = 'YOUR_RENDER_TARGET'; // Set this to your render target
 
 5. **Implementation Tips:** 
 - Make sure the selectors match your DOM structure, and provide a valid exclude selector to prevent unwanted links from being printed.
-- Adjust the include/exclude selectors as needed to account for different page types. For instance, the homepage may have a different structure compared to standard pages. See the implimentation of `generateListOfPageLinks` in `printready-site.example.js`  which uses a `switch` statement to handle these variations.
+- Adjust the include/exclude selectors as needed to account for different page types. For instance, the homepage may have a different structure compared to standard pages. See the implimentation of `generateListOfPageLinks` in `printready-site.example.js`  which uses a conditional statement to handle these variations.
 
 #### Example Output
 
