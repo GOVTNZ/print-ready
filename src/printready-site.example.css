@@ -117,9 +117,11 @@ BREADCRUMBS ol li:not(:last-child):after, BREADCRUMBS ul li:not(:last-child):aft
 #js-printready-link-urls {
   border-top: 1px solid #D2D4D6;
   margin-top: 2rem;
-  margin-bottom: 2rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid #D2D4D6;
+  padding-top: 1rem;
+}
+
+ol.js-printready-links-list li:last-child {
+  padding-bottom: 0;
 }
 
 #js-printready-link-urls h2 {
