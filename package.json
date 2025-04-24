@@ -7,7 +7,7 @@
     "example": "example"
   },
   "scripts": {
-    "start": "live-server example --open=index.html"
+    "start": "live-server"
   },
   "keywords": [],
   "author": "",
