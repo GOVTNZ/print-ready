@@ -135,13 +135,15 @@ Include the example CSS and JavaScript files (`printready-site.example.css` and 
      <link rel="stylesheet" href="/path/to/printready-site.css" media="print">
     ```
 
-
 ### Include printready-site.js as a JavaScript Module
 1. Use `printready-site.js` to implement the JavaScript modules from `printready-base.js`. The `type="module"` attribute allows you to export the PrintReady ES6 modules without blocking the page rendering process while they are being fetched and executed.
     
     ```html
     <script src="/path/to/printready-site.js" type="module"></script>
+
     ```
+
+**note:** Scripts with `type="module"` automatically behave as if they have the `defer` attribute, meaning they are deferred until after the HTML is fully parsed.
 
 ## CSS Integration Guide
 The CSS rules include explanatory comments and most rules do not need modification. However, you will need to:
@@ -246,7 +248,7 @@ You can display a print friendly version of your organisations logo at the top o
    ```
 
 
-### Displaying Page Information for Printing [TODO:  STILL NEEDED?]
+### Displaying Page Information for Printing
 
 The `showPageInformation` function generates the page title, current date, and URL for the print view.
 
@@ -273,7 +275,7 @@ The `showPageInformation` function generates the page title, current date, and U
     showPageInformation(siteName, 'custom-selector')
     ``` 
 
-#### Example Output [TODO: update if keeping, splitting into start and end of page]
+#### Example Output
 
    ```html
    <div class="printready-page-info js-print-only"> 
