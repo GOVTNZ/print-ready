@@ -49,8 +49,8 @@ body {
   }
   
   
-  /* By default hide all images in print */
-  img {
+  /* By default hide all images and inline SVGs in print */
+  img, svg {
     display: none; 
   }
   
