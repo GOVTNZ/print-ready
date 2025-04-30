@@ -4,29 +4,27 @@
 
 ## Introduction
 
-PrintReady is an optional tool for government agencies, not a mandatory requirement. It helps implement consistent, accessible print formatting for websites. By using PrintReady, agencies can ensure their printed web content provides a consistent experience across government websites while meeting the relevant NZ Government Web Standards;
+PrintReady is an optional tool for government agencies, not a mandatory requirement. 
 
-The PrintReady toolkit simplifies the implementation of print stylesheets that follow good practices. It provides developers with the necessary files and guidance to create print-friendly pages that align with New Zealand Government Web Standards and deliver an accessible experience for all users.
+The PrintReady toolkit simplifies the implementation of print stylesheets that follow good practices. It provides developers with the necessary files and guidance to create print-friendly web pages that align with New Zealand Government Web Standards and deliver an accessible, consistent experience for all users.
 
-This guide provides step-by-step instructions for implementing PrintReady in your website. The tool is open source and welcomes contributions from the All-of-Government (AoG) community via GitHub.
+This guide provides step-by-step instructions for implementing PrintReady in your website. The tool is open source and welcomes contributions from the all-of-government (AoG) community via GitHub.
 
 ## Approach  
-PrintReady's print stylesheet approach focuses on leveraging the browser's default stylesheet, which is already effective for printed content, enhancing it only when necessary.  
+PrintReady's print stylesheet approach leverages the browser's default stylesheet, which is already effective for printed content, enhancing it only where necessary.  
 
-It preserves important context by displaying URLs and full titles when printed, while managing page layouts to prevent awkward breaks and maintain professional formatting.  
+It preserves important context by including the web page's full URL and title when printed, while managing page layouts to prevent awkward breaks and maintain professional formatting.  
 
-This implementation embraces the principle of separation of concerns by applying the print stylesheets exclusively for printing and the screen stylesheets only for screen rendering.
+This implementation embraces the principle of separation of concerns by applying the print styles exclusively for printing while keeping the screen styles only for screen rendering.
 
-It is designed to be flexible, separating core styles from site-specific needs and allowing easy customization across different website structures.
+It is designed to be flexible, separating core styles from site-specific needs and allowing easy customisation across different websites.
 
 ### Meeting the NZ Government Web Standards
-Integrating Print Ready into your website should ensure compliance with the following print-specific New Zealand Government Web Standards;
-
-From [Web Usability Standard 1.4, 3.3 in the 'Printable web pages' section](https://www.digital.govt.nz/standards-and-guidance/nz-government-web-standards/web-usability-standard-1-4#printable-web-pages)
+Integrating Print Ready into your website should ensure compliance with the ['Printable web pages' requirements in the New Zealand Government Web Usability Standard](https://www.digital.govt.nz/standards-and-guidance/nz-government-web-standards/web-usability-standard-1-4#printable-web-pages):
 
 3.3.1 The main content of each web page in its current state must be printable on A4 paper, except for inactive web pages.
 
-3.3.2 Printed web pages must include at least one instance of the Mandated Organisation’s name or logo.
+3.3.2 Printed web pages must include at least 1 instance of the Mandated Organisation’s name or logo
 
 3.3.3 Printed web pages should not include the following web content:
 - primary content navigation
@@ -36,21 +34,14 @@ From [Web Usability Standard 1.4, 3.3 in the 'Printable web pages' section](http
 
 3.3.4 A web page’s text content should be printable by default as black text on a white background.
 
-From [Web Standards effective from March 2025 in the 'Printable pages' section](https://www.digital.govt.nz/standards-and-guidance/nz-government-web-standards/new-web-standards-for-march-2025#printable-pages)
-
-- Printed web pages must include at least 1 instance of the mandated organisation’s name or logo
-
-
 ## Quick Start Summary
 
 ### Download the repository
-You can simply download the [Print ready repository](https://github.com/GOVTNZ/print-ready/) as a ZIP file or Clone it using Git  
-
-
+You can clone the [Print ready repository](https://github.com/GOVTNZ/print-ready/) or download it as a ZIP file.
 
 ### Install Dependencies and view the Example webpage  
 
-1. Open the Print ready folder and run the following command in the terminal:
+1. Open the Print ready folder and run the following command in a terminal:
 
 ```bash
 npm install
@@ -67,8 +58,6 @@ Note this opens `index.html` in the `example` folder.
 Toggle between Print and Screen Views either by opening the print dialog (press `Ctrl + P` or `Command + P` on macOS) or by using your browser's Developer Tools and toggling between Print and Screen rendering.
 
 Note that the section at the top of the page and the 'Index of page links' section at the bottom of the example page are dynamically injected using JavaScript.
-
-
 
 ## Integration Guide
 This repository is intended to be **downloaded or cloned** from GitHub, with the files described below then **copied and pasted** into your web project. The instructions below assume this method of integration.
