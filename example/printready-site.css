@@ -6,8 +6,15 @@
   Optional: Styles marked "Optional" can be removed if they are not relevant to your site.
 */
 
-/* Hide elements not needed in print (such as headers, footers, and navigation) 
-    Replace '.elements-to-hide' with the CSS selectors of the elements to hide when printing on youe site (e.g header, footer ect) 
+/*Hide elements not needed in print
+  Replace 'INSERT_ELEMENTS_TO_HIDE' with the CSS selectors of the elements to hide when printing on youe site. 
+
+  Guidance: 3.3.3 Printed web pages should not include the following web content:
+  - primary content navigation
+  - secondary content navigation
+  - persistent search form
+  - decorative elements.
+  reference: https://www.digital.govt.nz/standards-and-guidance/nz-government-web-standards/web-usability-standard-1-4#printable-web-pages
 */
 header,
 footer {
@@ -15,8 +22,9 @@ footer {
 }
 
 /* Optional: 
-   Specify any images you want to show in print. 
-   Replace '.images-to-show' with your site's CSS selector.
+   Specify any images you explictly want to show in print.
+   These should only be images that are essential to understanding the content. 
+   Replace 'IMAGES_TO_SHOW' with your site's CSS selectors.
 */
 /* .images-to-show {
     display: block;
