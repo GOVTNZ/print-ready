@@ -321,9 +321,9 @@ let renderTarget = 'YOUR_RENDER_TARGET'; // Set this to your render target
    ```
 
 ### Printing Web Forms (optional)
-While it's uncommon for users to print a webpage with a form, if your form is inside a content management system or uses custom markup it;s structure might not be clear. If this is the case consider adding custom print-specific styles to ensure it remains readable, well-spaced, and clearly structured when printed. Here are some things to consider:
+While default browser styling for web forms is often good, if your form is embedded within a content management system or utilizes custom markup, its structure might not be clear. In such cases, consider adding styles to ensure it remains readable, well-spaced, and clearly structured when printed. Here are some things to consider:
 
-1. **Legibility** - Make sure labels are clearly associated with their corresponding input fields and are separated from nearby text. Consider using bold text or other styling (such as underlining or font size) to make labels stand out from the surrounding content.
+1. **Legibility** - Make sure labels are clearly associated with their corresponding input fields and are separated from other labels and input fields. Consider using bold text or other styling to make labels stand out from the surrounding content.
 
 2. **Clear Visual Grouping** - If needed add spacing so it is easy to distinguish between different parts of the form. 
 
