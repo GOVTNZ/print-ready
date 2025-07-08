@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // }
 
         // Insert the printed links section after the renderTarget if it exists.
-        if (renderTarget !== null) {
+        if (renderTarget !== '' && document.querySelector(renderTarget) !== null) {
             const renderTargetNode = document.querySelector(renderTarget);
             renderTargetNode.parentNode.insertBefore(printedLinksSection, renderTargetNode.nextSibling);
         } else {
