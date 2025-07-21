@@ -1,26 +1,22 @@
 # PrintReady
 
-## Status :  **Currently in Alpha. Use at your own risk.**
-
 ## Introduction
 
-PrintReady is an optional tool for government agencies, not a mandatory requirement. 
+PrintReady is an optional tool for government agencies, **it is not a mandatory requirement**. 
 
 The PrintReady toolkit simplifies the implementation of print stylesheets that follow good practices. It provides developers with the necessary files and guidance to create print-friendly web pages that align with New Zealand Government Web Standards and deliver an accessible, consistent experience for all users.
 
 This guide provides step-by-step instructions for implementing PrintReady in your website. The tool is open source and welcomes contributions from the all-of-government (AoG) community via GitHub.
 
 ## Approach  
-PrintReady's print stylesheet approach leverages the browser's default stylesheet, which is already effective for printed content, enhancing it only where necessary.  
+PrintReady leverages the browser’s default stylesheet, which is already effective for printed content, and enhances it only where necessary for example, by managing page layouts to prevent awkward breaks and maintain professional formatting.
 
-It preserves important context by including the web page's full URL and title when printed, while managing page layouts to prevent awkward breaks and maintain professional formatting.  
+It embraces the principle of separation of concerns by applying the print styles exclusively for printing while keeping the screen styles only for screen rendering.
 
-This implementation embraces the principle of separation of concerns by applying the print styles exclusively for printing while keeping the screen styles only for screen rendering.
-
-It is designed to be flexible, separating core styles from site-specific needs and allowing easy customisation across different websites.
+It is designed to be flexible, separating core styles from site-specific needs and allowing easy customisation across different websites. 
 
 ### Meeting the NZ Government Web Standards
-Integrating Print Ready into your website should ensure compliance with the ['Printable web pages' requirements in the New Zealand Government Web Usability Standard](https://www.digital.govt.nz/standards-and-guidance/nz-government-web-standards/web-usability-standard-1-4#printable-web-pages):
+Integrating PrintReady into your website should ensure compliance with the ['Printable web pages' requirements in the New Zealand Government Web Usability Standard](https://www.digital.govt.nz/standards-and-guidance/nz-government-web-standards/web-usability-standard-1-4#printable-web-pages):
 
 3.3.1 The main content of each web page in its current state must be printable on A4 paper, except for inactive web pages.
 
@@ -34,35 +30,10 @@ Integrating Print Ready into your website should ensure compliance with the ['Pr
 
 3.3.4 A web page’s text content should be printable by default as black text on a white background.
 
-## Quick Start Summary
-
-### Download the repository
-You can clone the [Print ready repository](https://github.com/GOVTNZ/print-ready/) or download it as a ZIP file.
-
-### Install Dependencies and view the Example webpage  
-
-1. Open the Print ready folder and run the following command in a terminal:
-
-```bash
-npm install
-```
-
-2. To open the repository folder in a browser (using [Live Server](https://www.npmjs.com/package/live-server)) run:
-```bash
-npm run start
-```
-Note this opens `index.html` in the `example` folder.
-
-### View the Printed Page in the browser  
-
-Toggle between Print and Screen Views either by opening the print dialog (press `Ctrl + P` or `Command + P` on macOS) or by using your browser's Developer Tools and toggling between Print and Screen rendering.
-
-Note that the section at the top of the page and the 'Index of page links' section at the bottom of the example page are dynamically injected using JavaScript.
-
 ## Integration Guide
-This repository is intended to be **downloaded or cloned** from GitHub, with the files described below then **copied and pasted** into your web project. The instructions below assume this method of integration.
-
 This section explains how to integrate PrintReady into your website to optimize page layouts and styling specifically for print output. 
+
+The [PrintReady repository](https://github.com/GOVTNZ/print-ready/) is intended to be **downloaded or cloned** from GitHub, with the files described below then **copied and pasted** into your web project. The instructions below assume this method of integration.
 
 In the `src` folder are `base` and `site` versions or the CSS and JS files. The `base` files **should not** be changed. Parts of the `site` files **should be** changed to intergrate with your site structure.
 
@@ -85,22 +56,23 @@ Make sure on your webpages all CSS files intended for on-screen display are serv
 ``` 
 
 ## PrintReady '-base' files
-The 'base' files serve as the foundation for creating print-ready pages. The `printready-base.css` file includes well-commented styles designed to ensure reliable printing while following best practices. The `printready-base.js` file provides modular functions that can be imported and used to generate print-specific content for your web pages.
+The 'base' files serve as the foundation for creating print-ready pages; 
 
-Include the example CSS and JavaScript files (`printready-base.css` and `printready-base.js`) from the `/src` folder into your own project
+* The `printready-base.css` file includes well-commented styles designed to ensure reliable printing while following best practices. 
+
+* The `printready-base.js` file provides modular functions that can be imported and used to generate print-specific content for your web pages.
+
+Copy the files `printready-base.css` and `printready-base.js` from the `/src` folder into your project's file structure.
 
 
 ### Include printready-base.css as a Print Stylesheet
-1. Include the print-ready base files from the `src` folder into your websites file structure.  
-2. Add the following \<link> tag in the \<head> of your HTML file:
+The `media="print"` attribute ensures that this stylesheet is applied only when the page is printed. You can combine the `base` and site `CSS` files into a single file — for example, as part of a build step. The name of the file is entirely up to you.
+
+1. Add the following \<link> tag in the \<head> of your HTML file:
 
 ```html
 <link rel="stylesheet" href="/path/to/printready-base.css" media="print">
 ``` 
-**Note:**  
-- The `media="print"` attribute ensures this stylesheet is only applied when the page is printed.
-- You can combine the `base` and `site` CSS files together into one file, for example as part of a build step. 
-
 
 ### Include printready-base.js as a JavaScript Module
 1. To load the PrintReady base JavaScript file from the `src` folder into your websites file structure.
@@ -110,12 +82,12 @@ Include the example CSS and JavaScript files (`printready-base.css` and `printre
     <script src="/path/to/printready-base.js" type="module"></script>
     ```
 
-**Note:** The `type="module"` attribute allows you to export the PrintReady ES6 modules without blocking the page rendering process while they are being fetched and executed.
+**note:** Scripts with `type="module"` also behave as if they have the `defer` attribute, so they won't block page rendering while being fetched and are executed only after the HTML is fully parsed.
 
 ## PrintReady '-site' files
 The PrintReady 'site' files let you customize styling and JavaScript functionality to suit your site's structure and requirements. Use the JavaScript file to implement the core PrintReady functions, and the CSS file to style printed content, including elements generated by the JavaScript functions.
 
-Include the example CSS and JavaScript files (`printready-site.example.css` and `printready-site.example.js`) from the `/src` folder into your own project. Then, rename these files by removing the ".example" extension.
+Copy the example CSS and JavaScript files (`printready-site.example.css` and `printready-site.example.js`) from the `/src` folder into your own project. Then, rename these files by removing the ".example" extension.
 
 ### Include printready-site.css as a Print Stylesheet
 1. The `printready-site.css` file contains styles for components created by the JavaScript functionality and common site elements, such as breadcrumbs. Adjust the selectors in this stylesheet to align with your website's markup.
@@ -125,25 +97,22 @@ Include the example CSS and JavaScript files (`printready-site.example.css` and 
     ```
 
 ### Include printready-site.js as a JavaScript Module
-1. Use `printready-site.js` to implement the JavaScript modules from `printready-base.js`. The `type="module"` attribute allows you to export the PrintReady ES6 modules without blocking the page rendering process while they are being fetched and executed.
+1. Use `printready-site.js` to implement the JavaScript modules from `printready-base.js`. 
     
     ```html
     <script src="/path/to/printready-site.js" type="module"></script>
-
     ```
-
-**note:** Scripts with `type="module"` automatically behave as if they have the `defer` attribute, meaning they are deferred until after the HTML is fully parsed.
 
 ## CSS Integration Guide
 The CSS rules include explanatory comments and most rules do not need modification. However, you will need to:
 
 1. Replace `BREADCRUMBS` with your site's CSS selector for breadcrumbs. 
 
-2. Optionally specify which images appear in print view. By default, all images are hidden from printed pages, but you can override this behavior by specifying which images should be displayed by replacing `IMAGES_TO_SHOW` in the site CSS file with appropriate CSS selectors for your website.
+2. Optionally specify which images appear in print view. By default, all images are hidden from printed pages, but you can override this behavior by specifying which images should be displayed by replacing `IMAGES_TO_SHOW` in the site CSS file with the appropriate CSS selectors for your website.
 
-3. Specify which elements should be hidden when printing. This requires replacing `INSERT_ELEMENTS_TO_HIDE` in the `site` CSS file with the appropriate CSS selectors.
+3. Specify which elements should be hidden when printing. This requires replacing `INSERT_ELEMENTS_TO_HIDE` in the `site` CSS file with the appropriate CSS selectors for your website.
 
-### To determine what to hide:
+### Determining what to hide:
 
 1. Review each page type and component in your website
 2. Apply this principle: "Only print elements that are essential for understanding the page's content or context"
@@ -152,12 +121,12 @@ Common elements to hide include:
 
 - Site navigation
 - Headers and footers
-- Interactive elements (like toggle buttons on accordions)
+- Interactive elements (like toggle buttons on accordions for example)
  
 In some cases, you may need to hide entire sections, while in others, you might only need to hide specific interactive elements within a component.
 
 ### Implimenting the 'print-only' class
-If needed you can also specify HTML elements that only show in printed output by adding the `print-only` class to them. 
+If needed you can also specify HTML elements that *only* show in printed output by adding the `print-only` class to them. 
 
 You would then need to include the following CSS rule in your **screen** stylesheet: 
 
@@ -166,13 +135,77 @@ You would then need to include the following CSS rule in your **screen** stylesh
 ```
 
 ### Using your organisations's logo
-Web standards mandate the display of either the agency name or logo. If using the logo, place it at the beginning of the `<body>` section. To ensure the logo is visible only in print view and hidden on screen, you could apply the `.print-only` class to the logo's `<img>` element. 
+The NZ Government Web Standards mandate the display of either the agency name or logo. If using a logo, place it at the beginning of the `<body>` section. To ensure the logo is visible only in print view and hidden on screen, you could apply the `.print-only` class to the logo's `<img>` element. 
 ```html
 <img class="print-only" ...>
 ```
+### Printing Web Forms (optional)
+While default browser styling for web forms is often good, if your form is embedded within a content management system or utilizes custom markup, its structure might not be clear. In such cases, consider adding styles to ensure it remains readable, well-spaced, and clearly structured when printed. Here are some things to consider:
 
+1. **Legibility** - Make sure labels are clearly associated with their corresponding input fields and are separated from other labels and input fields. Consider using bold text or other styling to make labels stand out from the surrounding content.
+
+2. **Clear Visual Grouping** - If needed add spacing so it is easy to distinguish between different parts of the form. 
 
 ## Javascript Integration Guide
+
+### Displaying Agency name for Printing
+
+If your printed pages already include your organisation’s logo, then this step is optional. You could also choose to add the example output below as a hardcoded component in your HTML, instead of injecting it via JavaScript.
+
+In either case, be sure to replace `AGENCY_NAME` with the name of your agency or organisation.
+
+The `showAgency` function generates an HTML snippet containing the agency name for the print view.
+
+#### Usage
+
+   ```javascript
+   import { showAgency } from 'path/to/printready-base.js';
+
+   const agencyName = "AGENCY_NAME";
+    document.body.prepend(showAgency(agencyName));
+   ```   
+   
+#### Example Output
+
+   ```html
+   <div class="printready-agency js-print-only">
+        <p class="print-info-agency"><b>AGENCY_NAME</b></p>
+    </div>
+   ``` 
+
+### Displaying Page Information for Printing
+
+The `showPageInformation` function generates a HTML snippet with the page title, current date, and URL for the print view.
+
+#### Usage
+
+   ```javascript
+   import { showPageInformation } from 'path/to/printready-base.js';
+    
+   document.body.insertAdjacentHTML(
+       'beforeend', 
+       `${showPageInformation()}`
+   );
+   ```   
+
+#### Optionally Set a Custom Page Title Selector
+By default, the content of the first `'h1'` element is used as the page title. You can override this by providing a custom selector as the second optional argument.
+
+   ```javascript
+   showPageInformation(siteName, 'custom-page-title-selector')
+   ``` 
+
+#### Example Output
+
+   ```html
+   <div class="printready-page-info js-print-only"> 
+       <p><b>Page title:</b> Example Title</p>
+       <p><b>Printed:</b> 11 November 2024</p>
+       <p><b>Printed from:</b> https://example.com/page</p>
+   </div>
+   ```
+
+
 
 ### Setting Up a Print Button
 
@@ -205,79 +238,26 @@ This is optional. The `initializePrintButton` function enables a print button on
 4. **Implementation Tips:** If using an existing button ensure it has the `hidden` attribute and update the `printButtonSelector` variable to target it.
 
 
-### Displaying Agency name for Printing
 
-The `showAgency` function generates an HTML snippet with the agency name for the print view.
-
-#### Displaying your organisations logo instead
-
-You can display a print friendly version of your organisations logo at the top of the page instead of using the `showAgency` function. 
-[See instructions](#using-your-organisations-logo).
-   
-
-#### Usage
-
-1. Add a container in your HTML or inject it via JavaScript:
-
-   ```javascript
-   import { showAgency } from 'path/to/printready-base.js';
-
-   const agencyName = "AGENCY_NAME";
-    document.body.prepend(showAgency(agencyName));
-   ```   
-   
-2. **Explanation:** It is a web standards requirement to display either the agency name or logo. If you are diaplaying the logo then this is optional. 
-
-#### Example Output
-
-   ```html
-   <div class="printready-agency js-print-only">
-        <p class="print-info-agency"><b>AGENCY_NAME</b></p>
-    </div>
-   ```
-
-
-### Displaying Page Information for Printing
-
-The `showPageInformation` function generates the page title, current date, and URL for the print view.
-
-#### Usage
-
-1. Add a container in your HTML or inject it via JavaScript:
-
-   ```javascript
-   import { showPageInformation } from 'path/to/printready-base.js';
-    
-   document.body.insertAdjacentHTML(
-       'beforeend', 
-       `${showPageInformation()}`
-   );
-   ```   
-   
-   
-2. **Explanation:** The `showPageInformation` function creates an HTML snippet with the page title, todays date and the page URL. The page title and page URL are a ?web standards requirement? [is this covered by default print footer].
-
-3. **Implementation Tips:** 
-- By default the `'h1'` elements content is used for the page title but you can provide a custom selector as the second optional argument to override this.
-
-    ```javascript
-    showPageInformation(siteName, 'custom-selector')
-    ``` 
-
-#### Example Output
-
-   ```html
-   <div class="printready-page-info js-print-only"> 
-       <p><b>Page title:</b> Example Title</p>
-       <p><b>Printed:</b> 11 November 2024</p>
-       <p><b>Printed from:</b> https://example.com/page</p>
-   </div>
-   ```
 
 ### Generating a Printable Link List
-This is not a web standard but it is good practice.  The URLs of links to external websites are included as footnotes in a special "Links" section at the end of the printed page. This is primarily to provide context and help readers know which website a link goes to, since hyperlinks do not work in print. They are not printed immediately following the link text to avoid reducing readability.
+This is optional but it is good practice. The URLs of links to external websites are included as footnotes in a special "Links" section at the end of the printed page. This is primarily to provide context and help readers know which website a link goes to, since hyperlinks do not work in print. They are not printed immediately following the link text to avoid reducing readability. 
 
-By default the URLs of links to other pages on the same site are not included because the context for those links is that same website. Not printing URLS of links to the same site also reduces the number of URLs printed. Internal link can be included by setting the third argument `externalOnly` in `generateListOfPageLinks` to `false`.      
+There are CSS rules in printready-base.css that do dispaly the URL following the link text to printed immediately following the link text as a fallback if the Printable Link List functionality is not implimented.    
+
+
+By default the URLs of links to other pages on the same site are not included because the context for those links is that same website. Not printing URLS of links to the same site also reduces the number of URLs printed. Internal link can be included by setting the third argument `externalOnly` in `generateListOfPageLinks` to `false`.  
+
+
+**NEW**
+This feature is optional, but it’s considered good practice. The URLs of links to external websites are included as footnotes in a special “Links” section at the end of the printed page. This provides helpful context for readers, since hyperlinks do not work in print.
+
+The URLs are not printed immediately after the link text to avoid reducing readability. But as a fallback, CSS rules (set in `printready-base.css`) will display the URL immediately after the link text if the Printable Link List functionality is not implemented.
+
+By default, links to other pages on the same website are excluded from the list, as their context is already clear. Excluding internal links also reduces the number of URLs printed in the list.
+
+To include internal links, set the third argument `externalOnly` in the generateListOfPageLinks function to `false`.
+
 
 #### Usage
 
@@ -290,18 +270,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const linkList = generateListOfPageLinks(
         '.page-content a',   // Example selector for links to include
         '.sidenav a',         // Example selector for links to exclude
-        true                  // Set to 'true' to only include external links
+        true                  // Set to 'true' to only include external links in the list
     );  
 });
 ```
 2. Set `YOUR_RENDER_TARGET` to the CSS selector where you want the page links to appear on the page.
 
 ```javascript
-let renderTarget = 'YOUR_RENDER_TARGET'; // Set this to your render target   
+let renderTarget = 'YOUR_RENDER_TARGET'; 
 ```
 3. The links will be inserted after the render target.
 
-4. **Explanation:** This function filters links based on provided selectors and outputs them in a format suitable for printing. It includes email, phone, and external links by default. 
+4. **Explanation:** This function filters links based on provided selectors and outputs them as a list in a format suitable for printing. It includes email, phone, and external links by default. 
 
 5. **Implementation Tips:** 
 - Make sure the selectors match your DOM structure, and provide a valid exclude selector to prevent unwanted links from being printed.
@@ -314,21 +294,32 @@ let renderTarget = 'YOUR_RENDER_TARGET'; // Set this to your render target
        <h2>Index of Page Links</h2>
        <ol class="js-printready-links-list">
            <li>https://external-link.com</li>
-           <li>Email: contact@example.com</li>
+           <li>Email: contact@example.com - Subject: Example subject</li>
            <li>Phone number: +123456789</li>
        </ol>
    </div>
    ```
 
-### Printing Web Forms (optional)
-While default browser styling for web forms is often good, if your form is embedded within a content management system or utilizes custom markup, its structure might not be clear. In such cases, consider adding styles to ensure it remains readable, well-spaced, and clearly structured when printed. Here are some things to consider:
+## Install Dependencies and view the Example webpage  
+This is optional. The files that are integrated into your website are pre-built and ready to use.
 
-1. **Legibility** - Make sure labels are clearly associated with their corresponding input fields and are separated from other labels and input fields. Consider using bold text or other styling to make labels stand out from the surrounding content.
+1. Open the Print ready folder and run the following command in a terminal:
 
-2. **Clear Visual Grouping** - If needed add spacing so it is easy to distinguish between different parts of the form. 
+```bash
+npm install
+```
 
-## Development Dependencies
-Packages that enhance the development experience but aren't required to impliment the main functionality.
+2. To open the repository folder in a browser (using [Live Server](https://www.npmjs.com/package/live-server)) run:
+```bash
+npm run start
+```
+Note this opens `index.html` in the `example` folder.
+
+### View the Printed Page in the browser  
+
+Toggle between Print and Screen Views either by opening the print dialog (press `Ctrl + P` or `Command + P` on macOS) or by using your browser's Developer Tools and toggling between Print and Screen rendering.
+
+Note that the section at the top of the page and the 'Index of page links' section at the bottom of the example page are dynamically injected using JavaScript.
 
 ### Live server
 The repository includes Live Server for quick testing and viewing changes. It is not required to use PrintReady on your site. To use it, run the following command in your project directory:
