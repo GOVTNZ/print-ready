@@ -91,7 +91,6 @@ It embraces the principle of separation of concerns by applying the print styles
 It is designed to be flexible, separating core styles from site-specific needs and allowing easy customisation across different websites. 
 
 
-
 ## Integration Guide
 
 ### PrintReady '-base' files
@@ -142,47 +141,34 @@ Copy the example CSS and JavaScript files (`printready-site.css` and `printready
     <script src="/path/to/printready-site.js" type="module"></script>
     ```
 
-## Install Dependencies and view the Example webpage  
+## Install Dependencies [move to /docs] 
 This is optional. The files that are integrated into your website are pre-built and ready to use.
 
-1. Open the Print ready folder and run the following command in a terminal:
+## Setup
+Install dependencies (requires NPM):
 
 ```bash
 npm install
 ```
 
-2. To open the repository folder in a browser (using [Live Server](https://www.npmjs.com/package/live-server)) run:
-```bash
-npm run start
-```
-Note this opens `index.html` in the `example` folder.
-
-### View the Printed Page in the browser  
-
-Toggle between Print and Screen Views either by opening the print dialog (press `Ctrl + P` or `Command + P` on macOS) or by using your browser's Developer Tools and toggling between Print and Screen rendering.
-
-Note that the section at the top of the page and the 'Index of page links' section at the bottom of the example page are dynamically injected using JavaScript.
-
 ### Live server
-The repository includes Live Server for quick testing and viewing changes. It is not required to use PrintReady on your site. To use it, run the following command in your project directory:
+Use Live Server to view the repository in your browser. Run this command:  
 
 ```bash
 npm run start
 ```
-Then in the browser navigate to the `example` folder to view an example page.
+Then in the browser navigate to the `/example` folder to view the demo pages.
 
 ### Playwright
-Playwright tests are included for further development and preventing regressions in the print-ready JavaScript functionality. These are **not required** to use PrintReady on your site.
+Playwright tests are included for further development and preventing regressions in the print-ready JavaScript functionality. They are **not needed** to use PrintReady on your site.
 
-To run the tests (after running `npm install`)
-
-1. Navigate to the Print ready folder and run the following command in the terminal:
+To run the tests (after running `npm install`) navigate to the Print ready folder and run the following command in the terminal:
 
 ```bash
 npx playwright install
 ```
 
-2. Then run the following command in the terminal to execute the tests 
+Then run this command to run the tests 
 
 ```bash
 npx playwright test
