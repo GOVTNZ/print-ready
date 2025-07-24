@@ -20,9 +20,35 @@ The [PrintReady repository](https://github.com/GOVTNZ/print-ready/) should be  t
 In the `src` folder are `base` and `site` versions or the CSS and JS files. The `base` files **should not** be changed. Parts of the `site` files **should be** changed to intergrate with your site structure.
 
 ### Basic usage 
-#### Include the Source Files in Your Webpages  
+#### Include the Source Files in Your Webpages
+PrintReady consists of Cascading Style Sheet (CSS) and JavaScript (JS) files  
+
 Link CSS files with the `media="print"` attribute to ensure styles apply only when printing. You can combine the print files in a build step.
 
+In the `src` folder are `base` files:
+* printready-base.css
+* printready-base.js
+
+and `site` files: 
+* printready-site.css
+* printready-site.js
+
+The `base` files **should not** be changed. Parts of the `site` files **should be** changed to intergrate with your site structure. 
+
+### CSS 
+
+#### Seperate screen and print styles
+All CSS files intended for on-screen display need to be served with the `media="screen"` attribute.
+
+The PrintReady CSS files need to be served with the `media="print"` attribute. 
+
+**Note:** You can combine the CSS files into a single file in a build step.
+
+#### Taylor the CSS
+The  `printready-site.css` should be edited to match your website's structure.    
+
+# HERE
+Link to CSS Integration Guide, split out to new doc.
 
 
 
@@ -66,9 +92,19 @@ Integrating PrintReady into your website should ensure compliance with the ['Pri
 ## Integration Guide
 This section explains how to integrate PrintReady into your website to optimize page layouts and styling specifically for print output. 
 
-The [PrintReady repository](https://github.com/GOVTNZ/print-ready/) is intended to be **downloaded or cloned** from GitHub, with the files described below then **copied and pasted** into your web project. The instructions below assume this method of integration.
+The [PrintReady repository](https://github.com/GOVTNZ/print-ready/) is intended to be **downloaded or cloned** from GitHub, with the files described below then **copied and pasted** into your web project.
 
-In the `src` folder are `base` and `site` versions or the CSS and JS files. The `base` files **should not** be changed. Parts of the `site` files **should be** changed to intergrate with your site structure.
+In the `src` folder are `base` files:
+* printready-base.css
+* printready-base.js
+
+and `site` files: 
+* printready-site.css
+* printready-site.js
+
+The `base` files **should not** be changed. Parts of the `site` files **should be** changed to intergrate with your site structure.
+
+
 
 ### Include the Source Files in Your Webpages  
 
