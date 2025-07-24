@@ -1,12 +1,45 @@
 # PrintReady
 
-## Introduction
-
 PrintReady is an optional tool for government agencies, **it is not a mandatory requirement**. 
 
 The PrintReady toolkit simplifies the implementation of print stylesheets that follow good practices. It provides developers with the necessary files and guidance to create print-friendly web pages that align with New Zealand Government Web Standards and deliver an accessible, consistent experience for all users.
 
 This guide provides step-by-step instructions for implementing PrintReady in your website. The tool is open source and welcomes contributions from the all-of-government (AoG) community via GitHub.
+
+
+## Live Demo
+These pages and their assets are in the /example directory 
+
+Examples:
+* Basic webpage without PrintReady [TODO link]
+* Basic webpage with PrintReady applied [TODO link]
+
+## Get started
+The [PrintReady repository](https://github.com/GOVTNZ/print-ready/) should be  to be **downloaded or cloned** from GitHub, with the files described below then **copied and pasted** into your web project. The instructions below assume this method of integration.
+
+In the `src` folder are `base` and `site` versions or the CSS and JS files. The `base` files **should not** be changed. Parts of the `site` files **should be** changed to intergrate with your site structure.
+
+### Basic usage 
+#### Include the Source Files in Your Webpages  
+Link CSS files with the `media="print"` attribute to ensure styles apply only when printing. You can combine the print files in a build step.
+
+
+
+
+1. To integrate the files from the `src` folder of the PrintReady repository into your webpages:
+    * Link CSS files with the `media="print"` attribute to ensure styles apply only when printing. You can combine the print files in a build step.
+    * Link JavaScript files with `type="module"` to enable ES6 module functionality. Keep the JavaScript files separate.
+2. Edit `printready-site.example.css` and `printready-site.example.js` to match your website's structure. 
+   * Remove the `.example` part of the filename after integrating the files into your site structure.
+
+
+---
+
+## Seperate screen and print styles
+Make sure on your webpages all CSS files intended for on-screen display are served with the `media="screen"` attribute.
+
+
+
 
 ## Approach  
 PrintReady leverages the browser’s default stylesheet, which is already effective for printed content, and enhances it only where necessary for example, by managing page layouts to prevent awkward breaks and maintain professional formatting.
