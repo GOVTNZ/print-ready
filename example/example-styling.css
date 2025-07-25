@@ -31,20 +31,3 @@ nav ol li {
   display: block;
   padding-right: 0.5em;
 }
-
-
-header {
-  /* border-color: #4CAF50; Green outline */
-}
-
-nav {
-  /* border-color: #2196F3; Blue outline */
-}
-
-.main-content {
-  /* border-color: #FF9800; Orange outline */
-}
-
-footer {
-  /* border-color: #F44336; Red outline */
-}
