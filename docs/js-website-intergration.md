@@ -1,10 +1,15 @@
 # Javascript Integration Guide
 
+`printready-base.js` provides modular functions to generate print-specific content for your web pages.
+
+`printready-site.js` implients the modular functions in the base file. As detailed below ot should be edited to intergrate with your website.
+
+
 ## Displaying Agency name for Printing
 
-If your printed pages already include your organisation’s logo, then this step is optional. You could also choose to add the example output below as a hardcoded component in your HTML, instead of injecting it via JavaScript.
+**If your printed pages already include your organisation’s logo, then this is optional.** You could also choose to add the example output below as a hardcoded component in your HTML, instead of injecting it via JavaScript.
 
-In either case, be sure to replace `AGENCY_NAME` with the name of your agency or organisation.
+Replace `AGENCY_NAME` with the name of your agency or organisation.
 
 The `showAgency` function generates an HTML snippet containing the agency name for the print view.
 
@@ -40,7 +45,7 @@ The `showPageInformation` function generates a HTML snippet with the page title,
    );
    ```   
 
-### Optionally Set a Custom Page Title Selector
+#### Optionally Set a Custom Page Title Selector
 By default, the content of the first `'h1'` element is used as the page title. You can override this by providing a custom selector as the second optional argument.
 
    ```javascript
@@ -61,7 +66,7 @@ By default, the content of the first `'h1'` element is used as the page title. Y
 
 ## Setting Up a Print Button
 
-This is optional. The `initializePrintButton` function enables a print button on the page, making it visible and functional to trigger the print dialog.
+**This is optional.** The `initializePrintButton` function enables a print button on the page, making it visible and functional to trigger the print dialog.
 
 
 ### Usage
@@ -91,7 +96,7 @@ This is optional. The `initializePrintButton` function enables a print button on
 
 
 ## Generating a Printable Link List
-This feature is optional, but it’s considered good practice. The URLs of links to external websites are included as footnotes in a special “Links” section at the end of the printed page. This provides helpful context for readers, since hyperlinks do not work in print.
+**This is optional, but it’s recommended.** The URLs of links to external websites are included as footnotes in a special “Links” section at the end of the printed page. This provides helpful context for readers, since hyperlinks do not work in print.
 
 The URLs are not printed immediately after the link text to avoid reducing readability. But as a fallback, CSS rules (set in `printready-base.css`) will display the URL immediately after the link text if the Printable Link List functionality is not implemented.
 

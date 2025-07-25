@@ -1,5 +1,11 @@
 # CSS Integration Guide
-The CSS rules include explanatory comments and most rules do not need modification. However, you will need to:
+
+`printready-base.css` generic styles designed to ensure reliable printing while following good practices.
+
+`printready-site.css` contains well-commented styles for components created by the JavaScript functionality and common site elements, such as breadcrumbs. Adjust the selectors in this stylesheet to align with your website's markup.
+
+## Adjusting the selectors
+In `printready-site.css` you will need to:
 
 1. Replace `BREADCRUMBS` with your site's CSS selector for breadcrumbs. 
 
@@ -9,8 +15,7 @@ The CSS rules include explanatory comments and most rules do not need modificati
 
 ## Determining what to hide:
 
-1. Review each page type and component in your website
-2. Apply this principle: "Only print elements that are essential for understanding the page's content or context"
+Review each page type and component in your website. Apply this principle: **"Only print elements that are essential for understanding the page's content or context"**
 
 Common elements to hide include:
 
@@ -21,9 +26,7 @@ Common elements to hide include:
 In some cases, you may need to hide entire sections, while in others, you might only need to hide specific interactive elements within a component.
 
 ## Implimenting the 'print-only' class
-If needed you can also specify HTML elements that *only* show in printed output by adding the `print-only` class to them. 
-
-You would then need to include the following CSS rule in your **screen** stylesheet: 
+If needed you can also specify HTML elements that *only* show in printed output by adding a  `print-only` class to them which would need to be included in your **screen** stylesheet: 
 
 ```CSS
 .print-only { display: none; }     
@@ -34,7 +37,7 @@ The NZ Government Web Standards mandate the display of either the agency name or
 ```html
 <img class="print-only" ...>
 ```
-## Printing Web Forms (optional)
+## Add print styles for Forms (optional)
 While default browser styling for web forms is often good, if your form is embedded within a content management system or utilizes custom markup, its structure might not be clear. In such cases, consider adding styles to ensure it remains readable, well-spaced, and clearly structured when printed. Here are some things to consider:
 
 1. **Legibility** - Make sure labels are clearly associated with their corresponding input fields and are separated from other labels and input fields. Consider using bold text or other styling to make labels stand out from the surrounding content.
