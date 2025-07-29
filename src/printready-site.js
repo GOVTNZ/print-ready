@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Change this HTML structure if necessery.   
         const printedLinksSection = document.createElement('div');
         printedLinksSection.id = 'js-printready-link-urls';
-        printedLinksSection.className = 'js-print-only';
+        printedLinksSection.className = 'print-only';
 
         const heading = document.createElement('h2');
         heading.textContent = 'Index of page links';

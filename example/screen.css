@@ -3,7 +3,7 @@
 }
 
 
-/* Basic webpage styling for screen rendering */
+/* Styling for the on-screen display of example webpages */
 body {
   display: flex;
   flex-direction: column;

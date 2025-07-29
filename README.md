@@ -88,5 +88,10 @@ The `printready-site.js` file should be edited to intergeate with your website.
 * [Meeting the NZ Government Web Standards](docs/meeting-the-nz-govt-web-standards.md)
 * [CSS Integration Guide](docs/css-website-intergration.md)
 * [JavaScript Integration Guide](docs/js-website-intergration.md)
-* [Dependencies](docs/dependencies.md) (if you want to view or edit PrintReady locally.)
+* [Dependencies](docs/dependencies.md) (if you want to view, edit or test PrintReady locally.)
+   * [Live Server](docs/dependencies.md#live-server)
+   * [Playwright](docs/dependencies.md#playwright)
+* Contributing to PrintReady](docs/contributing.md) [todo]
+* [Changelog](docs/changelog.md) [TODO]
+* [License](LICENSE)
 

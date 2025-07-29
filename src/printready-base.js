@@ -24,7 +24,7 @@ export function initializePrintButton(buttonSelector) {
  */
 export function showAgency(agency) {
   const container = document.createElement('div');
-  container.className = 'printready-agency js-print-only';
+  container.className = 'printready-agency print-only';
 
   const paragraph = document.createElement('p');
   paragraph.className = 'print-info-agency';
@@ -55,7 +55,7 @@ export function showPageInformation() {
   }
 
   const container = document.createElement('div');
-  container.className = 'printready-page-info js-print-only';
+  container.className = 'printready-page-info print-only';
 
   const titlePara = document.createElement('p');
   titlePara.className = 'print-info-title';
@@ -149,7 +149,7 @@ function addReferenceToLink(linkElement, refNum) {
   linkElement.classList.add('js-hasPrintLinkRef');
 
   const sup = document.createElement('sup');
-  sup.className = 'js-print-only js-printready-link-reference';
+  sup.className = 'print-only js-printready-link-reference';
   sup.textContent = `[Link: ${refNum}]`;
 
   linkElement.insertAdjacentElement('afterend', sup);
