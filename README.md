@@ -10,8 +10,8 @@ This guide provides step-by-step instructions for implementing PrintReady in you
 These pages and their assets are in the /example directory. Only the print view changes the screen view is identical.   
 
 Examples:
-* Basic webpage without PrintReady [TODO link]
-* Basic webpage with PrintReady applied [TODO link]
+* [Basic webpage with PrintReady applied](https://govtnz.github.io/print-ready/with-printready.html)
+* [Basic webpage without PrintReady](https://govtnz.github.io/print-ready/without-printready.html)
 
 ### View the Printed Pages in your browser  
 
