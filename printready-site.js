@@ -1,5 +1,5 @@
 // Importing functions from the 'printready-base' file
-import { showAgency, initializePrintButton, showPageInformation, generateListOfPageLinks } from '../src/printready-base.js' 
+import { showAgency, initializePrintButton, showPageInformation, generateListOfPageLinks } from './printready-base.js';
 
 // Initialize the DOMContentLoaded event listener to ensure the script runs after the page is fully loaded (optional)
 document.addEventListener('DOMContentLoaded', () => {
