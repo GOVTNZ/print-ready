@@ -1,0 +1,168 @@
+/* 
+  PrntReady site specific Stylesheet
+  Note: This stylesheet aims to help provide consistent styling for print across government websites. 
+  Adjust these styles as needed for your website's specific structure and content.
+  
+  Optional: Styles marked "Optional" can be removed if they are not relevant to your site.
+*/
+
+/*Hide elements not needed in print
+  Replace 'INSERT_ELEMENTS_TO_HIDE' with the CSS selectors of the elements to hide when printing on youe site. 
+
+  Guidance: 3.3.3 Printed web pages should not include the following web content:
+  - primary content navigation
+  - secondary content navigation
+  - persistent search form
+  - decorative elements.
+  reference: https://www.digital.govt.nz/standards-and-guidance/nz-government-web-standards/web-usability-standard-1-4#printable-web-pages
+*/
+INSERT_ELEMENTS_TO_HIDE {
+  display: none;
+}
+
+/* Optional: 
+   Specify any images you explictly want to show in print.
+   These should only be images that are essential to understanding the content. 
+   Replace 'IMAGES_TO_SHOW' with your site's CSS selectors.
+*/
+/* IMAGES_TO_SHOW {
+    display: block;
+}
+*/
+
+/* Optional:
+  Depending on your content policy for abbreviations. See readme
+  Shows the full title next to abbreviations in print */
+/* abbr[title]:after {
+    content: " (" attr(title) ")"; 
+  } */
+
+
+/* Layout and appearance of the "Agency" section printed with showAgency() */
+.printready-agency {
+  font-size: 1.25rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  padding-right: 1.25rem;
+  border-bottom: 1px solid black;
+  display: block;
+}
+.printready-agency p {
+  margin: 0;
+}
+
+/* Layout and appearance of the "site details" section printed with showPageInformation() */
+.printready-page-info {
+  padding-bottom: 1.25rem;
+  padding-right: 1.25rem;
+  margin-top: 1.25rem;
+  border-top: 1px solid black;
+  display: block;
+}
+
+.printready-page-info p {
+  margin: 0.5em 0;
+}
+
+.printready-page-info p:last-child {
+  margin-bottom: 0; /* Remove bottom margin from the last paragraph */
+}
+
+/* Ensure padding in open details elements */
+details summary {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+/* Optional: Styling for headings used inside the detail's <summary> element */
+details summary h2, details summary h3, details summary h4, details summary h5, details summary h6 {
+  display: inline; /* Display inline for compact formatting */
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/* Breadcrumbs 
+   Replace 'BREADCRUMBS' with your site's CSS selector for breadcrumbs.
+*/
+BREADCRUMBS { 
+  padding-top: 1em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+BREADCRUMBS:before {
+  content: "You are here:"; /* Breadcrumb heading for print clarity */
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+BREADCRUMBS ol, BREADCRUMBS ul {
+  margin: 0;
+  padding: 0;
+  list-style: outside none none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+/* Remove underlines from breadcrumb links */
+BREADCRUMBS ol li a, BREADCRUMBS ul li a {
+  border-bottom: none;
+  text-decoration: none;
+}
+
+/* Optional: Adds custom dividers for breadcrumbs */
+BREADCRUMBS ol li:not(:last-child):after, BREADCRUMBS ul li:not(:last-child):after {
+  content: "/";
+  padding: 0 0.5em 0 0.25em;
+}
+
+/* Styling for formatted list of link URLs 
+    Replace '#js-printready-link-urls' if the selector set for this in printready-site.js is different   
+*/
+#js-printready-link-urls {
+  border-top: 1px solid #D2D4D6;
+  margin-top: 2rem;
+  padding-top: 1rem;
+}
+
+ol.js-printready-links-list li:last-child {
+  padding-bottom: 0;
+}
+
+#js-printready-link-urls h2 {
+  margin: 0;
+}
+
+ol.js-printready-links-list {
+  margin: 0;
+  padding-left: 0.5cm;
+  padding-top: 0.25cm;
+}
+ol.js-printready-links-list li {
+  margin-top: 0;
+  padding-top: 0.25cm;
+  padding-bottom: 0.25cm;
+}
+
+/* Styling for the link reference (e.g., [Link: 1]) */
+.js-printready-link-reference {
+  font-weight: normal;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.8rem;
+  padding-left: 0.05cm;
+}
+
+/* Definition list styles */
+dl dt {
+  font-weight: bold;
+  margin-top: 0.1em;
+}
+dl dt:first-child {
+  margin-top: 0;
+}
+dl dd {
+  margin-left: 0;
+}
