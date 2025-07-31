@@ -18,14 +18,11 @@ Examples:
 Toggle between Print and Screen Views either by opening the print preview dialog (press `Ctrl + P` or `Command + P` on macOS) or by using your browser's Developer Tools and toggling between Print and Screen rendering.
 
 ## Get started
-The [PrintReady repository](https://github.com/GOVTNZ/print-ready/) should be  to be **downloaded or cloned** from GitHub, with the files described below then **copied and pasted** into your web project. The instructions below assume this method of integration.
+The [PrintReady repository](https://github.com/GOVTNZ/print-ready/) should be  to be **downloaded or cloned** from GitHub, with the files described below then **copied and pasted** into your web project. The instructions assume this method of integration.
 
-In the `src` folder are `base` and `site` versions or the CSS and JS files. The `base` files **should not** be changed. Parts of the `site` files **should be** changed to intergrate with your site structure.
 
-## Basic usage 
 ### Include the Source Files in Your Webpages
 PrintReady consists of Cascading Style Sheet (CSS) and JavaScript (JS) files.  
-
 
 In the `src` folder there are `base` files:
 * printready-base.css
@@ -44,11 +41,10 @@ The `base` files **should not** be changed. Parts of the `site` files **should b
 `printready-base.js` provides modular functions that can be imported and used to generate print-specific content for your web pages.
 
 #### Site files 
-Use the 'site' files to customize CSS styling and JavaScript functionality to suit your site's structure and requirements.
+Use the 'site' files to customize CSS styling your site's structure and include the JavaScript functionality you require.
 
 
 ### CSS 
-
 
 The PrintReady CSS files need to be served with the `media="print"` attribute. 
 
@@ -64,7 +60,7 @@ All CSS files intended for on-screen display need to be served with the `media="
 <link rel="stylesheet" href="screen-styles.css" media="screen">
 ``` 
 
-#### Taylor the CSS
+#### Tayloring the CSS
 The  `printready-site.css` file should be edited to match your website's structure.    
 
 [View the CSS Integration Guide](docs/css-website-intergration.md)
@@ -80,18 +76,20 @@ Link JavaScript files with `type="module"` to enable ES6 module functionality. S
 note: Scripts with `type="module"` also behave as if they have the `defer` attribute, so they won't block page rendering while being fetched and are executed only after the HTML is fully parsed.
 
 #### Taylor the Javascript
-The `printready-site.js` file should be edited to intergeate with your website.
+The `printready-site.js` file should be edited to intergeate with your website structure.
 
 [View the JavaScript Integration Guide](docs/js-website-intergration.md)
 
 ## Documentation
-* [Meeting the NZ Government Web Standards](docs/meeting-the-nz-govt-web-standards.md)
+* [Our approach](docs/approach.md)
 * [CSS Integration Guide](docs/css-website-intergration.md)
 * [JavaScript Integration Guide](docs/js-website-intergration.md)
 * [Dependencies](docs/dependencies.md) (if you want to view, edit or test PrintReady locally.)
    * [Live Server](docs/dependencies.md#live-server)
    * [Playwright](docs/dependencies.md#playwright)
-* Contributing to PrintReady](docs/contributing.md) [todo]
-* [Changelog](docs/changelog.md) [TODO]
+* [Meeting the NZ Government Web Standards](docs/meeting-the-nz-govt-web-standards.md)
+* [Contributing](docs/contributing.md)
+* [Changelog](docs/changelog.md)
 * [License](LICENSE)
 
+ 
