@@ -115,8 +115,19 @@ export function generateListOfPageLinks(
     return null;
   }
 
-  const baseUrl = window.location.origin + '/';
-  let selectedLinks = document.querySelectorAll(linksSelector);
+  const baseUrl = window.location.origin + '/'; // TODO: remove as called directly in in handleLink 
+  
+  // let selectedLinks = document.querySelectorAll(linksSelector);
+
+    let selectedLinks;
+  try {
+    selectedLinks = document.querySelectorAll(linksSelector);
+  } catch (e) {
+    console.error(`Invalid linksSelector: ${linksSelector}`, e);
+    return null;
+  }
+
+
 
   if (excludeLinksSelector) {
     selectedLinks = Array.from(selectedLinks).filter(link => !link.matches(excludeLinksSelector));
