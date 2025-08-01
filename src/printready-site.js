@@ -4,7 +4,7 @@ import { showAgency, initializePrintButton, showPageInformation, generateListOfP
 // Initialize the DOMContentLoaded event listener to ensure the script runs after the page is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Initialize print button if it exists on the page. This is fro progressive enhancement and assumes the button is rendered with the 'hidden' html attribute.  
+    // Initialize print button if it exists on the page. This is for progressive enhancement and assumes the button is rendered with the 'hidden' html attribute.  
     const printButtonSelector = "#print-page-button"; // Selector for print button - update as needed
     if (document.querySelector(printButtonSelector)) {
         initializePrintButton(printButtonSelector);
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Insert printable page information at the bottom of the document (optional, see README.md for more details)
      document.body.appendChild(showPageInformation());
 
-    /* Genrate a list of links */
+    /* Generate a list of links */
     // Initialize a variable for the list of links
     let listOfLinks = null;
 
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (listOfLinks !== null) {
         // Define the printed links section which lists the URLs of the selected links
-        // Change this HTML structure if necessery.   
+        // Change this HTML structure if necessary.   
         const printedLinksSection = document.createElement('div');
         printedLinksSection.id = 'js-printready-link-urls';
         printedLinksSection.className = 'print-only';

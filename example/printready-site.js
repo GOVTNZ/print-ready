@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (listOfLinks !== "") {
         // Define the printed links section which lists the URLs of the selected links
-        // Change this HTML structure if necessery.   
+        // Change this HTML structure if necessary.   
         const printedLinksSection = document.createElement('div');
         printedLinksSection.id = 'js-printready-link-urls';
         printedLinksSection.className = 'print-only';

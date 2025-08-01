@@ -1,5 +1,5 @@
 /* 
-  PrntReady site specific Stylesheet
+    PrintReady site specific Stylesheet
   Note: This stylesheet aims to help provide consistent styling for print across government websites. 
   Adjust these styles as needed for your website's specific structure and content.
   
@@ -7,7 +7,7 @@
 */
 
 /*Hide elements not needed in print
-  Replace 'INSERT_ELEMENTS_TO_HIDE' with the CSS selectors of the elements to hide when printing on youe site. 
+    Replace 'INSERT_ELEMENTS_TO_HIDE' with the CSS selectors of the elements to hide when printing on your site.
 
   Guidance: 3.3.3 Printed web pages should not include the following web content:
   - primary content navigation
@@ -22,7 +22,7 @@ footer {
 }
 
 /* Optional: 
-   Specify any images you explictly want to show in print.
+     Specify any images you explicitly want to show in print.
    These should only be images that are essential to understanding the content. 
    Replace 'IMAGES_TO_SHOW' with your site's CSS selectors.
 */
