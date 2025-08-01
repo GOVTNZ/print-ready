@@ -56,7 +56,14 @@ export function showAgency(agency) {
  * @returns {HTMLElement} - A DOM element with page title, current date, and page URL for printing.
  */
 export function showPageInformation() {
-  const webpageUrl = window.location.href;
+  let webpageUrl = undefined;
+  
+  if (typeof window.location !== 'object') {
+    console.error('window.location is unavailable.');
+  } else {
+    webpageUrl = window.location.href
+  }
+  
   const pageTitle = document.title || 'Untitled Page';
   const options = { day: 'numeric', month: 'long', year: 'numeric' };
   const currentDate = new Date().toLocaleDateString('en-GB', options);
@@ -76,13 +83,16 @@ export function showPageInformation() {
   datePara.className = 'print-info-date';
   datePara.innerHTML = `<b>Printed:</b> ${currentDate}`;
 
-  const urlPara = document.createElement('p');
-  urlPara.className = 'print-info-url';
-  urlPara.innerHTML = `<b>Printed from:</b> ${webpageUrl}`;
-
   container.appendChild(titlePara);
   container.appendChild(datePara);
-  container.appendChild(urlPara);
+  
+  if ( webpageUrl !== undefined ) {
+    const urlPara = document.createElement('p');
+    urlPara.className = 'print-info-url';
+    urlPara.innerHTML = `<b>Printed from:</b> ${webpageUrl}`;
+    container.appendChild(urlPara);
+  }  
+
 
   return container;
 }
