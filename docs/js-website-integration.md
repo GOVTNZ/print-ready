@@ -2,7 +2,7 @@
 
 `printready-base.js` provides modular functions to generate print-specific content for your web pages.
 
-`printready-site.js` implients the modular functions in the base file. As detailed below ot should be edited to integrate with your website.
+`printready-site.js` implements the modular functions in the base file. As detailed below, it should be edited to integrate with your website.
 
 
 ## Displaying Agency name for Printing
@@ -130,7 +130,7 @@ let renderTarget = 'YOUR_RENDER_TARGET';
 
 5. **Implementation Tips:** 
 - Make sure the selectors match your DOM structure, and provide a valid exclude selector to prevent unwanted links from being printed.
-- Adjust the include/exclude selectors as needed to account for different page types. For instance, the homepage may have a different structure compared to standard pages. See the implimentation of `generateListOfPageLinks` in `printready-site.js`  which uses a conditional statement to handle these variations.
+- Adjust the include/exclude selectors as needed to account for different page types. For instance, the homepage may have a different structure compared to standard pages. See the implementation of `generateListOfPageLinks` in `printready-site.js`  which uses a conditional statement to handle these variations.
 
 ### Example Output
 

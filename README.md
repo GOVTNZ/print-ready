@@ -18,7 +18,7 @@ Examples:
 Toggle between Print and Screen Views either by opening the print preview dialog (press `Ctrl + P` or `Command + P` on macOS) or by using your browser's Developer Tools and toggling between Print and Screen rendering.
 
 ## Get started
-The [PrintReady repository](https://github.com/GOVTNZ/print-ready/) should be  to be **downloaded or cloned** from GitHub, with the files described below then **copied and pasted** into your web project. The instructions assume this method of integration.
+The [PrintReady repository](https://github.com/GOVTNZ/print-ready/) should be **downloaded or cloned** from GitHub, with the files described below then **copied and pasted** into your web project. The instructions assume this method of integration.
 
 
 ### Include the Source Files in Your Webpages
@@ -53,7 +53,7 @@ The PrintReady CSS files need to be served with the `media="print"` attribute.
    ```
 **Note:** You can combine the 2 PrintReady CSS files into a single file in a build step.
 
-#### Seperate screen and print styles
+#### Separate screen and print styles
 All CSS files intended for on-screen display need to be served with the `media="screen"` attribute.
 
 ```html
@@ -75,15 +75,15 @@ Link JavaScript files with `type="module"` to enable ES6 module functionality. S
 
 note: Scripts with `type="module"` also behave as if they have the `defer` attribute, so they won't block page rendering while being fetched and are executed only after the HTML is fully parsed.
 
-#### Taylor the Javascript
-The `printready-site.js` file should be edited to intergeate with your website structure.
+#### Tailor the Javascript
+The `printready-site.js` file should be edited to integrate with your website structure.
 
 [View the JavaScript Integration Guide](docs/js-website-intergration.md)
 
 ## Documentation
 * [Our approach](docs/approach.md)
-* [CSS Integration Guide](docs/css-website-intergration.md)
-* [JavaScript Integration Guide](docs/js-website-intergration.md)
+* [CSS Integration Guide](docs/css-website-integration.md)
+* [JavaScript Integration Guide](docs/js-website-integration.md)
 * [Dependencies](docs/dependencies.md) (if you want to view, edit or test PrintReady locally.)
    * [Live Server](docs/dependencies.md#live-server)
    * [Playwright](docs/dependencies.md#playwright)

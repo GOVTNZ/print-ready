@@ -11,7 +11,7 @@ npm install
 ```
 
 ### Live server
-Use Live Server to view the repository in your browser. Run this command:  
+To view the repository in your browser using Live Server, run this command:
 
 ```bash
 npm run start
@@ -27,7 +27,7 @@ To run the tests (after running `npm install`) navigate to the Print ready folde
 npx playwright install
 ```
 
-Then run this command to run the tests 
+Then run the following command to execute the tests 
 
 ```bash
 npx playwright test

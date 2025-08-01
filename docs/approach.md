@@ -17,7 +17,7 @@ We follow the principle: "Only print elements that are essential for understandi
 PrintReady leverages the browser's existing print capabilities rather than fighting against them. We enhance the default browser print stylesheet only where necessary, such as managing page layouts to prevent awkward breaks and maintaining professional formatting.
 
 ### Separation of Concerns
-The toolkit reqires separate print styles from screen styles using CSS media queries. This ensures:
+The toolkit requires separate print styles from screen styles using CSS media queries. This ensures:
 
 * Print styles only affect printed output
 * Screen styles only affect on-screen display
