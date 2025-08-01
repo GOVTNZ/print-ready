@@ -29,6 +29,11 @@ export function initializePrintButton(buttonSelector) {
  * @returns {HTMLElement} - A DOM element containing the agency information.
  */
 export function showAgency(agency) {
+  if (typeof agency !== 'string' || agency.trim() === '') {
+    console.error('Invalid agency name provided to showAgency.');
+    return null;
+  }
+
   const container = document.createElement('div');
   container.className = 'printready-agency print-only';
 
