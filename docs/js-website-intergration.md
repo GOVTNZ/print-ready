@@ -2,7 +2,7 @@
 
 `printready-base.js` provides modular functions to generate print-specific content for your web pages.
 
-`printready-site.js` implients the modular functions in the base file. As detailed below ot should be edited to intergrate with your website.
+`printready-site.js` implients the modular functions in the base file. As detailed below ot should be edited to integrate with your website.
 
 
 ## Displaying Agency name for Printing

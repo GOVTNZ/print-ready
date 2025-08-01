@@ -8,7 +8,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Added
 - Initial release of PrintReady toolkit
 - Base CSS and JavaScript files for print functionality
-- Site-specific customization files
+- Site-specific customisation files
 - Live demo examples
 - Documentation for CSS and JavaScript integration
 

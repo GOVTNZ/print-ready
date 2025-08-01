@@ -32,7 +32,7 @@ and `site` files:
 * printready-site.css
 * printready-site.js
 
-The `base` files **should not** be changed. Parts of the `site` files **should be** changed to intergrate with your site structure. 
+The `base` files **should not** be changed. Parts of the `site` files **should be** changed to integrate with your site structure. 
 
 #### Base files
 
@@ -41,7 +41,7 @@ The `base` files **should not** be changed. Parts of the `site` files **should b
 `printready-base.js` provides modular functions that can be imported and used to generate print-specific content for your web pages.
 
 #### Site files 
-Use the 'site' files to customize CSS styling your site's structure and include the JavaScript functionality you require.
+Use the 'site' files to customise CSS styling your site's structure and include the JavaScript functionality you require.
 
 
 ### CSS 
@@ -60,7 +60,7 @@ All CSS files intended for on-screen display need to be served with the `media="
 <link rel="stylesheet" href="screen-styles.css" media="screen">
 ``` 
 
-#### Tayloring the CSS
+#### Tailoring the CSS
 The  `printready-site.css` file should be edited to match your website's structure.    
 
 [View the CSS Integration Guide](docs/css-website-intergration.md)
