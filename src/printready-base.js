@@ -6,14 +6,20 @@ export function initializePrintButton(buttonSelector) {
   const printButton = document.querySelector(buttonSelector);
 
   if (printButton) {
-    printButton.addEventListener('click', (event) => {
-      window.print();
-      event.preventDefault();
-    });
-    printButton.hidden = false;
+
+    if (typeof window.print === 'function') {
+      printButton.addEventListener('click', (event) => {
+        window.print();
+        event.preventDefault();
+      });
+      printButton.hidden = false;
+    } else {
+      console.error('window.print is not available in this environment.');
+    }
+
   } else {
     console.warn('Print button not found');
-  }   
+  }
 }
 
 
