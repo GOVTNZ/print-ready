@@ -6,6 +6,6 @@ All project communication happens exclusively through standard GitHub channels:
 
 * **Issues** for bug reports, feature requests and suggested documentation changes
 * **Pull Requests** for code contributions and documentation improvements
-* **Discussions** for feedback, brainstorming and general questionss 
+* **Discussions** for feedback, brainstorming and general questions 
 
 We do not provide email support or alternative contact methods - please use the GitHub repository for all project-related communication.

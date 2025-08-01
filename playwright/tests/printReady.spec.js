@@ -52,7 +52,7 @@ test('Check printed page details', async ({ page }) => {
   await expect(printedPageDetails.locator('p.print-info-url')).toHaveText(`Printed from: ${config.use.baseURL}`); // use 'baseurl' value set in playwright.config.js
 });
 
- // Note: This test will fail if the generatePrintableLinkList externalOnly argument is set to true.
+ // Note: This test will fail if the 'externalOnly' argument is set to true in the 'generatePrintableLinkList' function.
  test('Check Internal link is listed', async ({ page }) => {
   const link = page.getByRole('link', { name: 'Internal link' });
   await expect(link).toHaveClass('js-hasPrintLinkRef');
