@@ -115,31 +115,29 @@ export function generateListOfPageLinks(
     return null;
   }
 
+  document.querySelectorAll(undefined).length
+
   const baseUrl = window.location.origin + '/'; // TODO: remove as called directly in in handleLink 
   
-  // let selectedLinks = document.querySelectorAll(linksSelector);
-
-    let selectedLinks;
-  try {
-    selectedLinks = document.querySelectorAll(linksSelector);
-  } catch (e) {
-    console.error(`Invalid linksSelector: ${linksSelector}`, e);
+  let selectedLinks = document.querySelectorAll(linksSelector);
+  
+  if (!selectedLinks.length) {
+    console.warn('No elements found matching the provided linksSelector.');
     return null;
   }
-
-
 
   if (excludeLinksSelector) {
     selectedLinks = Array.from(selectedLinks).filter(link => !link.matches(excludeLinksSelector));
   }
-
-  if (!selectedLinks.length) {
+  
+    if (!selectedLinks.length) {
+    console.warn('No elements remain after applying excludeLinksSelector filter.');
     return null;
   }
 
   const linksToPrint = [];
   let referenceNumber = 1;
-
+  
   selectedLinks.forEach((linkElement) => {
     const formattedLink = handleLink(linkElement, externalOnly);
     if (formattedLink) {
@@ -148,6 +146,11 @@ export function generateListOfPageLinks(
       referenceNumber++;
     }
   });
+  
+  if (!linksToPrint.length) {
+    console.warn('No valid links found to print after processing the selected elements.');
+    return null;
+  }
 
   return outputPrintedLinks(linksToPrint);
 }

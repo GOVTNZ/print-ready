@@ -42,7 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
         default:
             listOfLinks = generateListOfPageLinks(
                 // '.main-content a', // Links to include
-                undefined, // Links to include
+                // '#OldSchoolAnchor', // Links to include
+                // undefined, // Links to include
                 '.sidenav a', // Links to exclude
                 false // Only include external links, setting to 'false' will also include internal links. Mailto and Tel links are always included, anchor links are always excluded  
             );
@@ -51,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (listOfLinks !== "" && listOfLinks !== null) {
         
-        debugger;
         
         // Define the printed links section which lists the URLs of the selected links
         // Change this HTML structure if necessary.   
