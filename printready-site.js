@@ -14,7 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Insert printable page information at the top of the document (optional, can use a logo instead, see README.md for more details)
     // You can choose to display a print friendly version of your organisations logo instead.
     const agencyName = "PrintReady Example Site"; // Replace with the name of your site when printing.
-    document.body.prepend(showAgency(agencyName));
+    const agencyComponent = showAgency(agencyName); 
+
+    if( agencyComponent !== null ) {
+        document.body.prepend(showAgency(agencyName));
+    } 
    
     // Insert printable page information at the bottom of the document (optional, see README.md for more details)
     document.body.appendChild(showPageInformation());
@@ -44,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             break;
     }
 
-    if (listOfLinks !== "") {
+    if (listOfLinks !== "" && listOfLinks !== null) {
         // Define the printed links section which lists the URLs of the selected links
         // Change this HTML structure if necessery.   
         const printedLinksSection = document.createElement('div');

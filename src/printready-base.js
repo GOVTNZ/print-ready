@@ -6,14 +6,20 @@ export function initializePrintButton(buttonSelector) {
   const printButton = document.querySelector(buttonSelector);
 
   if (printButton) {
-    printButton.addEventListener('click', (event) => {
-      window.print();
-      event.preventDefault();
-    });
-    printButton.hidden = false;
+
+    if (typeof window.print === 'function') {
+      printButton.addEventListener('click', (event) => {
+        window.print();
+        event.preventDefault();
+      });
+      printButton.hidden = false;
+    } else {
+      console.error('window.print is not available in this environment.');
+    }
+
   } else {
     console.warn('Print button not found');
-  }   
+  }
 }
 
 
@@ -23,6 +29,11 @@ export function initializePrintButton(buttonSelector) {
  * @returns {HTMLElement} - A DOM element containing the agency information.
  */
 export function showAgency(agency) {
+  if (typeof agency !== 'string' || agency.trim() === '') {
+    console.error('Invalid agency name provided to showAgency.');
+    return null;
+  }
+
   const container = document.createElement('div');
   container.className = 'printready-agency print-only';
 
@@ -45,7 +56,14 @@ export function showAgency(agency) {
  * @returns {HTMLElement} - A DOM element with page title, current date, and page URL for printing.
  */
 export function showPageInformation() {
-  const webpageUrl = window.location.href;
+  let webpageUrl = undefined;
+  
+  if (typeof window.location !== 'object') {
+    console.error('window.location is unavailable.');
+  } else {
+    webpageUrl = window.location.href
+  }
+  
   const pageTitle = document.title || 'Untitled Page';
   const options = { day: 'numeric', month: 'long', year: 'numeric' };
   const currentDate = new Date().toLocaleDateString('en-GB', options);
@@ -65,13 +83,16 @@ export function showPageInformation() {
   datePara.className = 'print-info-date';
   datePara.innerHTML = `<b>Printed:</b> ${currentDate}`;
 
-  const urlPara = document.createElement('p');
-  urlPara.className = 'print-info-url';
-  urlPara.innerHTML = `<b>Printed from:</b> ${webpageUrl}`;
-
   container.appendChild(titlePara);
   container.appendChild(datePara);
-  container.appendChild(urlPara);
+  
+  if ( webpageUrl !== undefined ) {
+    const urlPara = document.createElement('p');
+    urlPara.className = 'print-info-url';
+    urlPara.innerHTML = `<b>Printed from:</b> ${webpageUrl}`;
+    container.appendChild(urlPara);
+  }  
+
 
   return container;
 }
@@ -94,20 +115,29 @@ export function generateListOfPageLinks(
     return null;
   }
 
-  const baseUrl = window.location.origin + '/';
+  document.querySelectorAll(undefined).length
+
+  const baseUrl = window.location.origin + '/'; // TODO: remove as called directly in in handleLink 
+  
   let selectedLinks = document.querySelectorAll(linksSelector);
+  
+  if (!selectedLinks.length) {
+    console.warn('No elements found matching the provided linksSelector.');
+    return null;
+  }
 
   if (excludeLinksSelector) {
     selectedLinks = Array.from(selectedLinks).filter(link => !link.matches(excludeLinksSelector));
   }
-
-  if (!selectedLinks.length) {
+  
+    if (!selectedLinks.length) {
+    console.warn('No elements remain after applying excludeLinksSelector filter.');
     return null;
   }
 
   const linksToPrint = [];
   let referenceNumber = 1;
-
+  
   selectedLinks.forEach((linkElement) => {
     const formattedLink = handleLink(linkElement, externalOnly);
     if (formattedLink) {
@@ -116,6 +146,11 @@ export function generateListOfPageLinks(
       referenceNumber++;
     }
   });
+  
+  if (!linksToPrint.length) {
+    console.warn('No valid links found to print after processing the selected elements.');
+    return null;
+  }
 
   return outputPrintedLinks(linksToPrint);
 }
