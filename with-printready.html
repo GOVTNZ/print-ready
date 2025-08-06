@@ -23,10 +23,11 @@
         </ol>
     </nav>
     
-    <div class="main-content">
-        <h1>Example page with PrintReady</h1>
+<div class="main-content">
+        <h1>This is a test page with PrintReady applied</h1>
         <p>To see it in action, either open the print preview dialog by pressing <kbd>Ctrl</kbd> + <kbd>P</kbd> (on Windows) or <kbd>Command</kbd> + <kbd>P</kbd> (on macOS), or click the button labeled "Example print button". You can also use your browser’s Developer Tools to toggle between print and screen rendering modes.</p>
 
+        <button id="print-page-button" hidden>Example Print button</button>
 
         <h2>Test links</h2>
         
@@ -50,8 +51,20 @@
             <dd>Definition for term 2</dd>
         </dl>
 
-        <button id="print-page-button" hidden>Example Print button</button>
+        <h3>Details component</h3>
+        <details>
+            <summary>Details summary</summary>
+            <div>
+                <p>Some content in the details element</p>
+            </div>
+        </details> 
 
+        <details>
+            <summary><h4>Example Details summary with a HTML heading</h4></summary>
+            <div>
+                <p>Some content is the details element</p>
+            </div>
+        </details> 
 
     </div>
 
