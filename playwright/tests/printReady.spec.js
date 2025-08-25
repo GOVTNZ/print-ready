@@ -44,7 +44,7 @@ test('Check Mailto link is listed', async ({ page }) => {
 test('Check printed page details', async ({ page }) => {
   const printedPageDetails = page.locator('.printready-page-info');
 
-  await expect(printedPageDetails.locator('p.print-info-title')).toHaveText('Page title: Print ready test page');
+  await expect(printedPageDetails.locator('p.print-info-title')).toHaveText('Page title: PrintReady');
   
   const options = { day: 'numeric', month: 'long', year: 'numeric' };
   const currentDate = new Date().toLocaleDateString('en-GB', options);
