@@ -16,8 +16,6 @@ The `showAgency` function generates an HTML snippet containing the agency name f
 ### Usage
 
    ```javascript
-   import { showAgency } from 'path/to/printready-base.js';
-
    const agencyName = "AGENCY_NAME";
     document.body.prepend(showAgency(agencyName));
    ```   
@@ -37,20 +35,11 @@ The `showPageInformation` function generates a HTML snippet with the page title,
 ### Usage
 
    ```javascript
-   import { showPageInformation } from 'path/to/printready-base.js';
-    
    document.body.insertAdjacentHTML(
        'beforeend', 
        `${showPageInformation()}`
    );
    ```   
-
-#### Optionally Set a Custom Page Title Selector
-By default, the content of the first `'h1'` element is used as the page title. You can override this by providing a custom selector as the second optional argument.
-
-   ```javascript
-   showPageInformation(siteName, 'custom-page-title-selector')
-   ``` 
 
 ### Example Output
 
@@ -80,17 +69,11 @@ By default, the content of the first `'h1'` element is used as the page title. Y
 2. Call `initializePrintButton` with the button's CSS selector:
 
    ```javascript
-   import { initializePrintButton } from 'path/to/printready-base.js';
-
-   document.addEventListener('DOMContentLoaded', () => {
-        const printButtonSelector = "#print-page-button";
-        if (document.querySelector(printButtonSelector)) {
-            initializePrintButton(printButtonSelector);
-        }
-   });
+    const printButtonSelector = "#print-page-button";
+    initializePrintButton(printButtonSelector);
    ```   
    
-3. **Explanation:** The function checks if the button exists, adds a `click` event to trigger printing, and makes it visible.
+3. **Explanation:** The function attempts to locate the element defined by `printButtonSelector`. If the element is found, it adds a `click` event to trigger printing and makes the button visible; otherwise (if the button doesn't exist), it logs a warning in the browser's console.
 
 4. **Implementation Tips:** If using an existing button ensure it has the `hidden` attribute and update the `printButtonSelector` variable to target it.
 
@@ -106,31 +89,28 @@ To include internal links, set the third argument `externalOnly` in the generate
 
 ### Usage
 
-1. Add the following code to generate and insert the list of links:
+1. Use the following code to generate and insert the list of links:
 
 ```javascript
-import { generateListOfPageLinks } from 'path/to/printready-base.js';
-
-document.addEventListener('DOMContentLoaded', () => {
-    const linkList = generateListOfPageLinks(
-        '.page-content a',   // Example selector for links to include
-        '.sidenav a',         // Example selector for links to exclude
-        true                  // Set to 'true' to only include external links in the list
-    );  
-});
+    const includeSelectors = 'INCLUDE_LINKS_SELECTOR'; // CSS selectors used to define the **initial collection** of links.
+    const excludeSelectors = 'EXCLUDE_LINKS_SELECTOR'; // CSS selectors used to **exclude** links ONLY from the **initial collection** above. Value can be "null" or ''. 
+    const onlyShowExternalLinks = true; // If true, restricts the final list to external links only.
+    
+    // Determine which links to include/exclude based on page type or specific needs
+    const listOfLinks = generateListOfPageLinks( includeSelectors,   excludeSelectors, onlyShowExternalLinks); 
 ```
 2. Set `YOUR_RENDER_TARGET` to the CSS selector where you want the page links to appear on the page.
 
 ```javascript
 let renderTarget = 'YOUR_RENDER_TARGET'; 
 ```
-3. The links will be inserted after the render target.
+3. The links will be inserted *after* the render target.
 
 4. **Explanation:** This function filters links based on provided selectors and outputs them as a list in a format suitable for printing. It includes email, phone, and external links by default. 
 
 5. **Implementation Tips:** 
 - Make sure the selectors match your DOM structure, and provide a valid exclude selector to prevent unwanted links from being printed.
-- Adjust the include/exclude selectors as needed to account for different page types. For instance, the homepage may have a different structure compared to standard pages. See the implementation of `generateListOfPageLinks` in `printready-site.js`  which uses a conditional statement to handle these variations.
+- If necessary, use a conditional statement (if/else or switch) to dynamically assign the link selectors or or the render target based on the page type. This way you can cover the differences in structure between pages, like the homepage and a regular page.
 
 ### Example Output
 

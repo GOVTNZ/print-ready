@@ -6,10 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize print button if it exists on the page. This is for progressive enhancement and assumes the button is rendered with the 'hidden' html attribute.  
     const printButtonSelector = "#print-page-button"; // Selector for print button - update if your print button has a different HTML ID or class. 
-    
-    if (document.querySelector(printButtonSelector)) {
-        initializePrintButton(printButtonSelector);
-    }
+    initializePrintButton(printButtonSelector);
 
     // Insert printable page information at the top of the document (optional, can use a logo instead, see README.md for more details)
     // You can choose to display a print friendly version of your organisations logo instead.
@@ -25,38 +22,19 @@ document.addEventListener('DOMContentLoaded', () => {
   
     /* Generate a list of links */
     // Initialize a variable for the list of links
-    let listOfLinks = null;
-
+    const includeSelectors = 'INCLUDE_LINKS_SELECTOR'; // CSS selectors used to define the **initial collection** of links.
+    const excludeSelectors = 'EXCLUDE_LINKS_SELECTOR'; // CSS selectors used to **exclude** links ONLY from the **initial collection** above. Value can be "null" or ''. 
+    const onlyShowExternalLinks = true; // If true, restricts the final list to external links only.
+    
     // Determine which links to include/exclude based on page type or specific needs
-    // A switch statement is used here to allow for different links to be selected for different types of pages. 
-    switch (true) {
-        // Example for a specific page type (e.g., homepage)
-        /*
-        case document.body.classList.contains('pagetype-home'):
-            listOfLinks = generateListOfPageLinks(
-                '.homepage-content a',  // Links to include
-                null,                   // Links to exclude
-                true                    // Only include external links
-            );
-            break;
-        */
-        // Default case for other page types. If you only have one page type you can set 'listOfLinks' seperately an delete the switch statement   
-        // If your site doesn't require different link selections for different pages,  you can assign 'listOfLinks' directly
-        // and remove the switch statement.
-        default:
-            //  NOTE: Replace with your link selectors
-            listOfLinks = generateListOfPageLinks(
-                'INCLUDE_LINKS_SELECTOR', // Links to include.
-                'EXCLUDE_LINKS_SELECTOR', // Links to exclude
-                true // Only include external links, setting to 'false' will also include internal links. Mailto and Tel links are always included, anchor links are always excluded  
-            );
-            break;
-    }
+    const listOfLinks = generateListOfPageLinks( includeSelectors,   excludeSelectors, onlyShowExternalLinks); 
+    
+    // OPTIONAL – Specify different link selectors for specific page types in a conditional statement (e.g. if/else or switch)
 
     if (listOfLinks !== "" && listOfLinks !== null) {
         
         // Define the printed links section which lists the URLs of the selected links
-        // Change this HTML structure if necessary.   
+        // You can change this HTML structure if necessary.   
         const printedLinksSection = document.createElement('div');
         printedLinksSection.id = 'js-printready-link-urls';
         printedLinksSection.className = 'print-only';
@@ -69,13 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Define the target element to insert the printed links section after.
         // You can change this to suit your site. 
-        let renderTarget = '.main-content';
+        let renderTarget = 'YOUR_RENDER_TARGET';
         
-        // OPTIONAL – Use a different render target for specific page types if needed  
-        // EXAMPLE: Set the render target based on the (homepage) page type 
-        // if (document.body.classList.contains('pagetype-home')) {
-        //     renderTarget = '.homepage-content';
-        // }
+        // OPTIONAL – Specify different render target for specific page types in a conditional statement (e.g. if/else or switch) 
 
         // Insert the printed links section after the renderTarget if it exists.
         if (renderTarget !== '' && document.querySelector(renderTarget) !== null) {

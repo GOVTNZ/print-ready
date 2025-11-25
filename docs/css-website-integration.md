@@ -1,6 +1,6 @@
 # CSS Integration Guide
 
-`printready-base.css` generic styles designed to ensure reliable printing while following good practices.
+`printready-base.css` contains generic styles designed to ensure reliable printing while following good practices.
 
 `printready-site.css` contains well-commented styles for components created by the JavaScript functionality and common site elements, such as breadcrumbs. Adjust the selectors in this stylesheet to align with your website's markup.
 
@@ -16,6 +16,8 @@ In `printready-site.css` you will need to:
 ## Determining what to hide:
 
 Review each page type and component in your website. Apply this principle: **"Only print elements that are essential for understanding the page's content or context"**
+
+A quick way to inspect your webpage's print layout is to emulate the CSS "print" media type using your browser's developer tools.
 
 Common elements to hide include:
 
