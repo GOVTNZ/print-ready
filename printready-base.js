@@ -3,6 +3,7 @@
  * @param {string} buttonSelector - The CSS selector for the print button.
  */
 export function initializePrintButton(buttonSelector) {
+  
   const printButton = document.querySelector(buttonSelector);
 
   if (printButton) {
