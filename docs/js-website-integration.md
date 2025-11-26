@@ -17,7 +17,7 @@ The `showAgency` function generates an HTML snippet containing the agency name f
 
    ```javascript
    const agencyName = "AGENCY_NAME";
-    document.body.prepend(showAgency(agencyName));
+   document.body.prepend(showAgency(agencyName));
    ```   
    
 ### Example Output
@@ -99,10 +99,10 @@ To include internal links, set the third argument `externalOnly` in the generate
     // Determine which links to include/exclude based on page type or specific needs
     const listOfLinks = generateListOfPageLinks( includeSelectors,   excludeSelectors, onlyShowExternalLinks); 
 ```
-2. Set `YOUR_RENDER_TARGET` to the CSS selector where you want the page links to appear on the page.
+2. Change `SET_RENDER_TARGET` to the CSS selector where you want the page links to appear on the page.
 
 ```javascript
-let renderTarget = 'YOUR_RENDER_TARGET'; 
+let renderTarget = 'SET_RENDER_TARGET'; 
 ```
 3. The links will be inserted *after* the render target.
 

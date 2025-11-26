@@ -34,7 +34,9 @@ body {
   
   /* Prevent listed elements from splitting across pages */
   tr, img, dd, dt, li {
-    page-break-inside: avoid;
+    -webkit-column-break-inside: avoid; /* Chrome, Safari, Opera - legacy */
+    page-break-inside: avoid;           /* Firefox - legacy */
+    break-inside: avoid;                /* Modern standard */
   }
   
   /* Define margins for printed pages */

@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Define the target element to insert the printed links section after.
         // You can change this to suit your site. 
-        let renderTarget = 'YOUR_RENDER_TARGET';
+        let renderTarget = 'SET_RENDER_TARGET';
         
         // OPTIONAL – Specify different render target for specific page types in a conditional statement (e.g. if/else or switch) 
 
